@@ -21,14 +21,25 @@ environment:
 
 #- sort_pub_dependencies
 dependencies:
+  appwrite: ^9.0.0
+  auto_route: ^7.1.0
   cupertino_icons: ^1.0.5
+  flex_color_scheme: ^7.1.2
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.2
+  freezed_annotation: ^2.2.0
+  hydrated_bloc: ^9.1.0
+  responsive_framework: ^1.0.0
 
 dev_dependencies:
+  auto_route_generator: ^7.0.0
+  build_runner: ^2.4.4
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
+  freezed: ^2.3.4
+  json_serializable: ^6.7.0
 
 flutter:
   uses-material-design: true
