@@ -29,10 +29,6 @@ fi
 printf "\e[33;1m%s\e[0m\n" 'Finished running Flutter Formatter'
 printf '%s\n' "${avar}"
 
-# Flutter pubspec_dependency_sorter
-printf "\e[33;1m%s\e[0m\n" '=== Running pubspec_dependency_sorter ==='
-flutter pub run pubspec_dependency_sorter
-
 # Flutter Analyzer
 printf "\e[33;1m%s\e[0m\n" '=== Running Flutter analyzer ==='
 RESULT=$(flutter analyze --no-pub)
