@@ -33,17 +33,9 @@ printf '%s\n' "${avar}"
 printf "\e[33;1m%s\e[0m\n" '=== Running pubspec_dependency_sorter ==='
 flutter pub run pubspec_dependency_sorter
 
-hasNewSortedDependencies=$(git diff)
-if [ -n "$hasNewSortedDependencies" ]; then
-   git add .
-   printf "\e[33;1m%s\e[0m\n" 'Sorted pubspec.yaml added to git stage'
-fi
-printf "\e[33;1m%s\e[0m\n" 'Finished running pubspec_dependency_sorter'
-printf '%s\n' "${avar}"
-
 # Flutter Analyzer
 printf "\e[33;1m%s\e[0m\n" '=== Running Flutter analyzer ==='
-RESULT=$(flutter analyze --no-pub --no-fatal-infos --no-fatal-warnings)
+RESULT=$(flutter analyze --no-pub)
 echo "$RESULT"
 if [[ $RESULT == *"error •"* ]]; then
    echo "----> :O Some files have linter fatal errors, check Dart Analysis"
