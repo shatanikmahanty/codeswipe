@@ -1,4 +1,4 @@
-# taskblazers
+# Codeswipe
 
 A task manager app using flutter and Appwrite.
 
