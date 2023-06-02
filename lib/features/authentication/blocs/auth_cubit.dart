@@ -3,7 +3,7 @@ import 'package:appwrite/models.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
-import 'package:codeswipe/utils/databaseIdHelper.dart';
+import 'package:codeswipe/utils/database_id_helper.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
