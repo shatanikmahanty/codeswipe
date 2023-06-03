@@ -47,7 +47,23 @@ class AuthCubit extends HydratedCubit<AuthState> {
         ),
       );
 
-  Future loginWithProvider(String provider) async {
+  Future<void> initiatePhoneLogin(String phoneNumber) async {
+    if (_apiClient == null) {
+      throw Exception('AuthCubit not initialized');
+    }
+
+    final accountApi = _apiClient!.account;
+
+    final session = await accountApi.createPhoneSession(
+      userId: ID.unique(),
+      phone: phoneNumber,
+    );
+
+    print(session.userId);
+  }
+
+  //TODO complete when appwrite cloud is back online for oauth services
+  Future<void> loginWithProvider(String provider) async {
     if (_apiClient == null) {
       throw Exception('AuthCubit not initialized');
     }
@@ -85,6 +101,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
             'id': sessionInfo.userId,
           },
         );
+      } else {
+        rethrow;
       }
     }
   }
