@@ -1,6 +1,6 @@
 # Codeswipe
 
-A task manager app using flutter and Appwrite.
+Open Source Hackathon Matcher app built with Appwrite Cloud and flutter.
 
 ### Enable pre-commit manually
 
