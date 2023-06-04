@@ -48,6 +48,7 @@ class _PhoneLoginSheet extends StatelessWidget {
       });
 
   final String defaultCountryCode;
+  final phoneFieldInputBorder = InputBorder.none;
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +87,6 @@ class _PhoneLoginSheet extends StatelessWidget {
                     children: [
                       Expanded(
                         flex: 1,
-                        // width: 100,
-                        // height: kPadding * 7,
                         child: CountryCodePicker(
                           padding: EdgeInsets.zero,
                           onChanged: (c) => authCubit.updateCountryCode(c.code),
@@ -111,12 +110,12 @@ class _PhoneLoginSheet extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: 'Enter phone',
                             hintStyle: Theme.of(context).textTheme.bodySmall,
-                            border: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            focusedErrorBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                            border: phoneFieldInputBorder,
+                            errorBorder: phoneFieldInputBorder,
+                            focusedBorder: phoneFieldInputBorder,
+                            focusedErrorBorder: phoneFieldInputBorder,
+                            enabledBorder: phoneFieldInputBorder,
+                            disabledBorder: phoneFieldInputBorder,
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: kPadding,
                             ),

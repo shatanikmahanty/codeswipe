@@ -11,10 +11,18 @@ class AuthGuard extends AutoRedirectGuard {
   AuthGuard() {
     _subscription = AuthCubit.instance.stream.listen(
       (state) {
-        // Don't reevaluate if only token updated but not user object
-        // Without this reevaulate gets called twice and pushes routes twice
         if (state.user != null) {
-          reevaluate();
+          reevaluate(
+            strategy: const ReevaluationStrategy.removeAllAndPush(
+              HomeRoute(),
+            ),
+          );
+        } else if (state.user == null) {
+          reevaluate(
+            strategy: const ReevaluationStrategy.removeAllAndPush(
+              LoginRouter(),
+            ),
+          );
         }
       },
     );

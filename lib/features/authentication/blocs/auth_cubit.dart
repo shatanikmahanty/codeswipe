@@ -104,7 +104,6 @@ class AuthCubit extends HydratedCubit<AuthState> {
     this.countryCode = countryCode ?? kDefaultCountryCode;
   }
 
-  //TODO test when appwrite cloud is back online for oauth services
   Future<void> loginWithProvider(String provider) async {
     final accountApi = getAccountApi();
     await accountApi.createOAuth2Session(provider: provider, scopes: []);
@@ -184,6 +183,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
   }
 
   Future<void> logout() async {
+    final accountApi = getAccountApi();
+    await accountApi.deleteSession(sessionId: 'current');
     emit(
       state.copyWith(
         user: null,

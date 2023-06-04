@@ -1,4 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/app/presentation/codeswipe_scaffold.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -9,10 +10,8 @@ class UnknownPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Unknown Route'),
-      ),
+    return CodeSwipeScaffold(
+      appBarTitleText: 'Unknown Route',
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(kPadding * 2),
@@ -33,7 +32,7 @@ class UnknownPage extends StatelessWidget {
                 if (router.canNavigateBack) {
                   router.back();
                 } else {
-                  // router.replace(const HomeRoute());
+                  router.replace(const HomeRoute());
                 }
               },
               child: const Text('Go to Home'),

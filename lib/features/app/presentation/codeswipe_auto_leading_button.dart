@@ -19,6 +19,8 @@ class CodeSwipeAutoLeadingButton extends StatelessWidget {
                 kButtonRadius,
               ),
             ),
+            width: kPadding * 6,
+            height: kPadding * 6,
             child: GestureDetector(
               onTap: onPressed ?? function,
               child: Icon(
@@ -28,7 +30,6 @@ class CodeSwipeAutoLeadingButton extends StatelessWidget {
                         ? Icons.close
                         : Icons.menu,
                 color: Theme.of(context).primaryColor,
-                size: kPadding * 3,
               ),
             ),
           );

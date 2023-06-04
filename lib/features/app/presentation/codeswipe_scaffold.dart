@@ -13,7 +13,7 @@ class CodeSwipeScaffold extends StatelessWidget {
     this.actions,
     this.centerAppBarTitle = true,
   }) : assert(
-          showAppBar && (appBarTitleText != null || appBarTitleWidget != null),
+          !showAppBar || (appBarTitleText != null || appBarTitleWidget != null),
           'appBarTitleText or appBarTitleWidget must be provided',
         );
 
@@ -31,10 +31,11 @@ class CodeSwipeScaffold extends StatelessWidget {
         body: body,
         appBar: showAppBar
             ? PreferredSize(
-                preferredSize: const Size(0, kPadding * 12),
+                preferredSize: const Size(0, kPadding * 8),
                 child: Padding(
                   padding: const EdgeInsets.all(kPadding),
                   child: AppBar(
+                    leadingWidth: kPadding * 6,
                     leading: const CodeSwipeAutoLeadingButton(),
                     centerTitle: centerAppBarTitle,
                     title: appBarTitleText != null

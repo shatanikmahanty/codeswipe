@@ -1,4 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/app/presentation/codeswipe_scaffold.dart';
 import 'package:codeswipe/features/authentication/presentation/single_onboarding_page.dart';
 import 'package:expandable_page_view/expandable_page_view.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,8 @@ class OnboardingPage extends StatelessWidget {
   final controller = PageController();
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => CodeSwipeScaffold(
+        showAppBar: false,
         body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
