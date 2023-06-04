@@ -29,7 +29,7 @@ class AppTextStyle {
 
   static TextStyle get headlineLarge => const TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 32,
+        fontSize: 34,
         height: 1.25,
         fontFamily: kMontserratFontFamily,
       );

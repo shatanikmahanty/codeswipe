@@ -6,9 +6,14 @@ part 'app_user_model.g.dart';
 @freezed
 class AppUser with _$AppUser {
   const factory AppUser({
-    required int id,
+    required String id,
     required String name,
-    required String email,
+    @JsonKey(includeIfNull: false) String? email,
+    @JsonKey(includeIfNull: false) String? phone,
+    @JsonKey(includeIfNull: false, name: 'gh_access_token')
+    String? ghAccessToken,
+    @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+    String? ghTokenExpiry,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>

@@ -17,6 +17,9 @@ const kAppIdentifier = 'codeswipe';
 const databaseIdDev = '$kAppIdentifier-dev';
 const databaseIdProd = '$kAppIdentifier-prod';
 
+const kDefaultCountryCode = '+91';
+
 /// Collections
 
 const kUsersCollection = 'users';
+const kOtpLength = 6;

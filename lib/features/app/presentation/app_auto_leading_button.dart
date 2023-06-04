@@ -2,12 +2,16 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:flutter/material.dart';
 
 class AppAutoLeadingButton extends StatelessWidget {
-  const AppAutoLeadingButton({super.key});
+  const AppAutoLeadingButton({super.key, this.onPressed});
+
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) => Container(
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xffE8E6EA)),
+          border: Border.all(
+            color: Theme.of(context).primaryColor,
+          ),
           borderRadius: BorderRadius.circular(
             kButtonRadius,
           ),
@@ -22,7 +26,7 @@ class AppAutoLeadingButton extends StatelessWidget {
                       : Icons.menu,
               color: Theme.of(context).primaryColor,
             ),
-            onPressed: function,
+            onPressed: onPressed ?? function,
           ),
         ),
       );
