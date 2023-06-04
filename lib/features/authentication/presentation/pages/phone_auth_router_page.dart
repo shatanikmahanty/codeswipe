@@ -1,5 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
-import 'package:codeswipe/features/app/presentation/app_auto_leading_button.dart';
+import 'package:codeswipe/features/app/presentation/codeswipe_auto_leading_button.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage(
@@ -18,7 +18,7 @@ class PhoneAuthRouterPage extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AppAutoLeadingButton(),
+                    const CodeSwipeAutoLeadingButton(),
                     const Spacer(),
                     Assets.images.enterOtp.image(),
                     const Spacer(),
