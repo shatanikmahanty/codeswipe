@@ -20,11 +20,24 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppUser {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+
   String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+
+  @JsonKey(includeIfNull: false)
+  String? get email => throw _privateConstructorUsedError;
+
+  @JsonKey(includeIfNull: false)
+  String? get phone => throw _privateConstructorUsedError;
+
+  @JsonKey(includeIfNull: false, name: 'gh_access_token')
+  String? get ghAccessToken => throw _privateConstructorUsedError;
+
+  @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+  String? get ghTokenExpiry => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -33,8 +46,17 @@ mixin _$AppUser {
 abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res, AppUser>;
+
   @useResult
-  $Res call({int id, String name, String email});
+  $Res call(
+      {String id,
+      String name,
+      @JsonKey(includeIfNull: false) String? email,
+      @JsonKey(includeIfNull: false) String? phone,
+      @JsonKey(includeIfNull: false, name: 'gh_access_token')
+      String? ghAccessToken,
+      @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+      String? ghTokenExpiry});
 }
 
 /// @nodoc
@@ -52,21 +74,36 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? email = null,
+    Object? email = freezed,
+    Object? phone = freezed,
+    Object? ghAccessToken = freezed,
+    Object? ghTokenExpiry = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ghAccessToken: freezed == ghAccessToken
+          ? _value.ghAccessToken
+          : ghAccessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ghTokenExpiry: freezed == ghTokenExpiry
+          ? _value.ghTokenExpiry
+          : ghTokenExpiry // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -76,9 +113,18 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   factory _$$_AppUserCopyWith(
           _$_AppUser value, $Res Function(_$_AppUser) then) =
       __$$_AppUserCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({int id, String name, String email});
+  $Res call(
+      {String id,
+      String name,
+      @JsonKey(includeIfNull: false) String? email,
+      @JsonKey(includeIfNull: false) String? phone,
+      @JsonKey(includeIfNull: false, name: 'gh_access_token')
+      String? ghAccessToken,
+      @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+      String? ghTokenExpiry});
 }
 
 /// @nodoc
@@ -93,21 +139,36 @@ class __$$_AppUserCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? name = null,
-    Object? email = null,
+    Object? email = freezed,
+    Object? phone = freezed,
+    Object? ghAccessToken = freezed,
+    Object? ghTokenExpiry = freezed,
   }) {
     return _then(_$_AppUser(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      phone: freezed == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ghAccessToken: freezed == ghAccessToken
+          ? _value.ghAccessToken
+          : ghAccessToken // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ghTokenExpiry: freezed == ghTokenExpiry
+          ? _value.ghTokenExpiry
+          : ghTokenExpiry // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -115,21 +176,39 @@ class __$$_AppUserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppUser implements _AppUser {
-  const _$_AppUser({required this.id, required this.name, required this.email});
+  const _$_AppUser(
+      {required this.id,
+      required this.name,
+      @JsonKey(includeIfNull: false) this.email,
+      @JsonKey(includeIfNull: false) this.phone,
+      @JsonKey(includeIfNull: false, name: 'gh_access_token')
+      this.ghAccessToken,
+      @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+      this.ghTokenExpiry});
 
   factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String name;
   @override
-  final String email;
+  @JsonKey(includeIfNull: false)
+  final String? email;
+  @override
+  @JsonKey(includeIfNull: false)
+  final String? phone;
+  @override
+  @JsonKey(includeIfNull: false, name: 'gh_access_token')
+  final String? ghAccessToken;
+  @override
+  @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+  final String? ghTokenExpiry;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, name: $name, email: $email)';
+    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry)';
   }
 
   @override
@@ -139,12 +218,18 @@ class _$_AppUser implements _AppUser {
             other is _$_AppUser &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.ghAccessToken, ghAccessToken) ||
+                other.ghAccessToken == ghAccessToken) &&
+            (identical(other.ghTokenExpiry, ghTokenExpiry) ||
+                other.ghTokenExpiry == ghTokenExpiry));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, email);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, email, phone, ghAccessToken, ghTokenExpiry);
 
   @JsonKey(ignore: true)
   @override
@@ -162,18 +247,39 @@ class _$_AppUser implements _AppUser {
 
 abstract class _AppUser implements AppUser {
   const factory _AppUser(
-      {required final int id,
+      {required final String id,
       required final String name,
-      required final String email}) = _$_AppUser;
+      @JsonKey(includeIfNull: false) final String? email,
+      @JsonKey(includeIfNull: false) final String? phone,
+      @JsonKey(includeIfNull: false, name: 'gh_access_token')
+      final String? ghAccessToken,
+      @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+      final String? ghTokenExpiry}) = _$_AppUser;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
   @override
-  int get id;
+  String get id;
+
   @override
   String get name;
+
   @override
-  String get email;
+  @JsonKey(includeIfNull: false)
+  String? get email;
+
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get phone;
+
+  @override
+  @JsonKey(includeIfNull: false, name: 'gh_access_token')
+  String? get ghAccessToken;
+
+  @override
+  @JsonKey(includeIfNull: false, name: 'gh_token_expiry')
+  String? get ghTokenExpiry;
+
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

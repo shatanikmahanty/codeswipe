@@ -22,7 +22,12 @@ AuthState _$AuthStateFromJson(Map<String, dynamic> json) {
 mixin _$AuthState {
   AppUser? get user => throw _privateConstructorUsedError;
 
+  bool get isOtpAvailable => throw _privateConstructorUsedError;
+
+  String? get phoneUserId => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -32,8 +37,9 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
+
   @useResult
-  $Res call({AppUser? user});
+  $Res call({AppUser? user, bool isOtpAvailable, String? phoneUserId});
 
   $AppUserCopyWith<$Res>? get user;
 }
@@ -52,12 +58,22 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   @override
   $Res call({
     Object? user = freezed,
+    Object? isOtpAvailable = null,
+    Object? phoneUserId = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as AppUser?,
+      isOtpAvailable: null == isOtpAvailable
+          ? _value.isOtpAvailable
+          : isOtpAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      phoneUserId: freezed == phoneUserId
+          ? _value.phoneUserId
+          : phoneUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -79,9 +95,10 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   factory _$$_AuthStateCopyWith(
           _$_AuthState value, $Res Function(_$_AuthState) then) =
       __$$_AuthStateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({AppUser? user});
+  $Res call({AppUser? user, bool isOtpAvailable, String? phoneUserId});
 
   @override
   $AppUserCopyWith<$Res>? get user;
@@ -99,12 +116,22 @@ class __$$_AuthStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? user = freezed,
+    Object? isOtpAvailable = null,
+    Object? phoneUserId = freezed,
   }) {
     return _then(_$_AuthState(
       user: freezed == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as AppUser?,
+      isOtpAvailable: null == isOtpAvailable
+          ? _value.isOtpAvailable
+          : isOtpAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
+      phoneUserId: freezed == phoneUserId
+          ? _value.phoneUserId
+          : phoneUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -112,17 +139,23 @@ class __$$_AuthStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AuthState implements _AuthState {
-  const _$_AuthState({this.user});
+  const _$_AuthState(
+      {this.user, this.isOtpAvailable = false, this.phoneUserId});
 
   factory _$_AuthState.fromJson(Map<String, dynamic> json) =>
       _$$_AuthStateFromJson(json);
 
   @override
   final AppUser? user;
+  @override
+  @JsonKey()
+  final bool isOtpAvailable;
+  @override
+  final String? phoneUserId;
 
   @override
   String toString() {
-    return 'AuthState(user: $user)';
+    return 'AuthState(user: $user, isOtpAvailable: $isOtpAvailable, phoneUserId: $phoneUserId)';
   }
 
   @override
@@ -130,12 +163,17 @@ class _$_AuthState implements _AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthState &&
-            (identical(other.user, user) || other.user == user));
+            (identical(other.user, user) || other.user == user) &&
+            (identical(other.isOtpAvailable, isOtpAvailable) ||
+                other.isOtpAvailable == isOtpAvailable) &&
+            (identical(other.phoneUserId, phoneUserId) ||
+                other.phoneUserId == phoneUserId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, user);
+  int get hashCode =>
+      Object.hash(runtimeType, user, isOtpAvailable, phoneUserId);
 
   @JsonKey(ignore: true)
   @override
@@ -152,13 +190,23 @@ class _$_AuthState implements _AuthState {
 }
 
 abstract class _AuthState implements AuthState {
-  const factory _AuthState({final AppUser? user}) = _$_AuthState;
+  const factory _AuthState(
+      {final AppUser? user,
+      final bool isOtpAvailable,
+      final String? phoneUserId}) = _$_AuthState;
 
   factory _AuthState.fromJson(Map<String, dynamic> json) =
       _$_AuthState.fromJson;
 
   @override
   AppUser? get user;
+
+  @override
+  bool get isOtpAvailable;
+
+  @override
+  String? get phoneUserId;
+
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

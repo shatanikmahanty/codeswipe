@@ -3,6 +3,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:djangoflow_app_links/djangoflow_app_links.dart';
 import 'package:flutter/foundation.dart';
@@ -77,6 +78,7 @@ class CodeSwipeAppBuilder extends AppBuilder {
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
+                  CountryLocalizations.delegate,
                 ],
                 routerDelegate: appRouter.delegate(
                   deepLinkBuilder: (_) => initialDeepLink != null
