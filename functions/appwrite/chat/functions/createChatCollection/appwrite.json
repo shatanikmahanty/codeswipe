@@ -1,0 +1,23 @@
+{
+  "projectId": "64744a4bdf0086c42753",
+  "projectName": "codeswipe",
+  "functions": [
+    {
+      "$id": "647ed6b5a93a2312a159",
+      "name": "createChatCollection",
+      "runtime": "dart-2.17",
+      "path": "functions/createChatCollection",
+      "entrypoint": "main.dart",
+      "ignore": [
+        ".packages",
+        ".dart_tool"
+      ],
+      "execute": [],
+      "events": [
+        "databases.*.collections.chat.documents.*.create"
+      ],
+      "schedule": "",
+      "timeout": 15
+    }
+  ]
+}
