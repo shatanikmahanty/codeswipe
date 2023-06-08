@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  AuthCubit.instance.logout();
+                  AuthCubit.instance.markUserSurveyAttempted();
                 },
                 child: const Text('Logout'),
               ),

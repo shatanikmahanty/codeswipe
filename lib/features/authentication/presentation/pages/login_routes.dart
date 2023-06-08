@@ -1,5 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
-import 'package:flutter/material.dart';
+import 'package:codeswipe/utils/custom_tranisitions_route.dart';
 
 final loginRoutes = [
   RedirectRoute(path: '', redirectTo: 'options'),
@@ -21,20 +21,9 @@ final loginRoutes = [
             path: '',
             page: PhoneLoginRoute.page,
           ),
-          CustomRoute(
+          scaleTransitionCustomRoute(
             path: 'verify',
             page: PhoneOtpVerifyRoute.page,
-            barrierDismissible: false,
-            transitionsBuilder: (
-              BuildContext context,
-              Animation<double> animation,
-              Animation<double> secondaryAnimation,
-              Widget child,
-            ) =>
-                ScaleTransition(
-              scale: animation,
-              child: child,
-            ),
           ),
         ],
       ),

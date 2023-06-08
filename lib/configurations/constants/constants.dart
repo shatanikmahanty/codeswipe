@@ -23,3 +23,41 @@ const kDefaultCountryCode = '+91';
 
 const kUsersCollection = 'users';
 const kOtpLength = 6;
+
+const kSkillsList = [
+  'UI/UX Design',
+  'C#',
+  'C',
+  'C++',
+  'Data Science',
+  'ML',
+  'Flask',
+  'HTML',
+  'Django',
+  'CSS',
+  'React',
+  'Angular',
+  'Vue',
+  'Node',
+  'SQL',
+  'JAVA',
+  'Python',
+  'Flutter',
+  'Kotlin',
+  'Swift',
+  'Tailwind',
+  'Solidity',
+];
+
+///Form control names
+const kPhoneField = 'phone';
+const kOtpField = 'otp';
+const kNameField = 'name';
+const kEmailField = 'email';
+const kCourseField = 'course';
+const kCollegeNameField = 'collegeName';
+const kGradYearField = 'gradYear';
+const kBioField = 'bio';
+
+///User prefs
+const userSurveyAttemptedPref = 'user_survey_attempted';

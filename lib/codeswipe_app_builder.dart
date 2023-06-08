@@ -52,7 +52,16 @@ class CodeSwipeAppBuilder extends AppBuilder {
           ],
           builder: (context) => LoginListenerWrapper(
             initialUser: context.read<AuthCubit>().state.user,
-            onLogin: (context, user) {},
+            onLogin: (context, user) async {
+              ///Trigger user survey if not attempted
+              final prefs = await context.read<ApiClient>().account.getPrefs();
+              final userSurveyAttempted = prefs.data[userSurveyAttemptedPref];
+              if (userSurveyAttempted == null || !userSurveyAttempted) {
+                appRouter.push(
+                  const UserSurveyRouter(),
+                );
+              }
+            },
             onLogout: (context) {},
             child: AppCubitConsumer(
               listenWhen: (previous, current) =>

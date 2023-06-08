@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_builder/progress_builder.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../blocs/auth_cubit.dart';
+import '../../authentication.dart';
 
 @RoutePage()
 class PhoneLoginPage extends StatelessWidget {

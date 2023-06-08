@@ -1,9 +1,9 @@
-import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:progress_builder/progress_builder.dart';
 
 import '../../../configurations/configurations.dart';
+import '../data/blocs/auth_cubit.dart';
 
 class AuthButton extends StatelessWidget {
   const AuthButton({

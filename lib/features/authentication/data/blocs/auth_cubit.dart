@@ -4,6 +4,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/utils/database_id_helper.dart';
+import 'package:codeswipe/utils/mixins/cubit_maybe_emit_mixin.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -22,7 +23,7 @@ class AuthState with _$AuthState {
       _$AuthStateFromJson(json);
 }
 
-class AuthCubit extends HydratedCubit<AuthState> {
+class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
   ///Singleton
   static AuthCubit get instance => _instance;
   static final AuthCubit _instance = AuthCubit._internal();
@@ -107,6 +108,11 @@ class AuthCubit extends HydratedCubit<AuthState> {
   Future<void> loginWithProvider(String provider) async {
     final accountApi = getAccountApi();
     await accountApi.createOAuth2Session(provider: provider, scopes: []);
+
+    ///Workaround Delaying for 1 second to allow appwrite to create session
+    ///TODO remove when appwrite fixes it
+    await Future.delayed(const Duration(seconds: 1));
+
     await checkIfAccountExists(provider);
   }
 
@@ -126,6 +132,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
         collectionId: kUsersCollection,
         documentId: sessionInfo.userId,
       );
+
+      ///TODO handle edge case of save oauth token if different oauth service is used on existing account
 
       if (document == null) {
         throw Exception('Login Failed. Please try again.');
@@ -210,5 +218,55 @@ class AuthCubit extends HydratedCubit<AuthState> {
     json.remove('phoneSessionId');
 
     return AuthState.fromJson(json);
+  }
+
+  Future<void> updateProfile({
+    required String? name,
+    required String? email,
+    required String? course,
+    required String? collegeName,
+    required String? graduationYear,
+    required String? bio,
+  }) async {
+    final user = state.user;
+
+    if (user == null) {
+      logout();
+      return;
+    } else {
+      final updatedUser = user.copyWith(
+        name: name ?? user.name,
+        email: email ?? user.email,
+        course: course ?? user.course,
+        collegeName: collegeName ?? user.collegeName,
+        graduationYear: graduationYear ?? user.graduationYear,
+        bio: bio ?? user.bio,
+      );
+
+      ///Checking if there was no change
+      if (state.user == updatedUser) {
+        return;
+      }
+
+      await _apiClient?.databases.updateDocument(
+        databaseId: DataBaseIdHelper().getId(),
+        collectionId: kUsersCollection,
+        documentId: user.id,
+        data: updatedUser.toJson(),
+      );
+
+      emit(
+        state.copyWith(
+          user: updatedUser,
+        ),
+      );
+    }
+  }
+
+  void markUserSurveyAttempted() {
+    final accountApi = getAccountApi();
+    accountApi.updatePrefs(
+      prefs: {userSurveyAttemptedPref: true},
+    );
   }
 }
