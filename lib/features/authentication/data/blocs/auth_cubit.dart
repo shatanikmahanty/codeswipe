@@ -220,6 +220,13 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
     return AuthState.fromJson(json);
   }
 
+  void markUserSurveyAttempted() {
+    final accountApi = getAccountApi();
+    accountApi.updatePrefs(
+      prefs: {userSurveyAttemptedPref: true},
+    );
+  }
+
   Future<void> updateProfile({
     required String? name,
     required String? email,
@@ -248,25 +255,68 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
         return;
       }
 
-      await _apiClient?.databases.updateDocument(
-        databaseId: DataBaseIdHelper().getId(),
-        collectionId: kUsersCollection,
-        documentId: user.id,
-        data: updatedUser.toJson(),
-      );
-
-      emit(
-        state.copyWith(
-          user: updatedUser,
-        ),
-      );
+      await updateUser(updatedUser);
     }
   }
 
-  void markUserSurveyAttempted() {
-    final accountApi = getAccountApi();
-    accountApi.updatePrefs(
-      prefs: {userSurveyAttemptedPref: true},
+  Future<void> updateUserSkills(List<String> skills) async {
+    final user = state.user;
+
+    if (user == null) {
+      logout();
+      return;
+    } else {
+      final updatedUser = user.copyWith(
+        skills: skills,
+      );
+
+      ///Checking if there was no change
+      if (state.user == updatedUser) {
+        return;
+      }
+
+      await updateUser(updatedUser);
+    }
+  }
+
+  Future<void> updateUser(AppUser updatedUser) async {
+    await _apiClient?.databases.updateDocument(
+      databaseId: DataBaseIdHelper().getId(),
+      collectionId: kUsersCollection,
+      documentId: updatedUser.id,
+      data: updatedUser.toJson(),
     );
+
+    emit(
+      state.copyWith(
+        user: updatedUser,
+      ),
+    );
+  }
+
+  Future<void> updateUserPrefs({
+    required List<String> preferredThemes,
+    required String preferredHackathonMode,
+    required String teamMemberPreferredLocation,
+  }) async {
+    final user = state.user;
+
+    if (user == null) {
+      logout();
+      return;
+    } else {
+      final updatedUser = user.copyWith(
+        hackathonThemeInterests: preferredThemes,
+        hackathonModeInterests: preferredHackathonMode,
+        teamMemberPreferredLocation: teamMemberPreferredLocation,
+      );
+
+      ///Checking if there was no change
+      if (state.user == updatedUser) {
+        return;
+      }
+
+      await updateUser(updatedUser);
+    }
   }
 }

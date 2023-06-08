@@ -168,7 +168,7 @@ abstract class $AppRouter extends _i15.RootStackRouter {
         routeData: routeData,
         child: _i15.DeferredWidget(
           _i14.loadLibrary,
-          () => _i14.UserSurveyRouterPage(),
+          () => _i15.WrappedRoute(child: _i14.UserSurveyRouterPage()),
         ),
       );
     },

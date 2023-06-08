@@ -2,7 +2,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:flutter/material.dart';
 
 ///Callback that notifies when the selection changes.
-typedef OnSelectionChanged<T> = void Function(List<T> selectedIndices);
+typedef OnSelectionChanged<T> = void Function(List<T> selectedItems);
 typedef ItemBuilder<T> = Widget Function(BuildContext context, T item);
 
 ///A generic widget that allows multiple items to be selected.
@@ -33,7 +33,7 @@ class CodeSwipeMultiSelector<T> extends StatefulWidget {
   final List<T> items;
   final List<T> initialSelections;
   final ItemBuilder<T>? itemBuilder;
-  final OnSelectionChanged<T> onSelectionChanged;
+  final ValueChanged<List<T>> onSelectionChanged;
   final Axis axis;
 
   @override
@@ -46,7 +46,7 @@ class _CodeSwipeMultiSelectorState<T> extends State<CodeSwipeMultiSelector<T>> {
 
   @override
   void initState() {
-    _selectedItems = widget.initialSelections;
+    _selectedItems = List.from(widget.initialSelections);
     super.initState();
   }
 
@@ -109,6 +109,7 @@ class _CodeSwipeMultiSelectorState<T> extends State<CodeSwipeMultiSelector<T>> {
                 item.toString(),
                 style: TextStyle(
                   color: isSelected ? Colors.white : Colors.black,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.w400,
                 ),
               ),
             ),

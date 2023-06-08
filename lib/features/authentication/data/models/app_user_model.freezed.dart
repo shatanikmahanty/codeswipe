@@ -21,50 +21,39 @@ AppUser _$AppUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppUser {
   String get id => throw _privateConstructorUsedError;
-
   String get name => throw _privateConstructorUsedError;
-
   @JsonKey(includeIfNull: false)
   String? get email => throw _privateConstructorUsedError;
-
   @JsonKey(includeIfNull: false)
   String? get phone => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'gh_access_token')
   String? get ghAccessToken => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'gh_token_expiry')
   String? get ghTokenExpiry => throw _privateConstructorUsedError;
-
   @JsonKey(includeIfNull: false)
   List<String>? get skills => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'hackathon_mode_interests')
   String? get hackathonModeInterests => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'current_location')
   String? get currentLocation => throw _privateConstructorUsedError;
 
+  ///Preferred location of teammate
   @JsonKey(name: 'teammate_preferred_location')
   String? get teamMemberPreferredLocation => throw _privateConstructorUsedError;
 
+  ///Preferred  hackathon themes
   @JsonKey(name: 'hackathon_theme_interests')
   List<String>? get hackathonThemeInterests =>
       throw _privateConstructorUsedError;
-
   String? get bio => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'college_name')
   String? get collegeName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'graduation_year')
   String? get graduationYear => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'course')
   String? get course => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -73,7 +62,6 @@ mixin _$AppUser {
 abstract class $AppUserCopyWith<$Res> {
   factory $AppUserCopyWith(AppUser value, $Res Function(AppUser) then) =
       _$AppUserCopyWithImpl<$Res, AppUser>;
-
   @useResult
   $Res call(
       {String id,
@@ -194,7 +182,6 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   factory _$$_AppUserCopyWith(
           _$_AppUser value, $Res Function(_$_AppUser) then) =
       __$$_AppUserCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -352,7 +339,6 @@ class _$_AppUser implements _AppUser {
   @JsonKey(name: 'gh_token_expiry')
   final String? ghTokenExpiry;
   final List<String>? _skills;
-
   @override
   @JsonKey(includeIfNull: false)
   List<String>? get skills {
@@ -369,11 +355,16 @@ class _$_AppUser implements _AppUser {
   @override
   @JsonKey(name: 'current_location')
   final String? currentLocation;
+
+  ///Preferred location of teammate
   @override
   @JsonKey(name: 'teammate_preferred_location')
   final String? teamMemberPreferredLocation;
+
+  ///Preferred  hackathon themes
   final List<String>? _hackathonThemeInterests;
 
+  ///Preferred  hackathon themes
   @override
   @JsonKey(name: 'hackathon_theme_interests')
   List<String>? get hackathonThemeInterests {
@@ -498,23 +489,18 @@ abstract class _AppUser implements AppUser {
   @override
   @JsonKey(includeIfNull: false)
   String? get email;
-
   @override
   @JsonKey(includeIfNull: false)
   String? get phone;
-
   @override
   @JsonKey(name: 'gh_access_token')
   String? get ghAccessToken;
-
   @override
   @JsonKey(name: 'gh_token_expiry')
   String? get ghTokenExpiry;
-
   @override
   @JsonKey(includeIfNull: false)
   List<String>? get skills;
-
   @override
   @JsonKey(name: 'hackathon_mode_interests')
   String? get hackathonModeInterests;
@@ -524,28 +510,28 @@ abstract class _AppUser implements AppUser {
   String? get currentLocation;
 
   @override
+
+  ///Preferred location of teammate
   @JsonKey(name: 'teammate_preferred_location')
   String? get teamMemberPreferredLocation;
 
   @override
+
+  ///Preferred  hackathon themes
   @JsonKey(name: 'hackathon_theme_interests')
   List<String>? get hackathonThemeInterests;
 
   @override
   String? get bio;
-
   @override
   @JsonKey(name: 'college_name')
   String? get collegeName;
-
   @override
   @JsonKey(name: 'graduation_year')
   String? get graduationYear;
-
   @override
   @JsonKey(name: 'course')
   String? get course;
-
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

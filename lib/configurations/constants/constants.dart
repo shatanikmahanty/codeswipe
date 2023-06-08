@@ -49,6 +49,18 @@ const kSkillsList = [
   'Solidity',
 ];
 
+const kHackathonThemesList = [
+  'Web Dev',
+  'App Dev',
+  'ML',
+  'Blockchain',
+  'AR/VR',
+  'Cloud',
+  'Cyber Security',
+  'DevOps',
+  'Open Innovation',
+];
+
 ///Form control names
 const kPhoneField = 'phone';
 const kOtpField = 'otp';
