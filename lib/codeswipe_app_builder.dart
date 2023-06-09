@@ -94,7 +94,7 @@ class CodeSwipeAppBuilder extends AppBuilder {
                       ? DeepLink.path(initialDeepLink)
                       : const DeepLink(
                           [
-                            HomeRoute(),
+                            AppHomeRoute(),
                           ],
                         ),
                   // List of global navigation obsersers here
@@ -117,7 +117,7 @@ class CodeSwipeAppBuilder extends AppBuilder {
                                       path,
                                       onFailure: (failure) {
                                         appRouter.navigate(
-                                          const HomeRoute(),
+                                          const AppHomeRoute(),
                                         );
                                       },
                                     );

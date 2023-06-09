@@ -9,34 +9,34 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i15;
-import 'package:codeswipe/features/app/presentation/pages/home_page.dart'
-    deferred as _i1;
-import 'package:codeswipe/features/app/presentation/pages/unknown_page.dart'
-    deferred as _i2;
-import 'package:codeswipe/features/authentication/presentation/pages/login_options_router_page.dart'
-    deferred as _i3;
-import 'package:codeswipe/features/authentication/presentation/pages/login_providers_page.dart'
-    deferred as _i4;
-import 'package:codeswipe/features/authentication/presentation/pages/login_router_page.dart'
-    deferred as _i5;
-import 'package:codeswipe/features/authentication/presentation/pages/onboarding_page.dart'
-    deferred as _i6;
-import 'package:codeswipe/features/authentication/presentation/pages/phone_auth_router_page.dart'
-    deferred as _i7;
-import 'package:codeswipe/features/authentication/presentation/pages/phone_login_page.dart'
-    deferred as _i8;
-import 'package:codeswipe/features/authentication/presentation/pages/phone_otp_verify_page.dart'
-    deferred as _i9;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_prefs_page.dart'
-    deferred as _i10;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_profile_page.dart'
-    deferred as _i11;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_router_page.dart'
+import 'package:codeswipe/features/app/presentation/pages/app_home_page.dart'
     deferred as _i14;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_skills_page.dart'
-    deferred as _i12;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_team_page.dart'
+import 'package:codeswipe/features/app/presentation/pages/unknown_page.dart'
+    deferred as _i1;
+import 'package:codeswipe/features/authentication/presentation/pages/login_options_router_page.dart'
+    deferred as _i2;
+import 'package:codeswipe/features/authentication/presentation/pages/login_providers_page.dart'
+    deferred as _i3;
+import 'package:codeswipe/features/authentication/presentation/pages/login_router_page.dart'
+    deferred as _i4;
+import 'package:codeswipe/features/authentication/presentation/pages/onboarding_page.dart'
+    deferred as _i5;
+import 'package:codeswipe/features/authentication/presentation/pages/phone_auth_router_page.dart'
+    deferred as _i6;
+import 'package:codeswipe/features/authentication/presentation/pages/phone_login_page.dart'
+    deferred as _i7;
+import 'package:codeswipe/features/authentication/presentation/pages/phone_otp_verify_page.dart'
+    deferred as _i8;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_prefs_page.dart'
+    deferred as _i9;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_profile_page.dart'
+    deferred as _i10;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_router_page.dart'
     deferred as _i13;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_skills_page.dart'
+    deferred as _i11;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_team_page.dart'
+    deferred as _i12;
 import 'package:flutter/material.dart' as _i16;
 
 abstract class $AppRouter extends _i15.RootStackRouter {
@@ -44,21 +44,12 @@ abstract class $AppRouter extends _i15.RootStackRouter {
 
   @override
   final Map<String, _i15.PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
-      return _i15.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i15.DeferredWidget(
-          _i1.loadLibrary,
-          () => _i1.HomePage(),
-        ),
-      );
-    },
     UnknownRoute.name: (routeData) {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i2.loadLibrary,
-          () => _i2.UnknownPage(),
+          _i1.loadLibrary,
+          () => _i1.UnknownPage(),
         ),
       );
     },
@@ -66,8 +57,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i3.loadLibrary,
-          () => _i3.LoginOptionsRouterPage(),
+          _i2.loadLibrary,
+          () => _i2.LoginOptionsRouterPage(),
         ),
       );
     },
@@ -75,8 +66,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i4.loadLibrary,
-          () => _i4.LoginProvidersPage(),
+          _i3.loadLibrary,
+          () => _i3.LoginProvidersPage(),
         ),
       );
     },
@@ -84,8 +75,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i5.loadLibrary,
-          () => _i5.LoginRouterPage(),
+          _i4.loadLibrary,
+          () => _i4.LoginRouterPage(),
         ),
       );
     },
@@ -95,8 +86,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i6.loadLibrary,
-          () => _i6.OnboardingPage(key: args.key),
+          _i5.loadLibrary,
+          () => _i5.OnboardingPage(key: args.key),
         ),
       );
     },
@@ -104,8 +95,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i7.loadLibrary,
-          () => _i7.PhoneAuthRouterPage(),
+          _i6.loadLibrary,
+          () => _i6.PhoneAuthRouterPage(),
         ),
       );
     },
@@ -113,8 +104,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i8.loadLibrary,
-          () => _i8.PhoneLoginPage(),
+          _i7.loadLibrary,
+          () => _i7.PhoneLoginPage(),
         ),
       );
     },
@@ -122,8 +113,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i9.loadLibrary,
-          () => _i9.PhoneOtpVerifyPage(),
+          _i8.loadLibrary,
+          () => _i8.PhoneOtpVerifyPage(),
         ),
       );
     },
@@ -131,8 +122,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i10.loadLibrary,
-          () => _i10.UserSurveyPrefsPage(),
+          _i9.loadLibrary,
+          () => _i9.UserSurveyPrefsPage(),
         ),
       );
     },
@@ -140,8 +131,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i11.loadLibrary,
-          () => _i11.UserSurveyProfilePage(),
+          _i10.loadLibrary,
+          () => _i10.UserSurveyProfilePage(),
         ),
       );
     },
@@ -149,8 +140,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i12.loadLibrary,
-          () => _i12.UserSurveySkillsPage(),
+          _i11.loadLibrary,
+          () => _i11.UserSurveySkillsPage(),
         ),
       );
     },
@@ -158,8 +149,8 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
-          _i13.loadLibrary,
-          () => _i13.UserSurveyTeamPage(),
+          _i12.loadLibrary,
+          () => _i12.UserSurveyTeamPage(),
         ),
       );
     },
@@ -167,8 +158,17 @@ abstract class $AppRouter extends _i15.RootStackRouter {
       return _i15.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i15.DeferredWidget(
+          _i13.loadLibrary,
+          () => _i15.WrappedRoute(child: _i13.UserSurveyRouterPage()),
+        ),
+      );
+    },
+    AppHomeRoute.name: (routeData) {
+      return _i15.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i15.DeferredWidget(
           _i14.loadLibrary,
-          () => _i15.WrappedRoute(child: _i14.UserSurveyRouterPage()),
+          () => _i14.AppHomePage(),
         ),
       );
     },
@@ -176,21 +176,7 @@ abstract class $AppRouter extends _i15.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i15.PageRouteInfo<void> {
-  const HomeRoute({List<_i15.PageRouteInfo>? children})
-      : super(
-          HomeRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
-
-  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i2.UnknownPage]
+/// [_i1.UnknownPage]
 class UnknownRoute extends _i15.PageRouteInfo<void> {
   const UnknownRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -204,7 +190,7 @@ class UnknownRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.LoginOptionsRouterPage]
+/// [_i2.LoginOptionsRouterPage]
 class LoginOptionsRouter extends _i15.PageRouteInfo<void> {
   const LoginOptionsRouter({List<_i15.PageRouteInfo>? children})
       : super(
@@ -218,7 +204,7 @@ class LoginOptionsRouter extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.LoginProvidersPage]
+/// [_i3.LoginProvidersPage]
 class LoginProvidersRoute extends _i15.PageRouteInfo<void> {
   const LoginProvidersRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -232,7 +218,7 @@ class LoginProvidersRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i5.LoginRouterPage]
+/// [_i4.LoginRouterPage]
 class LoginRouter extends _i15.PageRouteInfo<void> {
   const LoginRouter({List<_i15.PageRouteInfo>? children})
       : super(
@@ -246,7 +232,7 @@ class LoginRouter extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i6.OnboardingPage]
+/// [_i5.OnboardingPage]
 class OnboardingRoute extends _i15.PageRouteInfo<OnboardingRouteArgs> {
   OnboardingRoute({
     _i16.Key? key,
@@ -275,7 +261,7 @@ class OnboardingRouteArgs {
 }
 
 /// generated route for
-/// [_i7.PhoneAuthRouterPage]
+/// [_i6.PhoneAuthRouterPage]
 class PhoneAuthRouter extends _i15.PageRouteInfo<void> {
   const PhoneAuthRouter({List<_i15.PageRouteInfo>? children})
       : super(
@@ -289,7 +275,7 @@ class PhoneAuthRouter extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.PhoneLoginPage]
+/// [_i7.PhoneLoginPage]
 class PhoneLoginRoute extends _i15.PageRouteInfo<void> {
   const PhoneLoginRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -303,7 +289,7 @@ class PhoneLoginRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.PhoneOtpVerifyPage]
+/// [_i8.PhoneOtpVerifyPage]
 class PhoneOtpVerifyRoute extends _i15.PageRouteInfo<void> {
   const PhoneOtpVerifyRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -317,7 +303,7 @@ class PhoneOtpVerifyRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i10.UserSurveyPrefsPage]
+/// [_i9.UserSurveyPrefsPage]
 class UserSurveyPrefsRoute extends _i15.PageRouteInfo<void> {
   const UserSurveyPrefsRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -331,7 +317,7 @@ class UserSurveyPrefsRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.UserSurveyProfilePage]
+/// [_i10.UserSurveyProfilePage]
 class UserSurveyProfileRoute extends _i15.PageRouteInfo<void> {
   const UserSurveyProfileRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -345,7 +331,7 @@ class UserSurveyProfileRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i12.UserSurveySkillsPage]
+/// [_i11.UserSurveySkillsPage]
 class UserSurveySkillsRoute extends _i15.PageRouteInfo<void> {
   const UserSurveySkillsRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -359,7 +345,7 @@ class UserSurveySkillsRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i13.UserSurveyTeamPage]
+/// [_i12.UserSurveyTeamPage]
 class UserSurveyTeamRoute extends _i15.PageRouteInfo<void> {
   const UserSurveyTeamRoute({List<_i15.PageRouteInfo>? children})
       : super(
@@ -373,7 +359,7 @@ class UserSurveyTeamRoute extends _i15.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.UserSurveyRouterPage]
+/// [_i13.UserSurveyRouterPage]
 class UserSurveyRouter extends _i15.PageRouteInfo<void> {
   const UserSurveyRouter({List<_i15.PageRouteInfo>? children})
       : super(
@@ -382,6 +368,20 @@ class UserSurveyRouter extends _i15.PageRouteInfo<void> {
         );
 
   static const String name = 'UserSurveyRouter';
+
+  static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i14.AppHomePage]
+class AppHomeRoute extends _i15.PageRouteInfo<void> {
+  const AppHomeRoute({List<_i15.PageRouteInfo>? children})
+      : super(
+          AppHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AppHomeRoute';
 
   static const _i15.PageInfo<void> page = _i15.PageInfo<void>(name);
 }
