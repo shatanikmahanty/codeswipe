@@ -1,5 +1,4 @@
-import 'package:codeswipe/configurations/configurations.dart';
-import 'package:codeswipe/features/app/presentation/codeswipe_auto_leading_button.dart';
+import 'package:codeswipe/features/app/presentation/codeswipe_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class CodeSwipeScaffold extends StatelessWidget {
@@ -30,23 +29,11 @@ class CodeSwipeScaffold extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         body: body,
         appBar: showAppBar
-            ? PreferredSize(
-                preferredSize: const Size(0, kPadding * 8),
-                child: Padding(
-                  padding: const EdgeInsets.all(kPadding),
-                  child: AppBar(
-                    leadingWidth: kPadding * 6,
-                    leading: const CodeSwipeAutoLeadingButton(),
-                    centerTitle: centerAppBarTitle,
-                    title: appBarTitleText != null
-                        ? Text(
-                            appBarTitleText!,
-                            style: Theme.of(context).textTheme.headlineSmall,
-                          )
-                        : appBarTitleWidget,
-                    actions: actions,
-                  ),
-                ),
+            ? CodeSwipeAppBar(
+                appBarTitleText: appBarTitleText,
+                appBarTitleWidget: appBarTitleWidget,
+                actions: actions,
+                centerTitle: centerAppBarTitle,
               )
             : null,
       );

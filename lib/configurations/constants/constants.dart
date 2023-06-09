@@ -73,3 +73,6 @@ const kBioField = 'bio';
 
 ///User prefs
 const userSurveyAttemptedPref = 'user_survey_attempted';
+
+///Route metadata keys
+const kShowAppBar = 'showAppBar';

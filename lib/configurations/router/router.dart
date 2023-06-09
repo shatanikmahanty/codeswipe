@@ -1,4 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_routes.dart';
 import 'package:flutter/material.dart';
@@ -38,11 +39,12 @@ class AppRouter extends $AppRouter {
       children: userSurveyRoutes,
     ),
     AutoRoute(
-      path: '/home',
-      page: HomeRoute.page,
+      path: '/app-home',
+      page: AppHomeRoute.page,
       guards: [
         AuthGuard(),
       ],
+      children: appHomeRoutes,
     ),
   ];
 }

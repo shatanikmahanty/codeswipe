@@ -45,6 +45,8 @@ class AppTheme {
         blendOnColors: false,
         blendTextTheme: false,
         dialogRadius: kPadding * 1.25,
+        bottomNavigationBarSelectedIconSize: kPadding * 3,
+        bottomNavigationBarUnselectedIconSize: kPadding * 3,
       );
 
   static ThemeData get light {
