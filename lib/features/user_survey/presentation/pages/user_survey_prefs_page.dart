@@ -87,7 +87,9 @@ class UserSurveyPrefsPage extends StatelessWidget {
       },
       onSuccess: () {
         DjangoflowAppSnackbar.showInfo('Skills updated successfully');
-        context.router.push(const UserSurveyTeamRoute());
+        context.router.parentAsStackRouter?.pop();
+        //TODO uncomment once team specification is confirmed
+        // context.router.push(const UserSurveyTeamRoute());
       },
       onError: (e) => DjangoflowAppSnackbar.showError(
         e.toString(),
