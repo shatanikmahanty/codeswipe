@@ -22,23 +22,17 @@ BannerModel _$BannerModelFromJson(Map<String, dynamic> json) {
 mixin _$BannerModel {
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-
   String get heading => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'subheading')
   String get subHeading => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'image_url')
   String get imgUrl => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'on_click')
   String? get onClick => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'button_text')
   String get buttonText => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $BannerModelCopyWith<BannerModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -49,7 +43,6 @@ abstract class $BannerModelCopyWith<$Res> {
   factory $BannerModelCopyWith(
           BannerModel value, $Res Function(BannerModel) then) =
       _$BannerModelCopyWithImpl<$Res, BannerModel>;
-
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String id,
@@ -67,7 +60,6 @@ class _$BannerModelCopyWithImpl<$Res, $Val extends BannerModel>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -116,7 +108,6 @@ abstract class _$$_BannerModelCopyWith<$Res>
   factory _$$_BannerModelCopyWith(
           _$_BannerModel value, $Res Function(_$_BannerModel) then) =
       __$$_BannerModelCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -262,26 +253,20 @@ abstract class _BannerModel implements BannerModel {
   @override
   @JsonKey(name: '\$id')
   String get id;
-
   @override
   String get heading;
-
   @override
   @JsonKey(name: 'subheading')
   String get subHeading;
-
   @override
   @JsonKey(name: 'image_url')
   String get imgUrl;
-
   @override
   @JsonKey(name: 'on_click')
   String? get onClick;
-
   @override
   @JsonKey(name: 'button_text')
   String get buttonText;
-
   @override
   @JsonKey(ignore: true)
   _$$_BannerModelCopyWith<_$_BannerModel> get copyWith =>

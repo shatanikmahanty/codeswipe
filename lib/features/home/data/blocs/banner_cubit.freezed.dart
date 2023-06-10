@@ -21,11 +21,9 @@ BannerState _$BannerStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BannerState {
   List<BannerModel> get models => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $BannerStateCopyWith<BannerState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ abstract class $BannerStateCopyWith<$Res> {
   factory $BannerStateCopyWith(
           BannerState value, $Res Function(BannerState) then) =
       _$BannerStateCopyWithImpl<$Res, BannerState>;
-
   @useResult
   $Res call({List<BannerModel> models, bool isLoading});
 }
@@ -48,7 +45,6 @@ class _$BannerStateCopyWithImpl<$Res, $Val extends BannerState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -77,7 +73,6 @@ abstract class _$$_BannerStateCopyWith<$Res>
   factory _$$_BannerStateCopyWith(
           _$_BannerState value, $Res Function(_$_BannerState) then) =
       __$$_BannerStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({List<BannerModel> models, bool isLoading});
@@ -121,7 +116,6 @@ class _$_BannerState implements _BannerState {
       _$$_BannerStateFromJson(json);
 
   final List<BannerModel> _models;
-
   @override
   @JsonKey()
   List<BannerModel> get models {
@@ -177,10 +171,8 @@ abstract class _BannerState implements BannerState {
 
   @override
   List<BannerModel> get models;
-
   @override
   bool get isLoading;
-
   @override
   @JsonKey(ignore: true)
   _$$_BannerStateCopyWith<_$_BannerState> get copyWith =>

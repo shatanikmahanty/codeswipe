@@ -1,7 +1,6 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:codeswipe/configurations/configurations.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../configurations/theme/size_constants.dart';
 import '../../../app/presentation/codeswipe_scaffold.dart';
 
 @RoutePage()
@@ -24,9 +23,9 @@ class UserSurveyTeamPage extends StatelessWidget {
             children: [
               ElevatedButton.icon(
                 onPressed: () {
-                  // context.router.parentAsStackRouter?.replace(
-                  //   const TeamCreateRoute(),
-                  // );
+                  context.router.parentAsStackRouter?.replace(
+                    const CreateTeamRoute(),
+                  );
                 },
                 label: const Padding(
                   padding: EdgeInsets.symmetric(
