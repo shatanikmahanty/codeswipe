@@ -21,11 +21,9 @@ TeamState _$TeamStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TeamState {
   UserTeam? get team => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TeamStateCopyWith<TeamState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -35,7 +33,6 @@ mixin _$TeamState {
 abstract class $TeamStateCopyWith<$Res> {
   factory $TeamStateCopyWith(TeamState value, $Res Function(TeamState) then) =
       _$TeamStateCopyWithImpl<$Res, TeamState>;
-
   @useResult
   $Res call({UserTeam? team, bool isLoading});
 
@@ -49,7 +46,6 @@ class _$TeamStateCopyWithImpl<$Res, $Val extends TeamState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -89,7 +85,6 @@ abstract class _$$_TeamStateCopyWith<$Res> implements $TeamStateCopyWith<$Res> {
   factory _$$_TeamStateCopyWith(
           _$_TeamState value, $Res Function(_$_TeamState) then) =
       __$$_TeamStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({UserTeam? team, bool isLoading});
@@ -181,10 +176,8 @@ abstract class _TeamState implements TeamState {
 
   @override
   UserTeam? get team;
-
   @override
   bool get isLoading;
-
   @override
   @JsonKey(ignore: true)
   _$$_TeamStateCopyWith<_$_TeamState> get copyWith =>
