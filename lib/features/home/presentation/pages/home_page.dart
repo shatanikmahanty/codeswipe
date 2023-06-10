@@ -25,6 +25,9 @@ class HomePage extends StatelessWidget {
                   hasTeam: state.team != null,
                 ),
               ),
+              const SizedBox(
+                height: kPadding * 2,
+              ),
               if (state.team == null) ...[
                 _SectionHeader(
                   title: 'Join Existing Team',

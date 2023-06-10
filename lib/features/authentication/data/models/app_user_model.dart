@@ -29,6 +29,7 @@ class AppUser with _$AppUser {
     @JsonKey(name: 'graduation_year') String? graduationYear,
     @JsonKey(name: 'course') String? course,
     @JsonKey(name: 'team_id') String? teamId,
+    String? avatar,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>

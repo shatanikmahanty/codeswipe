@@ -21,9 +21,7 @@ TeamState _$TeamStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TeamState {
   UserTeam? get team => throw _privateConstructorUsedError;
-
   List<UserTeam> get teams => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
   String? get pickedImagePath => throw _privateConstructorUsedError;
 
@@ -37,7 +35,6 @@ mixin _$TeamState {
 abstract class $TeamStateCopyWith<$Res> {
   factory $TeamStateCopyWith(TeamState value, $Res Function(TeamState) then) =
       _$TeamStateCopyWithImpl<$Res, TeamState>;
-
   @useResult
   $Res call(
       {UserTeam? team,
@@ -104,7 +101,6 @@ abstract class _$$_TeamStateCopyWith<$Res> implements $TeamStateCopyWith<$Res> {
   factory _$$_TeamStateCopyWith(
           _$_TeamState value, $Res Function(_$_TeamState) then) =
       __$$_TeamStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -170,7 +166,6 @@ class _$_TeamState implements _TeamState {
   @override
   final UserTeam? team;
   final List<UserTeam> _teams;
-
   @override
   @JsonKey()
   List<UserTeam> get teams {
@@ -234,16 +229,12 @@ abstract class _TeamState implements TeamState {
 
   @override
   UserTeam? get team;
-
   @override
   List<UserTeam> get teams;
-
   @override
   bool get isLoading;
-
   @override
   String? get pickedImagePath;
-
   @override
   @JsonKey(ignore: true)
   _$$_TeamStateCopyWith<_$_TeamState> get copyWith =>

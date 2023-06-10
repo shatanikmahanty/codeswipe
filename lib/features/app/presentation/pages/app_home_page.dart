@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/app/presentation/codeswipe_app_bar.dart';
@@ -47,21 +48,28 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
               onTap: (value) => tabsRouter.setActiveIndex(value),
               currentIndex: tabsRouter.activeIndex,
               type: BottomNavigationBarType.fixed,
-              items: const [
-                BottomNavigationBarItem(
+              items: [
+                const BottomNavigationBarItem(
                   icon: Icon(CodeSwipeIcons.home),
                   label: 'Home',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(CodeSwipeIcons.swipe),
                   label: 'Discover',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(CodeSwipeIcons.chat),
                   label: 'Chat',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
+                  icon: CachedNetworkImage(
+                    height: kPadding * 4,
+                    width: kPadding * 4,
+                    imageUrl: AuthCubit.instance.state.user?.avatar ?? '',
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.person,
+                    ),
+                  ),
                   label: 'Profile',
                 ),
               ],

@@ -28,6 +28,7 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       graduationYear: json['graduation_year'] as String?,
       course: json['course'] as String?,
       teamId: json['team_id'] as String?,
+      avatar: json['avatar'] as String?,
     );
 
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
@@ -56,5 +57,6 @@ Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
   val['graduation_year'] = instance.graduationYear;
   val['course'] = instance.course;
   val['team_id'] = instance.teamId;
+  val['avatar'] = instance.avatar;
   return val;
 }

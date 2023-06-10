@@ -45,23 +45,19 @@ mixin _$AppUser {
   @JsonKey(name: 'hackathon_theme_interests')
   List<String>? get hackathonThemeInterests =>
       throw _privateConstructorUsedError;
-
   String? get bio => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'college_name')
   String? get collegeName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'graduation_year')
   String? get graduationYear => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'course')
   String? get course => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'team_id')
   String? get teamId => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  String? get avatar => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -89,7 +85,8 @@ abstract class $AppUserCopyWith<$Res> {
       @JsonKey(name: 'college_name') String? collegeName,
       @JsonKey(name: 'graduation_year') String? graduationYear,
       @JsonKey(name: 'course') String? course,
-      @JsonKey(name: 'team_id') String? teamId});
+      @JsonKey(name: 'team_id') String? teamId,
+      String? avatar});
 }
 
 /// @nodoc
@@ -121,6 +118,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? graduationYear = freezed,
     Object? course = freezed,
     Object? teamId = freezed,
+    Object? avatar = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -187,6 +185,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.teamId
           : teamId // ignore: cast_nullable_to_non_nullable
               as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -216,7 +218,8 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       @JsonKey(name: 'college_name') String? collegeName,
       @JsonKey(name: 'graduation_year') String? graduationYear,
       @JsonKey(name: 'course') String? course,
-      @JsonKey(name: 'team_id') String? teamId});
+      @JsonKey(name: 'team_id') String? teamId,
+      String? avatar});
 }
 
 /// @nodoc
@@ -245,6 +248,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? graduationYear = freezed,
     Object? course = freezed,
     Object? teamId = freezed,
+    Object? avatar = freezed,
   }) {
     return _then(_$_AppUser(
       id: null == id
@@ -311,6 +315,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.teamId
           : teamId // ignore: cast_nullable_to_non_nullable
               as String?,
+      avatar: freezed == avatar
+          ? _value.avatar
+          : avatar // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -336,7 +344,8 @@ class _$_AppUser implements _AppUser {
       @JsonKey(name: 'college_name') this.collegeName,
       @JsonKey(name: 'graduation_year') this.graduationYear,
       @JsonKey(name: 'course') this.course,
-      @JsonKey(name: 'team_id') this.teamId})
+      @JsonKey(name: 'team_id') this.teamId,
+      this.avatar})
       : _skills = skills,
         _hackathonThemeInterests = hackathonThemeInterests;
 
@@ -411,10 +420,12 @@ class _$_AppUser implements _AppUser {
   @override
   @JsonKey(name: 'team_id')
   final String? teamId;
+  @override
+  final String? avatar;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry, skills: $skills, hackathonModeInterests: $hackathonModeInterests, currentLocation: $currentLocation, teamMemberPreferredLocation: $teamMemberPreferredLocation, hackathonThemeInterests: $hackathonThemeInterests, bio: $bio, collegeName: $collegeName, graduationYear: $graduationYear, course: $course, teamId: $teamId)';
+    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry, skills: $skills, hackathonModeInterests: $hackathonModeInterests, currentLocation: $currentLocation, teamMemberPreferredLocation: $teamMemberPreferredLocation, hackathonThemeInterests: $hackathonThemeInterests, bio: $bio, collegeName: $collegeName, graduationYear: $graduationYear, course: $course, teamId: $teamId, avatar: $avatar)';
   }
 
   @override
@@ -447,7 +458,8 @@ class _$_AppUser implements _AppUser {
             (identical(other.graduationYear, graduationYear) ||
                 other.graduationYear == graduationYear) &&
             (identical(other.course, course) || other.course == course) &&
-            (identical(other.teamId, teamId) || other.teamId == teamId));
+            (identical(other.teamId, teamId) || other.teamId == teamId) &&
+            (identical(other.avatar, avatar) || other.avatar == avatar));
   }
 
   @JsonKey(ignore: true)
@@ -469,7 +481,8 @@ class _$_AppUser implements _AppUser {
       collegeName,
       graduationYear,
       course,
-      teamId);
+      teamId,
+      avatar);
 
   @JsonKey(ignore: true)
   @override
@@ -505,7 +518,8 @@ abstract class _AppUser implements AppUser {
       @JsonKey(name: 'college_name') final String? collegeName,
       @JsonKey(name: 'graduation_year') final String? graduationYear,
       @JsonKey(name: 'course') final String? course,
-      @JsonKey(name: 'team_id') final String? teamId}) = _$_AppUser;
+      @JsonKey(name: 'team_id') final String? teamId,
+      final String? avatar}) = _$_AppUser;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
@@ -546,7 +560,6 @@ abstract class _AppUser implements AppUser {
   List<String>? get hackathonThemeInterests;
   @override
   String? get bio;
-
   @override
   @JsonKey(name: 'college_name')
   String? get collegeName;
@@ -562,6 +575,9 @@ abstract class _AppUser implements AppUser {
   @override
   @JsonKey(name: 'team_id')
   String? get teamId;
+
+  @override
+  String? get avatar;
 
   @override
   @JsonKey(ignore: true)
