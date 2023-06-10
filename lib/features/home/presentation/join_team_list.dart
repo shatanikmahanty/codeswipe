@@ -46,6 +46,7 @@ class JoinTeamList extends StatelessWidget {
 
         return ListView.builder(
           shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             final team = teams[index];
 
