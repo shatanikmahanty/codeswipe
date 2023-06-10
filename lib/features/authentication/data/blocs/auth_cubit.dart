@@ -161,6 +161,20 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
     }
   }
 
+  Future<void> getUser() async {
+    final document = await _apiClient!.databases.getDocument(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: kUsersCollection,
+      documentId: state.user!.id,
+    );
+    final appUser = AppUser.fromJson(document.data);
+    emit(
+      state.copyWith(
+        user: appUser,
+      ),
+    );
+  }
+
   Future<AppUser> createUser(
       User accountInfo, Session sessionInfo, String provider) async {
     AppUser appUser = AppUser(
@@ -318,5 +332,13 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
 
       await updateUser(updatedUser);
     }
+  }
+
+  void updateUserTeamID(String $id) {
+    emit(
+      state.copyWith(
+        user: state.user?.copyWith(teamId: $id),
+      ),
+    );
   }
 }

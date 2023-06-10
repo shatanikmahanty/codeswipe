@@ -45,15 +45,23 @@ mixin _$AppUser {
   @JsonKey(name: 'hackathon_theme_interests')
   List<String>? get hackathonThemeInterests =>
       throw _privateConstructorUsedError;
+
   String? get bio => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'college_name')
   String? get collegeName => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'graduation_year')
   String? get graduationYear => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'course')
   String? get course => throw _privateConstructorUsedError;
 
+  @JsonKey(name: 'team_id')
+  String? get teamId => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -80,7 +88,8 @@ abstract class $AppUserCopyWith<$Res> {
       String? bio,
       @JsonKey(name: 'college_name') String? collegeName,
       @JsonKey(name: 'graduation_year') String? graduationYear,
-      @JsonKey(name: 'course') String? course});
+      @JsonKey(name: 'course') String? course,
+      @JsonKey(name: 'team_id') String? teamId});
 }
 
 /// @nodoc
@@ -111,6 +120,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? collegeName = freezed,
     Object? graduationYear = freezed,
     Object? course = freezed,
+    Object? teamId = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -173,6 +183,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.course
           : course // ignore: cast_nullable_to_non_nullable
               as String?,
+      teamId: freezed == teamId
+          ? _value.teamId
+          : teamId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -201,7 +215,8 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       String? bio,
       @JsonKey(name: 'college_name') String? collegeName,
       @JsonKey(name: 'graduation_year') String? graduationYear,
-      @JsonKey(name: 'course') String? course});
+      @JsonKey(name: 'course') String? course,
+      @JsonKey(name: 'team_id') String? teamId});
 }
 
 /// @nodoc
@@ -229,6 +244,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? collegeName = freezed,
     Object? graduationYear = freezed,
     Object? course = freezed,
+    Object? teamId = freezed,
   }) {
     return _then(_$_AppUser(
       id: null == id
@@ -291,6 +307,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value.course
           : course // ignore: cast_nullable_to_non_nullable
               as String?,
+      teamId: freezed == teamId
+          ? _value.teamId
+          : teamId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -315,7 +335,8 @@ class _$_AppUser implements _AppUser {
       this.bio,
       @JsonKey(name: 'college_name') this.collegeName,
       @JsonKey(name: 'graduation_year') this.graduationYear,
-      @JsonKey(name: 'course') this.course})
+      @JsonKey(name: 'course') this.course,
+      @JsonKey(name: 'team_id') this.teamId})
       : _skills = skills,
         _hackathonThemeInterests = hackathonThemeInterests;
 
@@ -387,10 +408,13 @@ class _$_AppUser implements _AppUser {
   @override
   @JsonKey(name: 'course')
   final String? course;
+  @override
+  @JsonKey(name: 'team_id')
+  final String? teamId;
 
   @override
   String toString() {
-    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry, skills: $skills, hackathonModeInterests: $hackathonModeInterests, currentLocation: $currentLocation, teamMemberPreferredLocation: $teamMemberPreferredLocation, hackathonThemeInterests: $hackathonThemeInterests, bio: $bio, collegeName: $collegeName, graduationYear: $graduationYear, course: $course)';
+    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry, skills: $skills, hackathonModeInterests: $hackathonModeInterests, currentLocation: $currentLocation, teamMemberPreferredLocation: $teamMemberPreferredLocation, hackathonThemeInterests: $hackathonThemeInterests, bio: $bio, collegeName: $collegeName, graduationYear: $graduationYear, course: $course, teamId: $teamId)';
   }
 
   @override
@@ -422,7 +446,8 @@ class _$_AppUser implements _AppUser {
                 other.collegeName == collegeName) &&
             (identical(other.graduationYear, graduationYear) ||
                 other.graduationYear == graduationYear) &&
-            (identical(other.course, course) || other.course == course));
+            (identical(other.course, course) || other.course == course) &&
+            (identical(other.teamId, teamId) || other.teamId == teamId));
   }
 
   @JsonKey(ignore: true)
@@ -443,7 +468,8 @@ class _$_AppUser implements _AppUser {
       bio,
       collegeName,
       graduationYear,
-      course);
+      course,
+      teamId);
 
   @JsonKey(ignore: true)
   @override
@@ -478,7 +504,8 @@ abstract class _AppUser implements AppUser {
       final String? bio,
       @JsonKey(name: 'college_name') final String? collegeName,
       @JsonKey(name: 'graduation_year') final String? graduationYear,
-      @JsonKey(name: 'course') final String? course}) = _$_AppUser;
+      @JsonKey(name: 'course') final String? course,
+      @JsonKey(name: 'team_id') final String? teamId}) = _$_AppUser;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
@@ -519,15 +546,23 @@ abstract class _AppUser implements AppUser {
   List<String>? get hackathonThemeInterests;
   @override
   String? get bio;
+
   @override
   @JsonKey(name: 'college_name')
   String? get collegeName;
+
   @override
   @JsonKey(name: 'graduation_year')
   String? get graduationYear;
+
   @override
   @JsonKey(name: 'course')
   String? get course;
+
+  @override
+  @JsonKey(name: 'team_id')
+  String? get teamId;
+
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

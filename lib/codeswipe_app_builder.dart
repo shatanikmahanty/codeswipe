@@ -3,6 +3,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
+import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:djangoflow_app_links/djangoflow_app_links.dart';
@@ -36,12 +37,6 @@ class CodeSwipeAppBuilder extends AppBuilder {
             BlocProvider<AppCubit>(
               create: (context) => AppCubit.instance,
             ),
-            BlocProvider<AuthCubit>(
-              create: (context) => AuthCubit.instance
-                ..initialize(
-                  context.read<ApiClient>(),
-                ),
-            ),
             BlocProvider<AppLinksCubit>(
               create: (context) => AppLinksCubit(
                 null,
@@ -49,11 +44,25 @@ class CodeSwipeAppBuilder extends AppBuilder {
               ),
               lazy: false,
             ),
+            BlocProvider<AuthCubit>(
+              create: (context) => AuthCubit.instance
+                ..initialize(
+                  context.read<ApiClient>(),
+                ),
+            ),
+            BlocProvider<TeamCubit>(
+              create: (context) => TeamCubit()
+                ..initialize(
+                  apiClient: context.read<ApiClient>(),
+                ),
+            ),
           ],
           builder: (context) => LoginListenerWrapper(
             initialUser: context.read<AuthCubit>().state.user,
             onLogin: (context, user) async {
               ///Trigger user survey if not attempted
+              final teamCubit = context.read<TeamCubit>();
+              final authCubit = context.read<AuthCubit>();
               final prefs = await context.read<ApiClient>().account.getPrefs();
               final userSurveyAttempted = prefs.data[userSurveyAttemptedPref];
               if (userSurveyAttempted == null || !userSurveyAttempted) {
@@ -61,6 +70,12 @@ class CodeSwipeAppBuilder extends AppBuilder {
                   const UserSurveyRouter(),
                 );
               }
+
+              await authCubit.getUser();
+
+              teamCubit
+                ..loadUserTeam()
+                ..listTeams();
             },
             onLogout: (context) {},
             child: AppCubitConsumer(

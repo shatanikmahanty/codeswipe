@@ -22,7 +22,9 @@ class _BannerCarouselState extends State<BannerCarousel> {
   @override
   Widget build(BuildContext context) => BlocBuilder<BannerCubit, BannerState>(
         builder: (context, state) => state.isLoading
-            ? const CircularProgressIndicator()
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
             : Column(
                 children: [
                   CarouselSlider(

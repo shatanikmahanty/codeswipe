@@ -3,13 +3,13 @@
 ///  FlutterGen
 /// *****************************************************
 
+import 'package:flutter/services.dart';
 // coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: directives_ordering,unnecessary_import,implicit_dynamic_list_literal,deprecated_member_use
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/services.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
@@ -17,6 +17,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/connected_world.png
   AssetGenImage get connectedWorld =>
       const AssetGenImage('assets/images/connected_world.png');
+
+  /// File path: assets/images/empty_box.png
+  AssetGenImage get emptyBox =>
+      const AssetGenImage('assets/images/empty_box.png');
 
   /// File path: assets/images/enter_otp.png
   AssetGenImage get enterOtp =>
@@ -39,6 +43,7 @@ class $AssetsImagesGen {
   /// List of all assets
   List<dynamic> get values => [
         connectedWorld,
+        emptyBox,
         enterOtp,
         login,
         pairProgramming,

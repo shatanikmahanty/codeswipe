@@ -3,6 +3,7 @@ import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_base_wrapper.dart';
 import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 @RoutePage()
@@ -66,7 +67,7 @@ class UserSurveyProfilePage extends StatelessWidget {
             submitForm(form);
           },
           onSuccess: () {
-            // context.read<AuthCubit>().markUserSurveyAttempted();
+            context.read<AuthCubit>().markUserSurveyAttempted();
             DjangoflowAppSnackbar.showInfo('Profile updated successfully');
             context.router.push(const UserSurveySkillsRoute());
           },

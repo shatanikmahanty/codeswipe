@@ -21,14 +21,19 @@ UserTeam _$UserTeamFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserTeam {
   String get name => throw _privateConstructorUsedError;
+
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-  List<String>? get member => throw _privateConstructorUsedError;
-  @JsonKey(name: '\$member_roles')
-  String get memberRoles => throw _privateConstructorUsedError;
+
+  List<String>? get members => throw _privateConstructorUsedError;
+
+  @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+  Map<String, dynamic>? get memberRoles => throw _privateConstructorUsedError;
+
   String get admin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $UserTeamCopyWith<UserTeam> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,8 +47,9 @@ abstract class $UserTeamCopyWith<$Res> {
   $Res call(
       {String name,
       @JsonKey(name: '\$id') String id,
-      List<String>? member,
-      @JsonKey(name: '\$member_roles') String memberRoles,
+      List<String>? members,
+      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      Map<String, dynamic>? memberRoles,
       String admin});
 }
 
@@ -62,8 +68,8 @@ class _$UserTeamCopyWithImpl<$Res, $Val extends UserTeam>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? member = freezed,
-    Object? memberRoles = null,
+    Object? members = freezed,
+    Object? memberRoles = freezed,
     Object? admin = null,
   }) {
     return _then(_value.copyWith(
@@ -75,14 +81,14 @@ class _$UserTeamCopyWithImpl<$Res, $Val extends UserTeam>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      member: freezed == member
-          ? _value.member
-          : member // ignore: cast_nullable_to_non_nullable
+      members: freezed == members
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      memberRoles: null == memberRoles
+      memberRoles: freezed == memberRoles
           ? _value.memberRoles
           : memberRoles // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Map<String, dynamic>?,
       admin: null == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
@@ -101,8 +107,9 @@ abstract class _$$_UserTeamCopyWith<$Res> implements $UserTeamCopyWith<$Res> {
   $Res call(
       {String name,
       @JsonKey(name: '\$id') String id,
-      List<String>? member,
-      @JsonKey(name: '\$member_roles') String memberRoles,
+      List<String>? members,
+      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      Map<String, dynamic>? memberRoles,
       String admin});
 }
 
@@ -119,8 +126,8 @@ class __$$_UserTeamCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? member = freezed,
-    Object? memberRoles = null,
+    Object? members = freezed,
+    Object? memberRoles = freezed,
     Object? admin = null,
   }) {
     return _then(_$_UserTeam(
@@ -132,14 +139,14 @@ class __$$_UserTeamCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      member: freezed == member
-          ? _value._member
-          : member // ignore: cast_nullable_to_non_nullable
+      members: freezed == members
+          ? _value._members
+          : members // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      memberRoles: null == memberRoles
-          ? _value.memberRoles
+      memberRoles: freezed == memberRoles
+          ? _value._memberRoles
           : memberRoles // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Map<String, dynamic>?,
       admin: null == admin
           ? _value.admin
           : admin // ignore: cast_nullable_to_non_nullable
@@ -154,10 +161,12 @@ class _$_UserTeam implements _UserTeam {
   const _$_UserTeam(
       {required this.name,
       @JsonKey(name: '\$id') required this.id,
-      final List<String>? member,
-      @JsonKey(name: '\$member_roles') required this.memberRoles,
+      final List<String>? members,
+      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      final Map<String, dynamic>? memberRoles,
       required this.admin})
-      : _member = member;
+      : _members = members,
+        _memberRoles = memberRoles;
 
   factory _$_UserTeam.fromJson(Map<String, dynamic> json) =>
       _$$_UserTeamFromJson(json);
@@ -167,25 +176,35 @@ class _$_UserTeam implements _UserTeam {
   @override
   @JsonKey(name: '\$id')
   final String id;
-  final List<String>? _member;
+  final List<String>? _members;
+
   @override
-  List<String>? get member {
-    final value = _member;
+  List<String>? get members {
+    final value = _members;
     if (value == null) return null;
-    if (_member is EqualUnmodifiableListView) return _member;
+    if (_members is EqualUnmodifiableListView) return _members;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
+  final Map<String, dynamic>? _memberRoles;
+
   @override
-  @JsonKey(name: '\$member_roles')
-  final String memberRoles;
+  @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+  Map<String, dynamic>? get memberRoles {
+    final value = _memberRoles;
+    if (value == null) return null;
+    if (_memberRoles is EqualUnmodifiableMapView) return _memberRoles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   final String admin;
 
   @override
   String toString() {
-    return 'UserTeam(name: $name, id: $id, member: $member, memberRoles: $memberRoles, admin: $admin)';
+    return 'UserTeam(name: $name, id: $id, members: $members, memberRoles: $memberRoles, admin: $admin)';
   }
 
   @override
@@ -195,16 +214,21 @@ class _$_UserTeam implements _UserTeam {
             other is _$_UserTeam &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
-            const DeepCollectionEquality().equals(other._member, _member) &&
-            (identical(other.memberRoles, memberRoles) ||
-                other.memberRoles == memberRoles) &&
+            const DeepCollectionEquality().equals(other._members, _members) &&
+            const DeepCollectionEquality()
+                .equals(other._memberRoles, _memberRoles) &&
             (identical(other.admin, admin) || other.admin == admin));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, id,
-      const DeepCollectionEquality().hash(_member), memberRoles, admin);
+  int get hashCode => Object.hash(
+      runtimeType,
+      name,
+      id,
+      const DeepCollectionEquality().hash(_members),
+      const DeepCollectionEquality().hash(_memberRoles),
+      admin);
 
   @JsonKey(ignore: true)
   @override
@@ -224,22 +248,27 @@ abstract class _UserTeam implements UserTeam {
   const factory _UserTeam(
       {required final String name,
       @JsonKey(name: '\$id') required final String id,
-      final List<String>? member,
-      @JsonKey(name: '\$member_roles') required final String memberRoles,
+      final List<String>? members,
+      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      final Map<String, dynamic>? memberRoles,
       required final String admin}) = _$_UserTeam;
 
   factory _UserTeam.fromJson(Map<String, dynamic> json) = _$_UserTeam.fromJson;
 
   @override
   String get name;
+
   @override
   @JsonKey(name: '\$id')
   String get id;
+
   @override
-  List<String>? get member;
+  List<String>? get members;
+
   @override
-  @JsonKey(name: '\$member_roles')
-  String get memberRoles;
+  @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+  Map<String, dynamic>? get memberRoles;
+
   @override
   String get admin;
   @override

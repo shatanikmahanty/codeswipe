@@ -22,12 +22,12 @@ TeamState _$TeamStateFromJson(Map<String, dynamic> json) {
 mixin _$TeamState {
   UserTeam? get team => throw _privateConstructorUsedError;
 
-  bool get isLoading => throw _privateConstructorUsedError;
+  List<UserTeam> get teams => throw _privateConstructorUsedError;
 
+  bool get isLoading => throw _privateConstructorUsedError;
   String? get pickedImagePath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TeamStateCopyWith<TeamState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,11 @@ abstract class $TeamStateCopyWith<$Res> {
       _$TeamStateCopyWithImpl<$Res, TeamState>;
 
   @useResult
-  $Res call({UserTeam? team, bool isLoading, String? pickedImagePath});
+  $Res call(
+      {UserTeam? team,
+      List<UserTeam> teams,
+      bool isLoading,
+      String? pickedImagePath});
 
   $UserTeamCopyWith<$Res>? get team;
 }
@@ -58,6 +62,7 @@ class _$TeamStateCopyWithImpl<$Res, $Val extends TeamState>
   @override
   $Res call({
     Object? team = freezed,
+    Object? teams = null,
     Object? isLoading = null,
     Object? pickedImagePath = freezed,
   }) {
@@ -66,6 +71,10 @@ class _$TeamStateCopyWithImpl<$Res, $Val extends TeamState>
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
               as UserTeam?,
+      teams: null == teams
+          ? _value.teams
+          : teams // ignore: cast_nullable_to_non_nullable
+              as List<UserTeam>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -98,7 +107,11 @@ abstract class _$$_TeamStateCopyWith<$Res> implements $TeamStateCopyWith<$Res> {
 
   @override
   @useResult
-  $Res call({UserTeam? team, bool isLoading, String? pickedImagePath});
+  $Res call(
+      {UserTeam? team,
+      List<UserTeam> teams,
+      bool isLoading,
+      String? pickedImagePath});
 
   @override
   $UserTeamCopyWith<$Res>? get team;
@@ -116,6 +129,7 @@ class __$$_TeamStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? team = freezed,
+    Object? teams = null,
     Object? isLoading = null,
     Object? pickedImagePath = freezed,
   }) {
@@ -124,6 +138,10 @@ class __$$_TeamStateCopyWithImpl<$Res>
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
               as UserTeam?,
+      teams: null == teams
+          ? _value._teams
+          : teams // ignore: cast_nullable_to_non_nullable
+              as List<UserTeam>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -139,13 +157,28 @@ class __$$_TeamStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TeamState implements _TeamState {
-  const _$_TeamState({this.team, this.isLoading = false, this.pickedImagePath});
+  const _$_TeamState(
+      {this.team,
+      final List<UserTeam> teams = const [],
+      this.isLoading = false,
+      this.pickedImagePath})
+      : _teams = teams;
 
   factory _$_TeamState.fromJson(Map<String, dynamic> json) =>
       _$$_TeamStateFromJson(json);
 
   @override
   final UserTeam? team;
+  final List<UserTeam> _teams;
+
+  @override
+  @JsonKey()
+  List<UserTeam> get teams {
+    if (_teams is EqualUnmodifiableListView) return _teams;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_teams);
+  }
+
   @override
   @JsonKey()
   final bool isLoading;
@@ -154,7 +187,7 @@ class _$_TeamState implements _TeamState {
 
   @override
   String toString() {
-    return 'TeamState(team: $team, isLoading: $isLoading, pickedImagePath: $pickedImagePath)';
+    return 'TeamState(team: $team, teams: $teams, isLoading: $isLoading, pickedImagePath: $pickedImagePath)';
   }
 
   @override
@@ -163,6 +196,7 @@ class _$_TeamState implements _TeamState {
         (other.runtimeType == runtimeType &&
             other is _$_TeamState &&
             (identical(other.team, team) || other.team == team) &&
+            const DeepCollectionEquality().equals(other._teams, _teams) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.pickedImagePath, pickedImagePath) ||
@@ -171,8 +205,8 @@ class _$_TeamState implements _TeamState {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, team, isLoading, pickedImagePath);
+  int get hashCode => Object.hash(runtimeType, team,
+      const DeepCollectionEquality().hash(_teams), isLoading, pickedImagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -191,6 +225,7 @@ class _$_TeamState implements _TeamState {
 abstract class _TeamState implements TeamState {
   const factory _TeamState(
       {final UserTeam? team,
+      final List<UserTeam> teams,
       final bool isLoading,
       final String? pickedImagePath}) = _$_TeamState;
 
@@ -199,6 +234,9 @@ abstract class _TeamState implements TeamState {
 
   @override
   UserTeam? get team;
+
+  @override
+  List<UserTeam> get teams;
 
   @override
   bool get isLoading;
