@@ -19,7 +19,7 @@ fi
 
 # Flutter formatter
 printf "\e[33;1m%s\e[0m\n" '=== Running Flutter Formatter ==='
-flutter format ./lib/
+dart format ./lib/
 
 hasNewFilesFormatted=$(git diff)
 if [ -n "$hasNewFilesFormatted" ]; then

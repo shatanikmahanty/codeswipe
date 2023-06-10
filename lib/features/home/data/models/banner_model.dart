@@ -1,9 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'banner_model.freezed.dart';
-
-;
-
 part 'banner_model.g.dart';
 
 //ignore_for_file: invalid_annotation_target
