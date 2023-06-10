@@ -30,7 +30,7 @@ class AppTheme {
         buttonMinSize: const Size(double.infinity, kButtonHeight),
         textButtonTextStyle: buttonTextStyle,
         outlinedButtonTextStyle: buttonTextStyle,
-        textButtonSchemeColor: SchemeColor.onPrimary,
+        textButtonSchemeColor: SchemeColor.primary,
         elevatedButtonTextStyle: buttonTextStyle,
         elevatedButtonSchemeColor: SchemeColor.onPrimary,
         elevatedButtonSecondarySchemeColor: SchemeColor.primary,
