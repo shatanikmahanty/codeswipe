@@ -31,7 +31,7 @@ class PhoneOtpVerifyPage extends StatelessWidget {
 }
 
 class _PhoneLoginSheet extends StatefulWidget {
-  const _PhoneLoginSheet({super.key});
+  const _PhoneLoginSheet();
 
   @override
   State<_PhoneLoginSheet> createState() => _PhoneLoginSheetState();

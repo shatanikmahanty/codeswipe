@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user_team_model.freezed.dart';
 part 'user_team_model.g.dart';
 
+//ignore_for_file: invalid_annotation_target
 @freezed
 class UserTeam with _$UserTeam {
   const factory UserTeam({
