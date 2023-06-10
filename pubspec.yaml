@@ -23,6 +23,8 @@ environment:
 dependencies:
   appwrite: ^9.0.0
   auto_route: ^7.1.0
+  cached_network_image: ^3.2.3
+  carousel_slider: ^4.2.1
   country_code_picker: ^3.0.0
   cupertino_icons: ^1.0.5
   djangoflow_app: ^3.1.0

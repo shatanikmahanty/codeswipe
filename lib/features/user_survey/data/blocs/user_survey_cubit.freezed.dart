@@ -21,16 +21,12 @@ UserSurveyState _$UserSurveyStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserSurveyState {
   List<String> get selectedSkills => throw _privateConstructorUsedError;
-
   List<String> get selectedHackathonThemes =>
       throw _privateConstructorUsedError;
-
   String? get selectedHackathonType => throw _privateConstructorUsedError;
-
   String? get teamMemberPreferredLocation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserSurveyStateCopyWith<UserSurveyState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -41,7 +37,6 @@ abstract class $UserSurveyStateCopyWith<$Res> {
   factory $UserSurveyStateCopyWith(
           UserSurveyState value, $Res Function(UserSurveyState) then) =
       _$UserSurveyStateCopyWithImpl<$Res, UserSurveyState>;
-
   @useResult
   $Res call(
       {List<String> selectedSkills,
@@ -57,7 +52,6 @@ class _$UserSurveyStateCopyWithImpl<$Res, $Val extends UserSurveyState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -96,7 +90,6 @@ abstract class _$$_UserSurveyStateCopyWith<$Res>
   factory _$$_UserSurveyStateCopyWith(
           _$_UserSurveyState value, $Res Function(_$_UserSurveyState) then) =
       __$$_UserSurveyStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -158,7 +151,6 @@ class _$_UserSurveyState implements _UserSurveyState {
       _$$_UserSurveyStateFromJson(json);
 
   final List<String> _selectedSkills;
-
   @override
   @JsonKey()
   List<String> get selectedSkills {
@@ -168,7 +160,6 @@ class _$_UserSurveyState implements _UserSurveyState {
   }
 
   final List<String> _selectedHackathonThemes;
-
   @override
   @JsonKey()
   List<String> get selectedHackathonThemes {
@@ -240,16 +231,12 @@ abstract class _UserSurveyState implements UserSurveyState {
 
   @override
   List<String> get selectedSkills;
-
   @override
   List<String> get selectedHackathonThemes;
-
   @override
   String? get selectedHackathonType;
-
   @override
   String? get teamMemberPreferredLocation;
-
   @override
   @JsonKey(ignore: true)
   _$$_UserSurveyStateCopyWith<_$_UserSurveyState> get copyWith =>

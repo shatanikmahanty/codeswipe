@@ -504,23 +504,19 @@ abstract class _AppUser implements AppUser {
   @override
   @JsonKey(name: 'hackathon_mode_interests')
   String? get hackathonModeInterests;
-
   @override
   @JsonKey(name: 'current_location')
   String? get currentLocation;
-
   @override
 
   ///Preferred location of teammate
   @JsonKey(name: 'teammate_preferred_location')
   String? get teamMemberPreferredLocation;
-
   @override
 
   ///Preferred  hackathon themes
   @JsonKey(name: 'hackathon_theme_interests')
   List<String>? get hackathonThemeInterests;
-
   @override
   String? get bio;
   @override

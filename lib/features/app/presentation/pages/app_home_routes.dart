@@ -2,8 +2,9 @@ import 'package:codeswipe/configurations/configurations.dart';
 
 final appHomeRoutes = [
   AutoRoute(
+    initial: true,
     path: 'home',
-    page: UnknownRoute.page,
+    page: HomeRoute.page,
   ),
   AutoRoute(
     path: 'discover',

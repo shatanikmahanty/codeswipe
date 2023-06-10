@@ -22,6 +22,9 @@ const kDefaultCountryCode = '+91';
 /// Collections
 
 const kUsersCollection = 'users';
+const kHackathonsCollection = 'hackathons';
+const kTeamsCollection = 'teams';
+const kBannersCollection = 'banners';
 const kOtpLength = 6;
 
 const kSkillsList = [

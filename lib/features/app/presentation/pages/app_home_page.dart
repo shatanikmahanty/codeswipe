@@ -1,18 +1,21 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/app/presentation/codeswipe_app_bar.dart';
+import 'package:codeswipe/features/home/data/blocs/banner_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../code_swipe_icons.dart';
 import '../../../authentication/data/blocs/auth_cubit.dart';
 
 @RoutePage()
-class AppHomePage extends StatelessWidget {
+class AppHomePage extends StatelessWidget with AutoRouteWrapper {
   const AppHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => AutoTabsScaffold(
         routes: const [
-          UnknownRoute(),
+          HomeRoute(),
           UnknownRoute(),
           UnknownRoute(),
           UnknownRoute(),
@@ -82,4 +85,18 @@ class AppHomePage extends StatelessWidget {
         return '';
     }
   }
+
+  @override
+  Widget wrappedRoute(BuildContext context) => MultiBlocProvider(
+        providers: [
+          BlocProvider<BannerCubit>(
+            create: (context) => BannerCubit()
+              ..initialize(
+                context.read<ApiClient>(),
+              )
+              ..loadBanners(),
+          ),
+        ],
+        child: this,
+      );
 }
