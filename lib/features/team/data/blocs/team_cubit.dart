@@ -120,7 +120,6 @@ class TeamCubit extends HydratedCubit<TeamState> {
     emit(
       state.copyWith(
         team: UserTeam.fromJson(document.data),
-        pickedImagePath: null,
       ),
     );
 
@@ -151,9 +150,10 @@ class TeamCubit extends HydratedCubit<TeamState> {
       fileId: teamID,
     );
 
-    await _apiClient!.storage.getFile(
-      bucketId: EnvironmentHelper().getStorageBucketId(),
-      fileId: teamID,
+    emit(
+      state.copyWith(
+        pickedImagePath: null,
+      ),
     );
   }
 
