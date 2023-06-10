@@ -24,7 +24,9 @@ class UserSurveyTeamPage extends StatelessWidget {
               ElevatedButton.icon(
                 onPressed: () {
                   context.router.parentAsStackRouter?.replace(
-                    const CreateTeamRoute(),
+                    const TeamRouter(children: [
+                      CreateTeamRoute(),
+                    ]),
                   );
                 },
                 label: const Padding(
