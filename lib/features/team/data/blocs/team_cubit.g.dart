@@ -11,10 +11,12 @@ _$_TeamState _$$_TeamStateFromJson(Map<String, dynamic> json) => _$_TeamState(
           ? null
           : UserTeam.fromJson(json['team'] as Map<String, dynamic>),
       isLoading: json['isLoading'] as bool? ?? false,
+      pickedImagePath: json['pickedImagePath'] as String?,
     );
 
 Map<String, dynamic> _$$_TeamStateToJson(_$_TeamState instance) =>
     <String, dynamic>{
       'team': instance.team,
       'isLoading': instance.isLoading,
+      'pickedImagePath': instance.pickedImagePath,
     };

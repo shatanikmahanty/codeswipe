@@ -14,8 +14,8 @@ const kProjectId = '64744a4bdf0086c42753';
 
 const kAppIdentifier = 'codeswipe';
 
-const databaseIdDev = '$kAppIdentifier-dev';
-const databaseIdProd = '$kAppIdentifier-prod';
+const envIdDev = '$kAppIdentifier-dev';
+const envIdProd = '$kAppIdentifier-prod';
 
 const kDefaultCountryCode = '+91';
 

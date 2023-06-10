@@ -23,8 +23,6 @@ mixin _$UserTeam {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'team_image')
-  String get teamImage => throw _privateConstructorUsedError;
   List<String>? get member => throw _privateConstructorUsedError;
   @JsonKey(name: '\$member_roles')
   String get memberRoles => throw _privateConstructorUsedError;
@@ -44,7 +42,6 @@ abstract class $UserTeamCopyWith<$Res> {
   $Res call(
       {String name,
       @JsonKey(name: '\$id') String id,
-      @JsonKey(name: 'team_image') String teamImage,
       List<String>? member,
       @JsonKey(name: '\$member_roles') String memberRoles,
       String admin});
@@ -65,7 +62,6 @@ class _$UserTeamCopyWithImpl<$Res, $Val extends UserTeam>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? teamImage = null,
     Object? member = freezed,
     Object? memberRoles = null,
     Object? admin = null,
@@ -78,10 +74,6 @@ class _$UserTeamCopyWithImpl<$Res, $Val extends UserTeam>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      teamImage: null == teamImage
-          ? _value.teamImage
-          : teamImage // ignore: cast_nullable_to_non_nullable
               as String,
       member: freezed == member
           ? _value.member
@@ -109,7 +101,6 @@ abstract class _$$_UserTeamCopyWith<$Res> implements $UserTeamCopyWith<$Res> {
   $Res call(
       {String name,
       @JsonKey(name: '\$id') String id,
-      @JsonKey(name: 'team_image') String teamImage,
       List<String>? member,
       @JsonKey(name: '\$member_roles') String memberRoles,
       String admin});
@@ -128,7 +119,6 @@ class __$$_UserTeamCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? id = null,
-    Object? teamImage = null,
     Object? member = freezed,
     Object? memberRoles = null,
     Object? admin = null,
@@ -141,10 +131,6 @@ class __$$_UserTeamCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      teamImage: null == teamImage
-          ? _value.teamImage
-          : teamImage // ignore: cast_nullable_to_non_nullable
               as String,
       member: freezed == member
           ? _value._member
@@ -168,7 +154,6 @@ class _$_UserTeam implements _UserTeam {
   const _$_UserTeam(
       {required this.name,
       @JsonKey(name: '\$id') required this.id,
-      @JsonKey(name: 'team_image') required this.teamImage,
       final List<String>? member,
       @JsonKey(name: '\$member_roles') required this.memberRoles,
       required this.admin})
@@ -182,9 +167,6 @@ class _$_UserTeam implements _UserTeam {
   @override
   @JsonKey(name: '\$id')
   final String id;
-  @override
-  @JsonKey(name: 'team_image')
-  final String teamImage;
   final List<String>? _member;
   @override
   List<String>? get member {
@@ -203,7 +185,7 @@ class _$_UserTeam implements _UserTeam {
 
   @override
   String toString() {
-    return 'UserTeam(name: $name, id: $id, teamImage: $teamImage, member: $member, memberRoles: $memberRoles, admin: $admin)';
+    return 'UserTeam(name: $name, id: $id, member: $member, memberRoles: $memberRoles, admin: $admin)';
   }
 
   @override
@@ -213,8 +195,6 @@ class _$_UserTeam implements _UserTeam {
             other is _$_UserTeam &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.teamImage, teamImage) ||
-                other.teamImage == teamImage) &&
             const DeepCollectionEquality().equals(other._member, _member) &&
             (identical(other.memberRoles, memberRoles) ||
                 other.memberRoles == memberRoles) &&
@@ -223,7 +203,7 @@ class _$_UserTeam implements _UserTeam {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, id, teamImage,
+  int get hashCode => Object.hash(runtimeType, name, id,
       const DeepCollectionEquality().hash(_member), memberRoles, admin);
 
   @JsonKey(ignore: true)
@@ -244,7 +224,6 @@ abstract class _UserTeam implements UserTeam {
   const factory _UserTeam(
       {required final String name,
       @JsonKey(name: '\$id') required final String id,
-      @JsonKey(name: 'team_image') required final String teamImage,
       final List<String>? member,
       @JsonKey(name: '\$member_roles') required final String memberRoles,
       required final String admin}) = _$_UserTeam;
@@ -256,9 +235,6 @@ abstract class _UserTeam implements UserTeam {
   @override
   @JsonKey(name: '\$id')
   String get id;
-  @override
-  @JsonKey(name: 'team_image')
-  String get teamImage;
   @override
   List<String>? get member;
   @override

@@ -3,7 +3,7 @@ import 'package:appwrite/models.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
-import 'package:codeswipe/utils/database_id_helper.dart';
+import 'package:codeswipe/utils/environment_helper.dart';
 import 'package:codeswipe/utils/mixins/cubit_maybe_emit_mixin.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -128,7 +128,7 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
       sessionInfo = await accountApi.getSession(sessionId: 'current');
 
       final document = await _apiClient?.databases.getDocument(
-        databaseId: DataBaseIdHelper().getId(),
+        databaseId: EnvironmentHelper().getDatabaseId(),
         collectionId: kUsersCollection,
         documentId: sessionInfo.userId,
       );
@@ -181,7 +181,7 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
     }
 
     await _apiClient?.databases.createDocument(
-      databaseId: DataBaseIdHelper().getId(),
+      databaseId: EnvironmentHelper().getDatabaseId(),
       collectionId: kUsersCollection,
       documentId: accountInfo.$id,
       data: appUser.toJson(),
@@ -281,7 +281,7 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
 
   Future<void> updateUser(AppUser updatedUser) async {
     await _apiClient?.databases.updateDocument(
-      databaseId: DataBaseIdHelper().getId(),
+      databaseId: EnvironmentHelper().getDatabaseId(),
       collectionId: kUsersCollection,
       documentId: updatedUser.id,
       data: updatedUser.toJson(),

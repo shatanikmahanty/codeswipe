@@ -9,7 +9,6 @@ class UserTeam with _$UserTeam {
   const factory UserTeam({
     required String name,
     @JsonKey(name: '\$id') required String id,
-    @JsonKey(name: 'team_image') required String teamImage,
     List<String>? member,
     @JsonKey(name: '\$member_roles') required String memberRoles,
     required String admin,

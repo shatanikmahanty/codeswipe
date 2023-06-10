@@ -1,7 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/home/data/models/banner_model.dart';
-import 'package:codeswipe/utils/database_id_helper.dart';
+import 'package:codeswipe/utils/environment_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -39,7 +39,7 @@ class BannerCubit extends Cubit<BannerState> {
     try {
       final documents = await _database!.listDocuments(
         collectionId: kBannersCollection,
-        databaseId: DataBaseIdHelper().getId(),
+        databaseId: EnvironmentHelper().getDatabaseId(),
         queries: [
           Query.equal('active', true),
         ],
