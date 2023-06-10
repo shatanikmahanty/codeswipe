@@ -28,17 +28,19 @@ class CodeSwipeIcons {
   static const IconData twitter =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData github =
-      IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData google =
-      IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData linkedin =
-      IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user =
-      IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData chat =
-      IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData camera =
+  IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData home =
-      IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData swipe =
-      IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
