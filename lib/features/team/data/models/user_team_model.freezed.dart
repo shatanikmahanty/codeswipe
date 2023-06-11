@@ -21,14 +21,24 @@ UserTeam _$UserTeamFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserTeam {
   String get name => throw _privateConstructorUsedError;
+
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-  List<String>? get members => throw _privateConstructorUsedError;
-  @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+
+  @JsonKey(name: 'members')
+  List<String>? get memberIDs => throw _privateConstructorUsedError;
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<AppUser>? get members => throw _privateConstructorUsedError;
+
+  @JsonKey(
+      name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
   Map<String, dynamic>? get memberRoles => throw _privateConstructorUsedError;
+
   String get admin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $UserTeamCopyWith<UserTeam> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,8 +52,13 @@ abstract class $UserTeamCopyWith<$Res> {
   $Res call(
       {String name,
       @JsonKey(name: '\$id') String id,
-      List<String>? members,
-      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      @JsonKey(name: 'members') List<String>? memberIDs,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<AppUser>? members,
+      @JsonKey(
+          name: 'member_roles',
+          readValue: _memberRolesFromJson,
+          toJson: jsonEncode)
       Map<String, dynamic>? memberRoles,
       String admin});
 }
@@ -63,6 +78,7 @@ class _$UserTeamCopyWithImpl<$Res, $Val extends UserTeam>
   $Res call({
     Object? name = null,
     Object? id = null,
+    Object? memberIDs = freezed,
     Object? members = freezed,
     Object? memberRoles = freezed,
     Object? admin = null,
@@ -76,10 +92,14 @@ class _$UserTeamCopyWithImpl<$Res, $Val extends UserTeam>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      memberIDs: freezed == memberIDs
+          ? _value.memberIDs
+          : memberIDs // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       members: freezed == members
           ? _value.members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<AppUser>?,
       memberRoles: freezed == memberRoles
           ? _value.memberRoles
           : memberRoles // ignore: cast_nullable_to_non_nullable
@@ -102,8 +122,13 @@ abstract class _$$_UserTeamCopyWith<$Res> implements $UserTeamCopyWith<$Res> {
   $Res call(
       {String name,
       @JsonKey(name: '\$id') String id,
-      List<String>? members,
-      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      @JsonKey(name: 'members') List<String>? memberIDs,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<AppUser>? members,
+      @JsonKey(
+          name: 'member_roles',
+          readValue: _memberRolesFromJson,
+          toJson: jsonEncode)
       Map<String, dynamic>? memberRoles,
       String admin});
 }
@@ -121,6 +146,7 @@ class __$$_UserTeamCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? id = null,
+    Object? memberIDs = freezed,
     Object? members = freezed,
     Object? memberRoles = freezed,
     Object? admin = null,
@@ -134,10 +160,14 @@ class __$$_UserTeamCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      memberIDs: freezed == memberIDs
+          ? _value._memberIDs
+          : memberIDs // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       members: freezed == members
           ? _value._members
           : members // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<AppUser>?,
       memberRoles: freezed == memberRoles
           ? _value._memberRoles
           : memberRoles // ignore: cast_nullable_to_non_nullable
@@ -156,11 +186,17 @@ class _$_UserTeam implements _UserTeam {
   const _$_UserTeam(
       {required this.name,
       @JsonKey(name: '\$id') required this.id,
-      final List<String>? members,
-      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      @JsonKey(name: 'members') final List<String>? memberIDs,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final List<AppUser>? members,
+      @JsonKey(
+          name: 'member_roles',
+          readValue: _memberRolesFromJson,
+          toJson: jsonEncode)
       final Map<String, dynamic>? memberRoles,
       required this.admin})
-      : _members = members,
+      : _memberIDs = memberIDs,
+        _members = members,
         _memberRoles = memberRoles;
 
   factory _$_UserTeam.fromJson(Map<String, dynamic> json) =>
@@ -171,9 +207,23 @@ class _$_UserTeam implements _UserTeam {
   @override
   @JsonKey(name: '\$id')
   final String id;
-  final List<String>? _members;
+  final List<String>? _memberIDs;
+
   @override
-  List<String>? get members {
+  @JsonKey(name: 'members')
+  List<String>? get memberIDs {
+    final value = _memberIDs;
+    if (value == null) return null;
+    if (_memberIDs is EqualUnmodifiableListView) return _memberIDs;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<AppUser>? _members;
+
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<AppUser>? get members {
     final value = _members;
     if (value == null) return null;
     if (_members is EqualUnmodifiableListView) return _members;
@@ -182,8 +232,10 @@ class _$_UserTeam implements _UserTeam {
   }
 
   final Map<String, dynamic>? _memberRoles;
+
   @override
-  @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+  @JsonKey(
+      name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
   Map<String, dynamic>? get memberRoles {
     final value = _memberRoles;
     if (value == null) return null;
@@ -197,7 +249,7 @@ class _$_UserTeam implements _UserTeam {
 
   @override
   String toString() {
-    return 'UserTeam(name: $name, id: $id, members: $members, memberRoles: $memberRoles, admin: $admin)';
+    return 'UserTeam(name: $name, id: $id, memberIDs: $memberIDs, members: $members, memberRoles: $memberRoles, admin: $admin)';
   }
 
   @override
@@ -207,6 +259,8 @@ class _$_UserTeam implements _UserTeam {
             other is _$_UserTeam &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality()
+                .equals(other._memberIDs, _memberIDs) &&
             const DeepCollectionEquality().equals(other._members, _members) &&
             const DeepCollectionEquality()
                 .equals(other._memberRoles, _memberRoles) &&
@@ -219,6 +273,7 @@ class _$_UserTeam implements _UserTeam {
       runtimeType,
       name,
       id,
+      const DeepCollectionEquality().hash(_memberIDs),
       const DeepCollectionEquality().hash(_members),
       const DeepCollectionEquality().hash(_memberRoles),
       admin);
@@ -241,8 +296,13 @@ abstract class _UserTeam implements UserTeam {
   const factory _UserTeam(
       {required final String name,
       @JsonKey(name: '\$id') required final String id,
-      final List<String>? members,
-      @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+      @JsonKey(name: 'members') final List<String>? memberIDs,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final List<AppUser>? members,
+      @JsonKey(
+          name: 'member_roles',
+          readValue: _memberRolesFromJson,
+          toJson: jsonEncode)
       final Map<String, dynamic>? memberRoles,
       required final String admin}) = _$_UserTeam;
 
@@ -250,16 +310,27 @@ abstract class _UserTeam implements UserTeam {
 
   @override
   String get name;
+
   @override
   @JsonKey(name: '\$id')
   String get id;
+
   @override
-  List<String>? get members;
+  @JsonKey(name: 'members')
+  List<String>? get memberIDs;
+
   @override
-  @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<AppUser>? get members;
+
+  @override
+  @JsonKey(
+      name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
   Map<String, dynamic>? get memberRoles;
+
   @override
   String get admin;
+
   @override
   @JsonKey(ignore: true)
   _$$_UserTeamCopyWith<_$_UserTeam> get copyWith =>

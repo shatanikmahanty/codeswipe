@@ -23,7 +23,6 @@ mixin _$AuthState {
   AppUser? get user => throw _privateConstructorUsedError;
   bool get isOtpAvailable => throw _privateConstructorUsedError;
   String? get phoneUserId => throw _privateConstructorUsedError;
-
   String? get pickedImagePath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +35,6 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
-
   @useResult
   $Res call(
       {AppUser? user,
@@ -103,7 +101,6 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   factory _$$_AuthStateCopyWith(
           _$_AuthState value, $Res Function(_$_AuthState) then) =
       __$$_AuthStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -225,16 +222,12 @@ abstract class _AuthState implements AuthState {
 
   @override
   AppUser? get user;
-
   @override
   bool get isOtpAvailable;
-
   @override
   String? get phoneUserId;
-
   @override
   String? get pickedImagePath;
-
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

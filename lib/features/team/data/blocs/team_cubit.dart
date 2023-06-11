@@ -5,6 +5,7 @@ import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/team/data/models/user_team_model.dart';
 import 'package:codeswipe/utils/environment_helper.dart';
+import 'package:codeswipe/utils/mixins/cubit_maybe_emit_mixin.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -25,7 +26,7 @@ class TeamState with _$TeamState {
       _$TeamStateFromJson(json);
 }
 
-class TeamCubit extends HydratedCubit<TeamState> {
+class TeamCubit extends HydratedCubit<TeamState> with CubitMaybeEmit {
   TeamCubit() : super(const TeamState());
 
   ApiClient? _apiClient;
@@ -85,8 +86,24 @@ class TeamCubit extends HydratedCubit<TeamState> {
       documentId: teamId,
     );
 
+    UserTeam userTeam = UserTeam.fromJson(teamDoc.data);
+
+    List<AppUser> members = [];
+
+    for (final String id in (userTeam.memberIDs ?? [])) {
+      final userDoc = await _apiClient!.databases.getDocument(
+        databaseId: EnvironmentHelper().getDatabaseId(),
+        collectionId: kUsersCollection,
+        documentId: id,
+      );
+      final teamMember = AppUser.fromJson(userDoc.data);
+      members.add(teamMember);
+    }
+
+    userTeam = userTeam.copyWith(members: members);
+
     emit(
-      state.copyWith(team: UserTeam.fromJson(teamDoc.data), isLoading: false),
+      state.copyWith(team: userTeam, isLoading: false),
     );
   }
 
@@ -165,5 +182,35 @@ class TeamCubit extends HydratedCubit<TeamState> {
     ///We don't want to persist these values
     json.remove('isLoading');
     return TeamState.fromJson(json);
+  }
+
+  Future<void> updateMemberRole(
+      {required String teamId,
+      required String memberId,
+      required String role}) async {
+    Map<String, dynamic>? memberRoles = Map.from(state.team!.memberRoles ?? {});
+
+    if (memberRoles.isEmpty) {
+      memberRoles = {
+        memberId: role,
+      };
+    } else {
+      memberRoles[memberId] = role;
+    }
+
+    final team = state.team!.copyWith(memberRoles: memberRoles);
+
+    await _apiClient!.databases.updateDocument(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: kTeamsCollection,
+      documentId: teamId,
+      data: team.toJson(),
+    );
+
+    emit(
+      state.copyWith(
+        team: team,
+      ),
+    );
   }
 }

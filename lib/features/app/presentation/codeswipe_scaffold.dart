@@ -8,7 +8,6 @@ class CodeSwipeScaffold extends StatelessWidget {
     required this.body,
     this.appBarTitleText,
     this.appBarTitleWidget,
-    this.hasBottomNavigationBar = false,
     this.actions,
     this.centerAppBarTitle = true,
   }) : assert(
@@ -22,7 +21,6 @@ class CodeSwipeScaffold extends StatelessWidget {
 
   final Widget body;
   final List<Widget>? actions;
-  final bool hasBottomNavigationBar;
   final bool centerAppBarTitle;
 
   @override

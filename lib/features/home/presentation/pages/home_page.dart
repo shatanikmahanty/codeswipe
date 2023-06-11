@@ -12,55 +12,60 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<TeamCubit, TeamState>(
-        builder: (context, state) {
-          const sectionSeparator = SizedBox(
-            height: kPadding * 2,
-          );
-
-          return ListView(
-            shrinkWrap: true,
-            children: [
-              const BannerCarousel(),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kPadding * 4,
-                  vertical: kPadding * 2,
+  Widget build(BuildContext context) {
+    const sectionSeparator = SizedBox(
+      height: kPadding * 2,
+    );
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        const BannerCarousel(),
+        BlocBuilder<TeamCubit, TeamState>(
+          builder: (context, state) => state.isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kPadding * 4,
+                        vertical: kPadding * 2,
+                      ),
+                      child: _TeamActionButton(
+                        hasTeam: state.team != null,
+                      ),
+                    ),
+                    if (state.team == null) ...[
+                      sectionSeparator,
+                      _SectionHeader(
+                        title: 'Join Existing Team',
+                        onActionClick: () {},
+                        buttonText: 'See All',
+                        showActionButton: state.teams.length > 3,
+                      ),
+                      sectionSeparator,
+                      const JoinTeamList(),
+                    ],
+                  ],
                 ),
-                child: _TeamActionButton(
-                  hasTeam: state.team != null,
-                ),
-              ),
-              sectionSeparator,
-              if (state.team == null) ...[
-                _SectionHeader(
-                  title: 'Join Existing Team',
-                  onActionClick: () {},
-                  buttonText: 'See All',
-                  showActionButton: state.teams.length > 3,
-                ),
-                sectionSeparator,
-                const JoinTeamList(),
-              ],
-              sectionSeparator,
-              _SectionHeader(
-                title: 'Upcoming Hackathons',
-                onActionClick: () {},
-                buttonText: 'See All',
-                showActionButton: true,
-              ),
-              sectionSeparator,
-              _SectionHeader(
-                title: 'Hackathon Themes',
-                onActionClick: () {},
-                buttonText: '',
-                showActionButton: false,
-              ),
-              const HackathonThemesGrid(),
-            ],
-          );
-        },
-      );
+        ),
+        sectionSeparator,
+        _SectionHeader(
+          title: 'Upcoming Hackathons',
+          onActionClick: () {},
+          buttonText: 'See All',
+          showActionButton: true,
+        ),
+        sectionSeparator,
+        _SectionHeader(
+          title: 'Hackathon Themes',
+          onActionClick: () {},
+          buttonText: '',
+          showActionButton: false,
+        ),
+        const HackathonThemesGrid(),
+      ],
+    );
+  }
 }
 
 class _TeamActionButton extends StatelessWidget {
@@ -72,8 +77,11 @@ class _TeamActionButton extends StatelessWidget {
   Widget build(BuildContext context) => ElevatedButton.icon(
         icon: hasTeam ? const Icon(Icons.people) : const Icon(Icons.add),
         onPressed: () {
-          if (hasTeam) return; //TODO show team page
-          context.router.push(const CreateTeamRoute());
+          if (hasTeam) {
+            context.router.push(const UserTeamRoute());
+          } else {
+            context.router.push(const CreateTeamRoute());
+          }
         },
         label: Text(hasTeam ? 'Your Team' : 'Create Team'),
       );

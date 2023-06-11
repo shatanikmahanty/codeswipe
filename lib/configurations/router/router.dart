@@ -44,7 +44,6 @@ class AppRouter extends $AppRouter {
       page: TeamRouter.page,
       guards: [
         AuthGuard(),
-        //TODO add team exists guard
       ],
       children: teamRoutes,
     ),
