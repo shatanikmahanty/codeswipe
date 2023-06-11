@@ -36,7 +36,7 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
                   icon: CupertinoIcons.hand_draw_fill,
                 )
               : CodeSwipeIconButton(
-                  onPressed: () => AuthCubit.instance.logout(),
+                  onPressed: () => AuthCubit.instance.markUserSurveyAttempted(),
                   icon: Icons.logout,
                 );
 

@@ -237,7 +237,7 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
   void markUserSurveyAttempted() {
     final accountApi = getAccountApi();
     accountApi.updatePrefs(
-      prefs: {userSurveyAttemptedPref: true},
+      prefs: {userSurveyAttemptedPref: false},
     );
   }
 
