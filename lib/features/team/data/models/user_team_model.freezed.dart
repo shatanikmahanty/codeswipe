@@ -21,24 +21,18 @@ UserTeam _$UserTeamFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserTeam {
   String get name => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'members')
   List<String>? get memberIDs => throw _privateConstructorUsedError;
-
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<AppUser>? get members => throw _privateConstructorUsedError;
-
   @JsonKey(
       name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
   Map<String, dynamic>? get memberRoles => throw _privateConstructorUsedError;
-
   String get admin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserTeamCopyWith<UserTeam> get copyWith =>
       throw _privateConstructorUsedError;
@@ -208,7 +202,6 @@ class _$_UserTeam implements _UserTeam {
   @JsonKey(name: '\$id')
   final String id;
   final List<String>? _memberIDs;
-
   @override
   @JsonKey(name: 'members')
   List<String>? get memberIDs {
@@ -220,7 +213,6 @@ class _$_UserTeam implements _UserTeam {
   }
 
   final List<AppUser>? _members;
-
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<AppUser>? get members {
@@ -232,7 +224,6 @@ class _$_UserTeam implements _UserTeam {
   }
 
   final Map<String, dynamic>? _memberRoles;
-
   @override
   @JsonKey(
       name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
@@ -310,27 +301,21 @@ abstract class _UserTeam implements UserTeam {
 
   @override
   String get name;
-
   @override
   @JsonKey(name: '\$id')
   String get id;
-
   @override
   @JsonKey(name: 'members')
   List<String>? get memberIDs;
-
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<AppUser>? get members;
-
   @override
   @JsonKey(
       name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
   Map<String, dynamic>? get memberRoles;
-
   @override
   String get admin;
-
   @override
   @JsonKey(ignore: true)
   _$$_UserTeamCopyWith<_$_UserTeam> get copyWith =>

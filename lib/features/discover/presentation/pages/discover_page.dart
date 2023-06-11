@@ -120,7 +120,16 @@ class _DiscoverContentState extends State<_DiscoverContent> {
                   controller: _controller,
                   itemCount: profiles.length,
                   allowVerticalSwipe: true,
-                  onSwipeCompleted: (index, direction) {
+                  onSwipeCompleted: (index, direction) async {
+                    if (direction == SwipeDirection.right) {
+                      await context.read<DiscoverCubit>().likeProfile(
+                            profiles[index].id,
+                          );
+                    } else if (direction == SwipeDirection.left) {
+                      await context.read<DiscoverCubit>().disLikeProfile(
+                            profiles[index].id,
+                          );
+                    }
                     setState(() {
                       currentIndex += 1;
                     });

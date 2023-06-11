@@ -29,6 +29,14 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
       course: json['course'] as String?,
       teamId: json['team_id'] as String?,
       avatar: json['avatar'] as String?,
+      likes:
+          (json['likes'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      dislikes: (json['dislikes'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      matchRequests: (json['match_requests'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
@@ -58,5 +66,8 @@ Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
   val['course'] = instance.course;
   val['team_id'] = instance.teamId;
   val['avatar'] = instance.avatar;
+  val['likes'] = instance.likes;
+  val['dislikes'] = instance.dislikes;
+  val['match_requests'] = instance.matchRequests;
   return val;
 }

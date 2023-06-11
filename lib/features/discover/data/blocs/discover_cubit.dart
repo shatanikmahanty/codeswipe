@@ -47,6 +47,10 @@ class DiscoverCubit extends Cubit<DiscoverState> {
 
       final models = documents.documents
           .map<AppUser>((doc) => AppUser.fromJson(doc.data))
+          .where((element) => !(AuthCubit.instance.state.user!.likes ?? [])
+              .contains(element.id))
+          .where((element) => !(AuthCubit.instance.state.user!.dislikes ?? [])
+              .contains(element.id))
           .toList();
 
       emit(state.copyWith(
@@ -56,6 +60,82 @@ class DiscoverCubit extends Cubit<DiscoverState> {
       rethrow;
     } finally {
       emit(state.copyWith(isLoading: false));
+    }
+  }
+
+  Future<void> likeProfile(String likedUserId) async {
+    try {
+      final databaseId = EnvironmentHelper().getDatabaseId();
+      final currentUserId = AuthCubit.instance.state.user!.id;
+
+      final currentUserDoc = await _database!.getDocument(
+        databaseId: databaseId,
+        collectionId: kUsersCollection,
+        documentId: currentUserId,
+      );
+
+      List<String> likesList = List<String>.from(currentUserDoc.data['likes']);
+      likesList.add(likedUserId);
+
+      await _database!.updateDocument(
+        collectionId: kUsersCollection,
+        documentId: currentUserId,
+        databaseId: databaseId,
+        data: {
+          'likes': likesList,
+        },
+      );
+
+      final likedUserDoc = await _database!.getDocument(
+        databaseId: databaseId,
+        collectionId: kUsersCollection,
+        documentId: likedUserId,
+      );
+
+      List<String> matchRequestsList =
+          List<String>.from(likedUserDoc.data['match_requests']);
+      matchRequestsList.add(currentUserId);
+
+      await _database!.updateDocument(
+        collectionId: kUsersCollection,
+        documentId: likedUserId,
+        databaseId: databaseId,
+        data: {
+          'match_requests': matchRequestsList,
+        },
+      );
+
+      //TODO update authCubit
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> disLikeProfile(String disLikedUserId) async {
+    try {
+      final databaseId = EnvironmentHelper().getDatabaseId();
+      final currentUserId = AuthCubit.instance.state.user!.id;
+
+      final currentUserDoc = await _database!.getDocument(
+        databaseId: databaseId,
+        collectionId: kUsersCollection,
+        documentId: currentUserId,
+      );
+
+      List<String> likesList =
+          List<String>.from(currentUserDoc.data['dislikes']);
+      likesList.add(disLikedUserId);
+
+      await _database!.updateDocument(
+        collectionId: kUsersCollection,
+        documentId: currentUserId,
+        databaseId: databaseId,
+        data: {
+          'dislikes': likesList,
+        },
+      );
+    } catch (e) {
+      rethrow;
     }
   }
 }
