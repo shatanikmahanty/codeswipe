@@ -54,7 +54,6 @@ mixin _$AppUser {
   String? get course => throw _privateConstructorUsedError;
   @JsonKey(name: 'team_id')
   String? get teamId => throw _privateConstructorUsedError;
-
   String? get avatar => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -563,22 +562,17 @@ abstract class _AppUser implements AppUser {
   @override
   @JsonKey(name: 'college_name')
   String? get collegeName;
-
   @override
   @JsonKey(name: 'graduation_year')
   String? get graduationYear;
-
   @override
   @JsonKey(name: 'course')
   String? get course;
-
   @override
   @JsonKey(name: 'team_id')
   String? get teamId;
-
   @override
   String? get avatar;
-
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

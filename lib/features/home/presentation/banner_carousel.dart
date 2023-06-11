@@ -51,16 +51,17 @@ class _BannerCarouselState extends State<BannerCarousel> {
                         .toList(),
                     carouselController: _carouselController,
                   ),
-                  AnimatedSmoothIndicator(
-                    activeIndex: _currentIndex,
-                    count: state.models.length,
-                    effect: SwapEffect(
-                      activeDotColor: Theme.of(context).primaryColor,
-                      dotHeight: kPadding * 2,
-                      dotWidth: kPadding * 2,
-                      type: SwapType.yRotation,
+                  if (state.models.isNotEmpty)
+                    AnimatedSmoothIndicator(
+                      activeIndex: _currentIndex,
+                      count: state.models.length,
+                      effect: SwapEffect(
+                        activeDotColor: Theme.of(context).primaryColor,
+                        dotHeight: kPadding * 2,
+                        dotWidth: kPadding * 2,
+                        type: SwapType.yRotation,
+                      ),
                     ),
-                  ),
                 ],
               ),
       );

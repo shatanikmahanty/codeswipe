@@ -21,19 +21,14 @@ UserTeam _$UserTeamFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserTeam {
   String get name => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-
   List<String>? get members => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
   Map<String, dynamic>? get memberRoles => throw _privateConstructorUsedError;
-
   String get admin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $UserTeamCopyWith<UserTeam> get copyWith =>
       throw _privateConstructorUsedError;
@@ -177,7 +172,6 @@ class _$_UserTeam implements _UserTeam {
   @JsonKey(name: '\$id')
   final String id;
   final List<String>? _members;
-
   @override
   List<String>? get members {
     final value = _members;
@@ -188,7 +182,6 @@ class _$_UserTeam implements _UserTeam {
   }
 
   final Map<String, dynamic>? _memberRoles;
-
   @override
   @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
   Map<String, dynamic>? get memberRoles {
@@ -257,18 +250,14 @@ abstract class _UserTeam implements UserTeam {
 
   @override
   String get name;
-
   @override
   @JsonKey(name: '\$id')
   String get id;
-
   @override
   List<String>? get members;
-
   @override
   @JsonKey(name: '\$member_roles', readValue: _memberRolesFromJson)
   Map<String, dynamic>? get memberRoles;
-
   @override
   String get admin;
   @override

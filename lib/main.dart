@@ -18,9 +18,16 @@ Future<void> main() async {
       // Dispatch exception to error reporters
       // ExeptionFilter.filter(exception); returns: true -> show exception to user or false -> do not show
       WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        if (exception is AppwriteException &&
+            (exception.message?.startsWith('Failed host lookup:') ?? false)) {
+          DjangoflowAppSnackbar.showError(
+            'No internet connection',
+          );
+        }
+
         DjangoflowAppSnackbar.showError(
           exception is AppwriteException
-              ? exception.type ?? 'Unknown error'
+              ? exception.message ?? 'Unknown error'
               : ExceptionFormatter.format(exception),
         );
       });

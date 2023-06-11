@@ -19,7 +19,7 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) => AutoTabsScaffold(
         routes: const [
           HomeRoute(),
-          DiscoverRoute(),
+          DiscoverRouter(),
           UnknownRoute(),
           UnknownRoute(),
         ],
@@ -74,17 +74,21 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
                   label: 'Chat',
                 ),
                 BottomNavigationBarItem(
-                  icon: CachedNetworkImage(
-                    height: kPadding * 4,
-                    width: kPadding * 4,
-                    imageUrl: AuthCubit.instance.state.user?.avatar ?? '',
-                    errorWidget: (context, url, error) => const Icon(
-                      Icons.person,
-                    ),
-                    placeholder: (context, url) => const Icon(
-                      Icons.person,
-                    ),
-                  ),
+                  icon: AuthCubit.instance.state.user?.avatar == null
+                      ? const Icon(
+                          Icons.person,
+                        )
+                      : CachedNetworkImage(
+                          height: kPadding * 4,
+                          width: kPadding * 4,
+                          imageUrl: AuthCubit.instance.state.user?.avatar ?? '',
+                          errorWidget: (context, url, error) => const Icon(
+                            Icons.person,
+                          ),
+                          placeholder: (context, url) => const Icon(
+                            Icons.person,
+                          ),
+                        ),
                   label: 'Profile',
                 ),
               ],

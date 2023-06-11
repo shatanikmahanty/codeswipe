@@ -8,10 +8,11 @@ class DiscoverCard extends StatelessWidget {
     required this.name,
     required this.bio,
     required this.skills,
+    required this.avatar,
   });
 
-  final String name, bio;
-  final List<String> skills;
+  final String name, bio, avatar;
+  final List<String>? skills;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +41,7 @@ class DiscoverCard extends StatelessWidget {
             expandedHeight: MediaQuery.of(context).size.height * 0.36,
             flexibleSpace: FlexibleSpaceBar(
               background: CachedNetworkImage(
-                imageUrl: 'https://i.imgur.com/EuAGNCg.png',
+                imageUrl: avatar,
                 width: double.infinity,
                 fit: BoxFit.cover,
                 alignment: Alignment.topCenter,
@@ -75,39 +76,43 @@ class DiscoverCard extends StatelessWidget {
                   const SizedBox(
                     height: kPadding * 2,
                   ),
-                  SingleChildScrollView(
-                    child: Row(
-                      children: skills
-                          .map(
-                            (e) => Container(
-                              margin: const EdgeInsets.only(right: kPadding),
-                              padding: const EdgeInsets.all(kPadding / 2),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: primaryColor,
-                                  width: kPadding / 4,
-                                ),
-                                borderRadius: BorderRadius.circular(
-                                  kButtonRadius,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(
-                                  kPadding,
-                                ),
-                                child: Text(
-                                  '#$e',
-                                  style: textTheme.labelMedium?.copyWith(
+                  if (skills != null)
+                    SizedBox(
+                      height: kPadding * 6,
+                      child: ListView(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        children: skills!
+                            .map(
+                              (e) => Container(
+                                margin: const EdgeInsets.only(right: kPadding),
+                                padding: const EdgeInsets.all(kPadding / 2),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
                                     color: primaryColor,
-                                    fontWeight: FontWeight.w500,
+                                    width: kPadding / 4,
+                                  ),
+                                  borderRadius: BorderRadius.circular(
+                                    kButtonRadius,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(
+                                    kPadding,
+                                  ),
+                                  child: Text(
+                                    '#$e',
+                                    style: textTheme.labelMedium?.copyWith(
+                                      color: primaryColor,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          )
-                          .toList(),
+                            )
+                            .toList(),
+                      ),
                     ),
-                  ),
                   const SizedBox(
                     height: kPadding * 2,
                   ),

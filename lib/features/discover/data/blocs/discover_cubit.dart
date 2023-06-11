@@ -1,28 +1,28 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:codeswipe/configurations/configurations.dart';
-import 'package:codeswipe/features/home/data/models/banner_model.dart';
+import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/utils/environment_helper.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../app/data/api_client.dart';
 
-part 'banner_cubit.freezed.dart';
-part 'banner_cubit.g.dart';
+part 'discover_cubit.freezed.dart';
+part 'discover_cubit.g.dart';
 
 @freezed
-class BannerState with _$BannerState {
-  const factory BannerState({
-    @Default([]) List<BannerModel> models,
+class DiscoverState with _$DiscoverState {
+  const factory DiscoverState({
+    @Default([]) List<AppUser> profiles,
     @Default(false) bool isLoading,
-  }) = _BannerState;
+  }) = _DiscoverState;
 
-  factory BannerState.fromJson(Map<String, dynamic> json) =>
-      _$BannerStateFromJson(json);
+  factory DiscoverState.fromJson(Map<String, dynamic> json) =>
+      _$DiscoverStateFromJson(json);
 }
 
-class BannerCubit extends HydratedCubit<BannerState> {
-  BannerCubit() : super(const BannerState());
+class DiscoverCubit extends Cubit<DiscoverState> {
+  DiscoverCubit() : super(const DiscoverState());
 
   Databases? _database;
 
@@ -33,34 +33,29 @@ class BannerCubit extends HydratedCubit<BannerState> {
     _database = apiClient.databases;
   }
 
-  Future<void> loadBanners() async {
+  Future<void> loadProfiles() async {
     emit(state.copyWith(isLoading: true));
 
     try {
       final documents = await _database!.listDocuments(
-        collectionId: kBannersCollection,
+        collectionId: kUsersCollection,
         databaseId: EnvironmentHelper().getDatabaseId(),
         queries: [
-          Query.equal('active', true),
+          Query.notEqual('id', AuthCubit.instance.state.user!.id),
         ],
       );
 
       final models = documents.documents
-          .map<BannerModel>((doc) => BannerModel.fromJson(doc.data))
+          .map<AppUser>((doc) => AppUser.fromJson(doc.data))
           .toList();
 
-      emit(state.copyWith(models: models));
+      emit(state.copyWith(
+        profiles: models,
+      ));
     } catch (e) {
       rethrow;
     } finally {
       emit(state.copyWith(isLoading: false));
     }
   }
-
-  @override
-  BannerState? fromJson(Map<String, dynamic> json) =>
-      BannerState.fromJson(json);
-
-  @override
-  Map<String, dynamic>? toJson(BannerState state) => state.toJson();
 }

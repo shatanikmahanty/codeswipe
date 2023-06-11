@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../utils/appwrite_storage_image_url_helper.dart';
+import '../../app/presentation/no_items.dart';
 
 class JoinTeamList extends StatelessWidget {
   const JoinTeamList({super.key});
@@ -13,7 +14,6 @@ class JoinTeamList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final size = MediaQuery.of(context).size;
 
     return BlocBuilder<TeamCubit, TeamState>(
       builder: (context, state) {
@@ -33,20 +33,8 @@ class JoinTeamList extends StatelessWidget {
             ],
           );
         } else if (state.teams.isEmpty) {
-          return Column(
-            children: [
-              Assets.images.emptyBox.image(
-                width: size.width / 2,
-              ),
-              const SizedBox(height: kPadding * 2),
-              Text(
-                'No teams found',
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: theme.primaryColor,
-                ),
-              ),
-            ],
+          return const NoItems(
+            message: 'No teams found',
           );
         }
 
@@ -168,56 +156,54 @@ class _PlaceholderTeam extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return _TeamListContainer(
-      child: Shimmer.fromColors(
-        baseColor: theme.primaryColor.withOpacity(0.4),
-        highlightColor: theme.primaryColor,
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  radius: kPadding * 4.5,
-                  backgroundColor: theme.primaryColor,
-                ),
-                const SizedBox(
-                  width: kPadding * 2,
-                ),
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: kPadding,
-                      ),
-                      Container(
-                        height: kPadding * 2,
+    return Shimmer.fromColors(
+      baseColor: theme.primaryColor.withOpacity(0.4),
+      highlightColor: theme.primaryColor,
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CircleAvatar(
+                radius: kPadding * 4.5,
+                backgroundColor: theme.primaryColor,
+              ),
+              const SizedBox(
+                width: kPadding * 2,
+              ),
+              Expanded(
+                flex: 4,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: kPadding,
+                    ),
+                    Container(
+                      height: kPadding * 2,
+                      color: theme.primaryColor,
+                    ),
+                    const SizedBox(height: kPadding * 2),
+                    Container(
+                      height: kPadding * 1.5,
+                      color: theme.primaryColor,
+                    ),
+                    const SizedBox(height: kPadding * 2),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: Container(
                         color: theme.primaryColor,
+                        height: kPadding * 3,
+                        width: kPadding * 12,
                       ),
-                      const SizedBox(height: kPadding * 2),
-                      Container(
-                        height: kPadding * 1.5,
-                        color: theme.primaryColor,
-                      ),
-                      const SizedBox(height: kPadding * 2),
-                      Align(
-                        alignment: Alignment.topRight,
-                        child: Container(
-                          color: theme.primaryColor,
-                          height: kPadding * 3,
-                          width: kPadding * 12,
-                        ),
-                      )
-                    ],
-                  ),
+                    )
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: kPadding * 2),
-          ],
-        ),
+              ),
+            ],
+          ),
+          const SizedBox(height: kPadding * 2),
+        ],
       ),
     );
   }

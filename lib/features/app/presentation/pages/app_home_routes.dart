@@ -8,7 +8,18 @@ final appHomeRoutes = [
   ),
   AutoRoute(
     path: 'discover',
-    page: DiscoverRoute.page,
+    page: DiscoverRouter.page,
+    children: [
+      AutoRoute(
+        initial: true,
+        path: '',
+        page: DiscoverRoute.page,
+      ),
+      // AutoRoute(
+      //   path: 'matches',
+      //   page: MatchRoute.page,
+      // ),
+    ],
   ),
   AutoRoute(
     path: 'chat',
