@@ -1,4 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/app/presentation/codeswipe_image_picker.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_base_wrapper.dart';
 import 'package:djangoflow_app/djangoflow_app.dart';
@@ -64,21 +65,49 @@ class UserSurveyProfilePage extends StatelessWidget {
           confirmButtonText: 'Confirm',
           hasReactiveForm: true,
           onConfirm: () async {
-            submitForm(form);
+            final authState = AuthCubit.instance.state;
+
+            if (authState.pickedImagePath == null &&
+                authState.user?.avatar == null) {
+              throw Exception('Please pick a profile picture');
+            }
+
+            if (authState.pickedImagePath != null) {
+              await AuthCubit.instance.uploadUserImage();
+            }
+
+            await submitForm(form);
           },
           onSuccess: () {
             context.read<AuthCubit>().markUserSurveyAttempted();
             DjangoflowAppSnackbar.showInfo('Profile updated successfully');
             context.router.push(const UserSurveySkillsRoute());
           },
-          onError: (error) {
-            DjangoflowAppSnackbar.showError(error.toString());
-          },
           body: AutofillGroup(
             child: Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(vertical: kPadding),
                 children: [
+                  BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      final authCubit = context.read<AuthCubit>();
+                      return Align(
+                        alignment: Alignment.center,
+                        child: CodeSwipeImagePicker(
+                          pickedImagePath: state.pickedImagePath,
+                          imageUrl: AuthCubit.instance.state.user?.avatar,
+                          onImagePicked: (image) => context
+                              .read<AuthCubit>()
+                              .updatePickedPhoto(image),
+                          clearImageCallback: () =>
+                              authCubit.clearPickedPhoto(),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(
+                    height: kPadding * 4,
+                  ),
                   ReactiveTextField<String>(
                     formControlName: kNameField,
                     decoration: const InputDecoration(
@@ -171,7 +200,7 @@ class UserSurveyProfilePage extends StatelessWidget {
         ),
       );
 
-  void submitForm(FormGroup form) {
+  Future<void> submitForm(FormGroup form) async {
     if (form.valid) {
       Map<String, dynamic> formValues = form.value;
       final name = formValues[kNameField] as String;
@@ -181,7 +210,7 @@ class UserSurveyProfilePage extends StatelessWidget {
       final gradYear = formValues[kGradYearField] as String;
       final bio = formValues[kBioField] as String;
 
-      AuthCubit.instance.updateProfile(
+      await AuthCubit.instance.updateProfile(
         name: name,
         email: email,
         course: course,

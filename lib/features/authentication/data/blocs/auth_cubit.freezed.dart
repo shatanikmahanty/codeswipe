@@ -24,6 +24,8 @@ mixin _$AuthState {
   bool get isOtpAvailable => throw _privateConstructorUsedError;
   String? get phoneUserId => throw _privateConstructorUsedError;
 
+  String? get pickedImagePath => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -34,8 +36,13 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res, AuthState>;
+
   @useResult
-  $Res call({AppUser? user, bool isOtpAvailable, String? phoneUserId});
+  $Res call(
+      {AppUser? user,
+      bool isOtpAvailable,
+      String? phoneUserId,
+      String? pickedImagePath});
 
   $AppUserCopyWith<$Res>? get user;
 }
@@ -56,6 +63,7 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
     Object? user = freezed,
     Object? isOtpAvailable = null,
     Object? phoneUserId = freezed,
+    Object? pickedImagePath = freezed,
   }) {
     return _then(_value.copyWith(
       user: freezed == user
@@ -69,6 +77,10 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
       phoneUserId: freezed == phoneUserId
           ? _value.phoneUserId
           : phoneUserId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pickedImagePath: freezed == pickedImagePath
+          ? _value.pickedImagePath
+          : pickedImagePath // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -91,9 +103,14 @@ abstract class _$$_AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
   factory _$$_AuthStateCopyWith(
           _$_AuthState value, $Res Function(_$_AuthState) then) =
       __$$_AuthStateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({AppUser? user, bool isOtpAvailable, String? phoneUserId});
+  $Res call(
+      {AppUser? user,
+      bool isOtpAvailable,
+      String? phoneUserId,
+      String? pickedImagePath});
 
   @override
   $AppUserCopyWith<$Res>? get user;
@@ -113,6 +130,7 @@ class __$$_AuthStateCopyWithImpl<$Res>
     Object? user = freezed,
     Object? isOtpAvailable = null,
     Object? phoneUserId = freezed,
+    Object? pickedImagePath = freezed,
   }) {
     return _then(_$_AuthState(
       user: freezed == user
@@ -127,6 +145,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
           ? _value.phoneUserId
           : phoneUserId // ignore: cast_nullable_to_non_nullable
               as String?,
+      pickedImagePath: freezed == pickedImagePath
+          ? _value.pickedImagePath
+          : pickedImagePath // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -135,7 +157,10 @@ class __$$_AuthStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AuthState implements _AuthState {
   const _$_AuthState(
-      {this.user, this.isOtpAvailable = false, this.phoneUserId});
+      {this.user,
+      this.isOtpAvailable = false,
+      this.phoneUserId,
+      this.pickedImagePath});
 
   factory _$_AuthState.fromJson(Map<String, dynamic> json) =>
       _$$_AuthStateFromJson(json);
@@ -147,10 +172,12 @@ class _$_AuthState implements _AuthState {
   final bool isOtpAvailable;
   @override
   final String? phoneUserId;
+  @override
+  final String? pickedImagePath;
 
   @override
   String toString() {
-    return 'AuthState(user: $user, isOtpAvailable: $isOtpAvailable, phoneUserId: $phoneUserId)';
+    return 'AuthState(user: $user, isOtpAvailable: $isOtpAvailable, phoneUserId: $phoneUserId, pickedImagePath: $pickedImagePath)';
   }
 
   @override
@@ -162,13 +189,15 @@ class _$_AuthState implements _AuthState {
             (identical(other.isOtpAvailable, isOtpAvailable) ||
                 other.isOtpAvailable == isOtpAvailable) &&
             (identical(other.phoneUserId, phoneUserId) ||
-                other.phoneUserId == phoneUserId));
+                other.phoneUserId == phoneUserId) &&
+            (identical(other.pickedImagePath, pickedImagePath) ||
+                other.pickedImagePath == pickedImagePath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, user, isOtpAvailable, phoneUserId);
+  int get hashCode => Object.hash(
+      runtimeType, user, isOtpAvailable, phoneUserId, pickedImagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -188,17 +217,24 @@ abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {final AppUser? user,
       final bool isOtpAvailable,
-      final String? phoneUserId}) = _$_AuthState;
+      final String? phoneUserId,
+      final String? pickedImagePath}) = _$_AuthState;
 
   factory _AuthState.fromJson(Map<String, dynamic> json) =
       _$_AuthState.fromJson;
 
   @override
   AppUser? get user;
+
   @override
   bool get isOtpAvailable;
+
   @override
   String? get phoneUserId;
+
+  @override
+  String? get pickedImagePath;
+
   @override
   @JsonKey(ignore: true)
   _$$_AuthStateCopyWith<_$_AuthState> get copyWith =>

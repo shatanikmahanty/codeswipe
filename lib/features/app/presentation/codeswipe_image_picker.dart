@@ -1,37 +1,58 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:codeswipe/code_swipe_icons.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CodeSwipeImagePicker extends StatelessWidget {
-  const CodeSwipeImagePicker({
+  CodeSwipeImagePicker({
     super.key,
     this.pickedImagePath,
     required this.onImagePicked,
     required this.clearImageCallback,
     this.iconSize = kPadding * 2.5,
+    this.imageUrl,
   });
 
   final String? pickedImagePath;
+  final String? imageUrl;
   final VoidCallback clearImageCallback;
   final void Function(XFile image) onImagePicked;
   final double iconSize;
 
+  final circleAvatarRadius = kPadding * 10;
+  final circleAvatarColor = Colors.grey.shade200;
+
   @override
   Widget build(BuildContext context) => Stack(
         children: [
-          CircleAvatar(
-            backgroundColor: Colors.grey.shade200,
-            radius: kPadding * 10,
-            foregroundImage: pickedImagePath != null
-                ? FileImage(File(pickedImagePath!))
-                : null,
-          ),
+          if (pickedImagePath != null)
+            CircleAvatar(
+              backgroundColor: circleAvatarColor,
+              radius: circleAvatarRadius,
+              foregroundImage: FileImage(File(pickedImagePath!)),
+            )
+          else if (imageUrl != null)
+            CircleAvatar(
+              backgroundColor: circleAvatarColor,
+              radius: circleAvatarRadius,
+              foregroundImage: CachedNetworkImageProvider(
+                imageUrl!,
+                headers: const {
+                  'X-Appwrite-Project': kProjectId,
+                },
+              ),
+            )
+          else
+            CircleAvatar(
+              backgroundColor: circleAvatarColor,
+              radius: circleAvatarRadius,
+            ),
           Positioned(
-            bottom: 0,
-            right: -kPadding,
+            bottom: -kPadding,
+            right: 0,
             child: GestureDetector(
               onTap: () async {
                 if (pickedImagePath != null) {

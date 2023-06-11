@@ -12,6 +12,7 @@ _$_AuthState _$$_AuthStateFromJson(Map<String, dynamic> json) => _$_AuthState(
           : AppUser.fromJson(json['user'] as Map<String, dynamic>),
       isOtpAvailable: json['isOtpAvailable'] as bool? ?? false,
       phoneUserId: json['phoneUserId'] as String?,
+      pickedImagePath: json['pickedImagePath'] as String?,
     );
 
 Map<String, dynamic> _$$_AuthStateToJson(_$_AuthState instance) =>
@@ -19,4 +20,5 @@ Map<String, dynamic> _$$_AuthStateToJson(_$_AuthState instance) =>
       'user': instance.user,
       'isOtpAvailable': instance.isOtpAvailable,
       'phoneUserId': instance.phoneUserId,
+      'pickedImagePath': instance.pickedImagePath,
     };

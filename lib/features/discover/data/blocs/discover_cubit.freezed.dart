@@ -21,11 +21,9 @@ DiscoverState _$DiscoverStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DiscoverState {
   List<AppUser> get profiles => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $DiscoverStateCopyWith<DiscoverState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ abstract class $DiscoverStateCopyWith<$Res> {
   factory $DiscoverStateCopyWith(
           DiscoverState value, $Res Function(DiscoverState) then) =
       _$DiscoverStateCopyWithImpl<$Res, DiscoverState>;
-
   @useResult
   $Res call({List<AppUser> profiles, bool isLoading});
 }
@@ -48,7 +45,6 @@ class _$DiscoverStateCopyWithImpl<$Res, $Val extends DiscoverState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -77,7 +73,6 @@ abstract class _$$_DiscoverStateCopyWith<$Res>
   factory _$$_DiscoverStateCopyWith(
           _$_DiscoverState value, $Res Function(_$_DiscoverState) then) =
       __$$_DiscoverStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({List<AppUser> profiles, bool isLoading});
@@ -121,7 +116,6 @@ class _$_DiscoverState implements _DiscoverState {
       _$$_DiscoverStateFromJson(json);
 
   final List<AppUser> _profiles;
-
   @override
   @JsonKey()
   List<AppUser> get profiles {
@@ -177,10 +171,8 @@ abstract class _DiscoverState implements DiscoverState {
 
   @override
   List<AppUser> get profiles;
-
   @override
   bool get isLoading;
-
   @override
   @JsonKey(ignore: true)
   _$$_DiscoverStateCopyWith<_$_DiscoverState> get copyWith =>

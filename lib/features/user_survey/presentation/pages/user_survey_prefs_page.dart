@@ -4,6 +4,7 @@ import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_ba
 import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../app/presentation/codeswipe_multi_selector.dart';
 import '../../../authentication/data/blocs/auth_cubit.dart';
@@ -12,6 +13,15 @@ import '../../data/blocs/user_survey_cubit.dart';
 @RoutePage()
 class UserSurveyPrefsPage extends StatelessWidget {
   const UserSurveyPrefsPage({super.key});
+
+  FormGroup _formBuilder() => fb.group({
+        kLocationField: FormControl<String>(
+          validators: [
+            Validators.required,
+          ],
+          value: AuthCubit.instance.state.user?.name,
+        ),
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +96,7 @@ class UserSurveyPrefsPage extends StatelessWidget {
             );
       },
       onSuccess: () {
-        DjangoflowAppSnackbar.showInfo('Skills updated successfully');
+        DjangoflowAppSnackbar.showInfo('Preferences updated successfully');
         context.router.push(const UserSurveyTeamRoute());
       },
       onError: (e) => DjangoflowAppSnackbar.showError(

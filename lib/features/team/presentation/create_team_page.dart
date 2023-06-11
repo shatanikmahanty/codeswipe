@@ -41,7 +41,7 @@ class CreateTeamPage extends StatelessWidget {
                   clearImageCallback: () => teamCubit.clearPickedPhoto(),
                 ),
                 const SizedBox(
-                  height: kPadding * 2,
+                  height: kPadding * 4,
                 ),
                 ReactiveTextField<String>(
                   formControlName: kNameField,

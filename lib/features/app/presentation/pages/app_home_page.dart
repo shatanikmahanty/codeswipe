@@ -36,7 +36,7 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
                   icon: CupertinoIcons.hand_draw_fill,
                 )
               : CodeSwipeIconButton(
-                  onPressed: () => AuthCubit.instance.markUserSurveyAttempted(),
+                  onPressed: () => AuthCubit.instance.logout(),
                   icon: Icons.logout,
                 );
 
@@ -51,50 +51,54 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
             ],
           );
         },
-        bottomNavigationBuilder: (context, tabsRouter) => SafeArea(
-          bottom: true,
-          child: SizedBox(
-            child: BottomNavigationBar(
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              onTap: (value) => tabsRouter.setActiveIndex(value),
-              currentIndex: tabsRouter.activeIndex,
-              type: BottomNavigationBarType.fixed,
-              items: [
-                const BottomNavigationBarItem(
-                  icon: Icon(CodeSwipeIcons.home),
-                  label: 'Home',
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(CodeSwipeIcons.swipe),
-                  label: 'Discover',
-                ),
-                const BottomNavigationBarItem(
-                  icon: Icon(CodeSwipeIcons.chat),
-                  label: 'Chat',
-                ),
-                BottomNavigationBarItem(
-                  icon: AuthCubit.instance.state.user?.avatar == null
-                      ? const Icon(
-                          Icons.person,
-                        )
-                      : CachedNetworkImage(
-                          height: kPadding * 4,
-                          width: kPadding * 4,
-                          imageUrl: AuthCubit.instance.state.user?.avatar ?? '',
-                          errorWidget: (context, url, error) => const Icon(
+        bottomNavigationBuilder: (context, tabsRouter) {
+          final avatar = AuthCubit.instance.state.user?.avatar;
+
+          return SafeArea(
+            bottom: true,
+            child: SizedBox(
+              child: BottomNavigationBar(
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                onTap: (value) => tabsRouter.setActiveIndex(value),
+                currentIndex: tabsRouter.activeIndex,
+                type: BottomNavigationBarType.fixed,
+                items: [
+                  const BottomNavigationBarItem(
+                    icon: Icon(CodeSwipeIcons.home),
+                    label: 'Home',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(CodeSwipeIcons.swipe),
+                    label: 'Discover',
+                  ),
+                  const BottomNavigationBarItem(
+                    icon: Icon(CodeSwipeIcons.chat),
+                    label: 'Chat',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: avatar == null
+                        ? const Icon(
                             Icons.person,
+                          )
+                        : CircleAvatar(
+                            radius: kPadding * 2,
+                            foregroundImage: CachedNetworkImageProvider(
+                              avatar,
+                              headers: avatar.startsWith(kApiEndpoint)
+                                  ? const {
+                                      'X-Appwrite-Project': kProjectId,
+                                    }
+                                  : null,
+                            ),
                           ),
-                          placeholder: (context, url) => const Icon(
-                            Icons.person,
-                          ),
-                        ),
-                  label: 'Profile',
-                ),
-              ],
+                    label: 'Profile',
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
 
   String getAppBarTextFromIndex(int index) {

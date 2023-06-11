@@ -3,10 +3,12 @@ import 'package:appwrite/models.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
+import 'package:codeswipe/utils/appwrite_storage_image_url_helper.dart';
 import 'package:codeswipe/utils/environment_helper.dart';
 import 'package:codeswipe/utils/mixins/cubit_maybe_emit_mixin.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'auth_cubit.freezed.dart';
 part 'auth_cubit.g.dart';
@@ -17,6 +19,7 @@ class AuthState with _$AuthState {
     AppUser? user,
     @Default(false) bool isOtpAvailable,
     String? phoneUserId,
+    String? pickedImagePath,
   }) = _AuthState;
 
   factory AuthState.fromJson(Map<String, dynamic> json) =>
@@ -230,14 +233,15 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
     ///We don't want to persist these values
     json.remove('isOtpAvailable');
     json.remove('phoneSessionId');
-
     return AuthState.fromJson(json);
   }
 
   void markUserSurveyAttempted() {
     final accountApi = getAccountApi();
     accountApi.updatePrefs(
-      prefs: {userSurveyAttemptedPref: false},
+      prefs: {
+        userSurveyAttemptedPref: true,
+      },
     );
   }
 
@@ -262,6 +266,7 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
         collegeName: collegeName ?? user.collegeName,
         graduationYear: graduationYear ?? user.graduationYear,
         bio: bio ?? user.bio,
+        avatar: getStorageFileUrl(user.id),
       );
 
       ///Checking if there was no change
@@ -338,6 +343,38 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
     emit(
       state.copyWith(
         user: state.user?.copyWith(teamId: $id),
+      ),
+    );
+  }
+
+  void updatePickedPhoto(XFile file) {
+    emit(
+      state.copyWith(
+        pickedImagePath: file.path,
+      ),
+    );
+  }
+
+  void clearPickedPhoto() {
+    emit(
+      state.copyWith(pickedImagePath: null),
+    );
+  }
+
+  Future<void> uploadUserImage() async {
+    final userId = state.user!.id;
+    await _apiClient!.storage.createFile(
+      bucketId: EnvironmentHelper().getStorageBucketId(),
+      file: InputFile.fromPath(
+        path: state.pickedImagePath!,
+        filename: 'user_image-$userId',
+      ),
+      fileId: userId,
+    );
+
+    emit(
+      state.copyWith(
+        pickedImagePath: null,
       ),
     );
   }

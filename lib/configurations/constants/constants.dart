@@ -73,6 +73,7 @@ const kCourseField = 'course';
 const kCollegeNameField = 'collegeName';
 const kGradYearField = 'gradYear';
 const kBioField = 'bio';
+const kLocationField = 'location';
 
 ///User prefs
 const userSurveyAttemptedPref = 'user_survey_attempted';
