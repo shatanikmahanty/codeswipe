@@ -8,7 +8,7 @@ final appHomeRoutes = [
   ),
   AutoRoute(
     path: 'discover',
-    page: UnknownRoute.page,
+    page: DiscoverRoute.page,
   ),
   AutoRoute(
     path: 'chat',

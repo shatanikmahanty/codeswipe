@@ -1,3 +1,4 @@
+import 'package:codeswipe/features/home/presentation/hackathon_themes_grid.dart';
 import 'package:codeswipe/features/home/presentation/join_team_list.dart';
 import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => BlocBuilder<TeamCubit, TeamState>(
-      builder: (context, state) => ListView(
+        builder: (context, state) {
+          const sectionSeparator = SizedBox(
+            height: kPadding * 2,
+          );
+
+          return ListView(
             shrinkWrap: true,
             children: [
               const BannerCarousel(),
@@ -25,9 +31,7 @@ class HomePage extends StatelessWidget {
                   hasTeam: state.team != null,
                 ),
               ),
-              const SizedBox(
-                height: kPadding * 2,
-              ),
+              sectionSeparator,
               if (state.team == null) ...[
                 _SectionHeader(
                   title: 'Join Existing Team',
@@ -35,13 +39,28 @@ class HomePage extends StatelessWidget {
                   buttonText: 'See All',
                   showActionButton: state.teams.length > 3,
                 ),
-                const SizedBox(
-                  height: kPadding * 2,
-                ),
+                sectionSeparator,
                 const JoinTeamList(),
               ],
+              sectionSeparator,
+              _SectionHeader(
+                title: 'Upcoming Hackathons',
+                onActionClick: () {},
+                buttonText: 'See All',
+                showActionButton: true,
+              ),
+              sectionSeparator,
+              _SectionHeader(
+                title: 'Hackathon Themes',
+                onActionClick: () {},
+                buttonText: '',
+                showActionButton: false,
+              ),
+              const HackathonThemesGrid(),
             ],
-          ));
+          );
+        },
+      );
 }
 
 class _TeamActionButton extends StatelessWidget {
@@ -89,6 +108,7 @@ class _SectionHeader extends StatelessWidget {
               style: theme.textTheme.titleLarge?.copyWith(
                 color: theme.primaryColor,
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
             ),
           ),

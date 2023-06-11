@@ -1,4 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/app/presentation/codeswipe_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class CodeSwipeAutoLeadingButton extends StatelessWidget {
@@ -10,28 +11,13 @@ class CodeSwipeAutoLeadingButton extends StatelessWidget {
   Widget build(BuildContext context) => AutoLeadingButton(
         builder: (context, type, function) {
           if (type == LeadingType.noLeading) return const Offstage();
-          return Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Theme.of(context).primaryColor,
-              ),
-              borderRadius: BorderRadius.circular(
-                kButtonRadius,
-              ),
-            ),
-            width: kPadding * 6,
-            height: kPadding * 6,
-            child: GestureDetector(
-              onTap: onPressed ?? function,
-              child: Icon(
-                type == LeadingType.back
-                    ? Icons.chevron_left
-                    : type == LeadingType.close
-                        ? Icons.close
-                        : Icons.menu,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
+          return CodeSwipeIconButton(
+            onPressed: onPressed ?? function,
+            icon: type == LeadingType.back
+                ? Icons.chevron_left
+                : type == LeadingType.close
+                    ? Icons.close
+                    : Icons.menu,
           );
         },
       );

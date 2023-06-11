@@ -18,9 +18,19 @@ class JoinTeamList extends StatelessWidget {
     return BlocBuilder<TeamCubit, TeamState>(
       builder: (context, state) {
         if (state.isLoading) {
-          return const _TeamListContainer(
-            horizontalPadding: kPadding * 2,
-            child: _PlaceholderTeam(),
+          return ListView(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            children: const [
+              _TeamListContainer(
+                horizontalPadding: kPadding * 2,
+                child: _PlaceholderTeam(),
+              ),
+              _TeamListContainer(
+                horizontalPadding: kPadding * 2,
+                child: _PlaceholderTeam(),
+              ),
+            ],
           );
         } else if (state.teams.isEmpty) {
           return Column(
