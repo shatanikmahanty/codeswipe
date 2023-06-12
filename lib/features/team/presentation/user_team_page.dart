@@ -50,9 +50,9 @@ class UserTeamPage extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   if (member.id == team.admin)
-                                    const Icon(
-                                      CodeSwipeIcons.star,
-                                      color: Colors.yellow,
+                                    Icon(
+                                      CodeSwipeIcons.crownfilled,
+                                      color: Theme.of(context).primaryColor,
                                     ),
                                   CircleAvatar(
                                     radius: kPadding * 2.5,
