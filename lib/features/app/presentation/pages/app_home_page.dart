@@ -23,18 +23,46 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
           UnknownRoute(),
           UnknownRoute(),
         ],
-        transitionBuilder: (context, child, animation) => FadeTransition(
-          opacity: animation,
-          child: child,
-        ),
+        transitionBuilder: (context, child, animation) {
+          const begin = Offset(1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.fastOutSlowIn;
+
+          if ((context.tabsRouter.previousIndex ?? 0) <
+              context.tabsRouter.activeIndex) {
+            return SlideTransition(
+              position: animation.drive(
+                Tween(begin: begin, end: end).chain(
+                  CurveTween(
+                    curve: curve,
+                  ),
+                ),
+              ),
+              child: child,
+            );
+          } else {
+            return SlideTransition(
+              position: animation.drive(
+                Tween(begin: -begin, end: -end).chain(
+                  CurveTween(curve: curve),
+                ),
+              ),
+              child: child,
+            );
+          }
+        },
         animationCurve: Curves.easeInOut,
         resizeToAvoidBottomInset: false,
         appBarBuilder: (context, tabsRouter) {
           final action = tabsRouter.activeIndex == 1
-              ? CodeSwipeIconButton(
-                  onPressed: () {},
-                  icon: CupertinoIcons.hand_draw_fill,
-                )
+              ? tabsRouter.current.topMatch.name == 'list'
+                  ? const Offstage()
+                  : CodeSwipeIconButton(
+                      onPressed: () {
+                        context.router.push(const DiscoverListRoute());
+                      },
+                      icon: CupertinoIcons.hand_draw_fill,
+                    )
               : CodeSwipeIconButton(
                   onPressed: () => AuthCubit.instance.logout(),
                   icon: Icons.logout,

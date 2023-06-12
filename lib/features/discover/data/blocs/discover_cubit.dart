@@ -14,6 +14,8 @@ part 'discover_cubit.g.dart';
 class DiscoverState with _$DiscoverState {
   const factory DiscoverState({
     @Default([]) List<AppUser> profiles,
+    @Default([]) List<AppUser> matches,
+    @Default([]) List<AppUser> requests,
     @Default(false) bool isLoading,
   }) = _DiscoverState;
 
@@ -63,6 +65,51 @@ class DiscoverCubit extends Cubit<DiscoverState> {
     }
   }
 
+  Future<void> loadMatchProfiles() async {
+    await loadDiscoverListProfiles(
+      idList: AuthCubit.instance.state.user!.matches ?? [],
+    );
+  }
+
+  Future<void> loadMatchRequests() async {
+    await loadDiscoverListProfiles(
+      idList: AuthCubit.instance.state.user!.matchRequests ?? [],
+      isRequests: true,
+    );
+  }
+
+  Future<void> loadDiscoverListProfiles({
+    required List<String> idList,
+    bool isRequests = false,
+  }) async {
+    emit(state.copyWith(isLoading: true));
+
+    List<AppUser> userList = [];
+    try {
+      for (final String id in idList) {
+        final document = await _database!.getDocument(
+          databaseId: EnvironmentHelper().getDatabaseId(),
+          collectionId: kUsersCollection,
+          documentId: id,
+        );
+        userList.add(
+          AppUser.fromJson(document.data),
+        );
+      }
+    } catch (e) {
+      emit(state.copyWith(isLoading: false));
+    }
+    emit(
+      isRequests
+          ? state.copyWith(
+              requests: userList,
+            )
+          : state.copyWith(
+              matches: userList,
+            ),
+    );
+  }
+
   Future<void> likeProfile(String likedUserId) async {
     try {
       final databaseId = EnvironmentHelper().getDatabaseId();
@@ -104,8 +151,6 @@ class DiscoverCubit extends Cubit<DiscoverState> {
           'match_requests': matchRequestsList,
         },
       );
-
-      //TODO update authCubit
     } catch (e) {
       rethrow;
     }
@@ -122,16 +167,16 @@ class DiscoverCubit extends Cubit<DiscoverState> {
         documentId: currentUserId,
       );
 
-      List<String> likesList =
+      List<String> disLikesList =
           List<String>.from(currentUserDoc.data['dislikes']);
-      likesList.add(disLikedUserId);
+      disLikesList.add(disLikedUserId);
 
       await _database!.updateDocument(
         collectionId: kUsersCollection,
         documentId: currentUserId,
         databaseId: databaseId,
         data: {
-          'dislikes': likesList,
+          'dislikes': disLikesList,
         },
       );
     } catch (e) {

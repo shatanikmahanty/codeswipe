@@ -55,7 +55,7 @@ class UserTeamPage extends StatelessWidget {
                                       color: Colors.yellow,
                                     ),
                                   CircleAvatar(
-                                    radius: 20,
+                                    radius: kPadding * 2.5,
                                     foregroundImage: CachedNetworkImageProvider(
                                       member.avatar!,
                                     ),

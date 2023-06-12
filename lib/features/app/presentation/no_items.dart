@@ -2,9 +2,10 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:flutter/material.dart';
 
 class NoItems extends StatelessWidget {
-  const NoItems({super.key, required this.message});
+  const NoItems({super.key, required this.message, this.imageSize});
 
   final String message;
+  final double? imageSize;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class NoItems extends StatelessWidget {
     return Column(
       children: [
         Assets.images.emptyBox.image(
-          width: size.width / 2,
+          width: imageSize ?? size.width / 2,
         ),
         const SizedBox(height: kPadding * 2),
         Text(

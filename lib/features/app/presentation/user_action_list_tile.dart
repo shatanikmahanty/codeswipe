@@ -23,7 +23,7 @@ class UserActionListTile extends StatelessWidget {
           kButtonRadius,
         ),
         border: Border.all(
-          color: Theme.of(context).colorScheme.primary,
+          color: Colors.grey.shade300,
         ),
       ),
       padding: const EdgeInsets.symmetric(

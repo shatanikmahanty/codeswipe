@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../configurations/configurations.dart';
+import '../../../app/presentation/codeswipe_section_header.dart';
 import '../presentation.dart';
 
 @RoutePage()
@@ -36,7 +37,7 @@ class HomePage extends StatelessWidget {
                     ),
                     if (state.team == null) ...[
                       sectionSeparator,
-                      _SectionHeader(
+                      CodeSwipeSectionHeader(
                         title: 'Join Existing Team',
                         onActionClick: () {},
                         buttonText: 'See All',
@@ -49,14 +50,14 @@ class HomePage extends StatelessWidget {
                 ),
         ),
         sectionSeparator,
-        _SectionHeader(
+        CodeSwipeSectionHeader(
           title: 'Upcoming Hackathons',
           onActionClick: () {},
           buttonText: 'See All',
           showActionButton: true,
         ),
         sectionSeparator,
-        _SectionHeader(
+        CodeSwipeSectionHeader(
           title: 'Hackathon Themes',
           onActionClick: () {},
           buttonText: '',
@@ -85,56 +86,4 @@ class _TeamActionButton extends StatelessWidget {
         },
         label: Text(hasTeam ? 'Your Team' : 'Create Team'),
       );
-}
-
-class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({
-    required this.title,
-    required this.onActionClick,
-    required this.buttonText,
-    required this.showActionButton,
-  });
-
-  final String title;
-  final VoidCallback onActionClick;
-  final String buttonText;
-  final bool showActionButton;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kPadding * 4,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              title,
-              style: theme.textTheme.titleLarge?.copyWith(
-                color: theme.primaryColor,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ),
-          if (showActionButton)
-            SizedBox(
-              width: kPadding * 12,
-              child: TextButton(
-                onPressed: onActionClick,
-                child: Text(
-                  buttonText,
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    color: theme.primaryColor,
-                  ),
-                ),
-              ),
-            ),
-        ],
-      ),
-    );
-  }
 }

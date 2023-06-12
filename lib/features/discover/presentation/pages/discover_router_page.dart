@@ -20,7 +20,9 @@ class DiscoverRouterPage extends StatelessWidget implements AutoRouteWrapper {
           ..initialize(
             context.read<ApiClient>(),
           )
-          ..loadProfiles(),
+          ..loadProfiles()
+          ..loadMatchProfiles()
+          ..loadMatchRequests(),
         child: this,
       );
 }

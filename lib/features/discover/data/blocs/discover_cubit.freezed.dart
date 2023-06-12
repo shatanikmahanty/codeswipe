@@ -21,9 +21,15 @@ DiscoverState _$DiscoverStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DiscoverState {
   List<AppUser> get profiles => throw _privateConstructorUsedError;
+
+  List<AppUser> get matches => throw _privateConstructorUsedError;
+
+  List<AppUser> get requests => throw _privateConstructorUsedError;
+
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $DiscoverStateCopyWith<DiscoverState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -34,8 +40,13 @@ abstract class $DiscoverStateCopyWith<$Res> {
   factory $DiscoverStateCopyWith(
           DiscoverState value, $Res Function(DiscoverState) then) =
       _$DiscoverStateCopyWithImpl<$Res, DiscoverState>;
+
   @useResult
-  $Res call({List<AppUser> profiles, bool isLoading});
+  $Res call(
+      {List<AppUser> profiles,
+      List<AppUser> matches,
+      List<AppUser> requests,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -52,12 +63,22 @@ class _$DiscoverStateCopyWithImpl<$Res, $Val extends DiscoverState>
   @override
   $Res call({
     Object? profiles = null,
+    Object? matches = null,
+    Object? requests = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
       profiles: null == profiles
           ? _value.profiles
           : profiles // ignore: cast_nullable_to_non_nullable
+              as List<AppUser>,
+      matches: null == matches
+          ? _value.matches
+          : matches // ignore: cast_nullable_to_non_nullable
+              as List<AppUser>,
+      requests: null == requests
+          ? _value.requests
+          : requests // ignore: cast_nullable_to_non_nullable
               as List<AppUser>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -73,9 +94,14 @@ abstract class _$$_DiscoverStateCopyWith<$Res>
   factory _$$_DiscoverStateCopyWith(
           _$_DiscoverState value, $Res Function(_$_DiscoverState) then) =
       __$$_DiscoverStateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({List<AppUser> profiles, bool isLoading});
+  $Res call(
+      {List<AppUser> profiles,
+      List<AppUser> matches,
+      List<AppUser> requests,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -90,12 +116,22 @@ class __$$_DiscoverStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? profiles = null,
+    Object? matches = null,
+    Object? requests = null,
     Object? isLoading = null,
   }) {
     return _then(_$_DiscoverState(
       profiles: null == profiles
           ? _value._profiles
           : profiles // ignore: cast_nullable_to_non_nullable
+              as List<AppUser>,
+      matches: null == matches
+          ? _value._matches
+          : matches // ignore: cast_nullable_to_non_nullable
+              as List<AppUser>,
+      requests: null == requests
+          ? _value._requests
+          : requests // ignore: cast_nullable_to_non_nullable
               as List<AppUser>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -109,13 +145,19 @@ class __$$_DiscoverStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_DiscoverState implements _DiscoverState {
   const _$_DiscoverState(
-      {final List<AppUser> profiles = const [], this.isLoading = false})
-      : _profiles = profiles;
+      {final List<AppUser> profiles = const [],
+      final List<AppUser> matches = const [],
+      final List<AppUser> requests = const [],
+      this.isLoading = false})
+      : _profiles = profiles,
+        _matches = matches,
+        _requests = requests;
 
   factory _$_DiscoverState.fromJson(Map<String, dynamic> json) =>
       _$$_DiscoverStateFromJson(json);
 
   final List<AppUser> _profiles;
+
   @override
   @JsonKey()
   List<AppUser> get profiles {
@@ -124,13 +166,33 @@ class _$_DiscoverState implements _DiscoverState {
     return EqualUnmodifiableListView(_profiles);
   }
 
+  final List<AppUser> _matches;
+
+  @override
+  @JsonKey()
+  List<AppUser> get matches {
+    if (_matches is EqualUnmodifiableListView) return _matches;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_matches);
+  }
+
+  final List<AppUser> _requests;
+
+  @override
+  @JsonKey()
+  List<AppUser> get requests {
+    if (_requests is EqualUnmodifiableListView) return _requests;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_requests);
+  }
+
   @override
   @JsonKey()
   final bool isLoading;
 
   @override
   String toString() {
-    return 'DiscoverState(profiles: $profiles, isLoading: $isLoading)';
+    return 'DiscoverState(profiles: $profiles, matches: $matches, requests: $requests, isLoading: $isLoading)';
   }
 
   @override
@@ -139,6 +201,8 @@ class _$_DiscoverState implements _DiscoverState {
         (other.runtimeType == runtimeType &&
             other is _$_DiscoverState &&
             const DeepCollectionEquality().equals(other._profiles, _profiles) &&
+            const DeepCollectionEquality().equals(other._matches, _matches) &&
+            const DeepCollectionEquality().equals(other._requests, _requests) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -146,7 +210,11 @@ class _$_DiscoverState implements _DiscoverState {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_profiles), isLoading);
+      runtimeType,
+      const DeepCollectionEquality().hash(_profiles),
+      const DeepCollectionEquality().hash(_matches),
+      const DeepCollectionEquality().hash(_requests),
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -164,15 +232,26 @@ class _$_DiscoverState implements _DiscoverState {
 
 abstract class _DiscoverState implements DiscoverState {
   const factory _DiscoverState(
-      {final List<AppUser> profiles, final bool isLoading}) = _$_DiscoverState;
+      {final List<AppUser> profiles,
+      final List<AppUser> matches,
+      final List<AppUser> requests,
+      final bool isLoading}) = _$_DiscoverState;
 
   factory _DiscoverState.fromJson(Map<String, dynamic> json) =
       _$_DiscoverState.fromJson;
 
   @override
   List<AppUser> get profiles;
+
+  @override
+  List<AppUser> get matches;
+
+  @override
+  List<AppUser> get requests;
+
   @override
   bool get isLoading;
+
   @override
   @JsonKey(ignore: true)
   _$$_DiscoverStateCopyWith<_$_DiscoverState> get copyWith =>
