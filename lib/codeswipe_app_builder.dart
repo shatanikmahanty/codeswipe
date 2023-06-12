@@ -3,6 +3,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
+import 'package:codeswipe/features/home/data/blocs/hackathon_cubit.dart';
 import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:djangoflow_app/djangoflow_app.dart';
@@ -55,6 +56,13 @@ class CodeSwipeAppBuilder extends AppBuilder {
                 ..initialize(
                   apiClient: context.read<ApiClient>(),
                 ),
+            ),
+            BlocProvider<HackathonCubit>(
+              create: (context) => HackathonCubit()
+                ..initialize(
+                  context.read<ApiClient>(),
+                )
+                ..loadHackathons(),
             ),
           ],
           builder: (context) => LoginListenerWrapper(

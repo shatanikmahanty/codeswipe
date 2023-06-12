@@ -1,6 +1,7 @@
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
+import 'package:codeswipe/features/home/presentation/upcoming_hackathons_list.dart';
 import 'package:codeswipe/features/team/presentation/team_routes.dart';
 import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_routes.dart';
 import 'package:flutter/material.dart';
@@ -59,6 +60,10 @@ class AppRouter extends $AppRouter {
       path: '/matched',
       page: MatchedDialogRoute.page,
       customRouteBuilder: dialogRouteBuilder,
+    ),
+    AutoRoute(
+      path: '/upcoming-hackathons',
+      page: UpcomingHackathonsRoute.page,
     ),
   ];
 }

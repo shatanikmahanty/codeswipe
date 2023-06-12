@@ -74,28 +74,29 @@ abstract class $AppUserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String name,
-      @JsonKey(includeIfNull: false) String? email,
-      @JsonKey(includeIfNull: false) String? phone,
-      @JsonKey(name: 'gh_access_token') String? ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry') String? ghTokenExpiry,
-      @JsonKey(includeIfNull: false) List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests') String? hackathonModeInterests,
-      @JsonKey(name: 'current_location') String? currentLocation,
-      @JsonKey(name: 'teammate_preferred_location')
-      String? teamMemberPreferredLocation,
-      @JsonKey(name: 'hackathon_theme_interests')
-      List<String>? hackathonThemeInterests,
-      String? bio,
-      @JsonKey(name: 'college_name') String? collegeName,
-      @JsonKey(name: 'graduation_year') String? graduationYear,
-      @JsonKey(name: 'course') String? course,
-      @JsonKey(name: 'team_id') String? teamId,
-      String? avatar,
-      List<String>? likes,
-      List<String>? dislikes,
-      @JsonKey(name: 'match_requests') List<String>? matchRequests,
-      @JsonKey(name: 'matches') List<String>? matches});
+        String name,
+        @JsonKey(includeIfNull: false) String? email,
+        @JsonKey(includeIfNull: false) String? phone,
+        @JsonKey(name: 'gh_access_token') String? ghAccessToken,
+        @JsonKey(name: 'gh_token_expiry') String? ghTokenExpiry,
+        @JsonKey(includeIfNull: false) List<String>? skills,
+        @JsonKey(
+            name: 'hackathon_mode_interests') String? hackathonModeInterests,
+        @JsonKey(name: 'current_location') String? currentLocation,
+        @JsonKey(
+            name: 'teammate_preferred_location') String? teamMemberPreferredLocation,
+        @JsonKey(name: 'hackathon_theme_interests') List<
+            String>? hackathonThemeInterests,
+        String? bio,
+        @JsonKey(name: 'college_name') String? collegeName,
+        @JsonKey(name: 'graduation_year') String? graduationYear,
+        @JsonKey(name: 'course') String? course,
+        @JsonKey(name: 'team_id') String? teamId,
+        String? avatar,
+        List<String>? likes,
+        List<String>? dislikes,
+        @JsonKey(name: 'match_requests') List<String>? matchRequests,
+        @JsonKey(name: 'matches') List<String>? matches});
 }
 
 /// @nodoc
@@ -229,30 +230,29 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
       __$$_AppUserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      @JsonKey(includeIfNull: false) String? email,
-      @JsonKey(includeIfNull: false) String? phone,
-      @JsonKey(name: 'gh_access_token') String? ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry') String? ghTokenExpiry,
-      @JsonKey(includeIfNull: false) List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests') String? hackathonModeInterests,
-      @JsonKey(name: 'current_location') String? currentLocation,
-      @JsonKey(name: 'teammate_preferred_location')
-      String? teamMemberPreferredLocation,
-      @JsonKey(name: 'hackathon_theme_interests')
-      List<String>? hackathonThemeInterests,
-      String? bio,
-      @JsonKey(name: 'college_name') String? collegeName,
-      @JsonKey(name: 'graduation_year') String? graduationYear,
-      @JsonKey(name: 'course') String? course,
-      @JsonKey(name: 'team_id') String? teamId,
-      String? avatar,
-      List<String>? likes,
-      List<String>? dislikes,
-      @JsonKey(name: 'match_requests') List<String>? matchRequests,
-      @JsonKey(name: 'matches') List<String>? matches});
+  $Res call({String id,
+    String name,
+    @JsonKey(includeIfNull: false) String? email,
+    @JsonKey(includeIfNull: false) String? phone,
+    @JsonKey(name: 'gh_access_token') String? ghAccessToken,
+    @JsonKey(name: 'gh_token_expiry') String? ghTokenExpiry,
+    @JsonKey(includeIfNull: false) List<String>? skills,
+    @JsonKey(name: 'hackathon_mode_interests') String? hackathonModeInterests,
+    @JsonKey(name: 'current_location') String? currentLocation,
+    @JsonKey(
+        name: 'teammate_preferred_location') String? teamMemberPreferredLocation,
+    @JsonKey(name: 'hackathon_theme_interests') List<
+        String>? hackathonThemeInterests,
+    String? bio,
+    @JsonKey(name: 'college_name') String? collegeName,
+    @JsonKey(name: 'graduation_year') String? graduationYear,
+    @JsonKey(name: 'course') String? course,
+    @JsonKey(name: 'team_id') String? teamId,
+    String? avatar,
+    List<String>? likes,
+    List<String>? dislikes,
+    @JsonKey(name: 'match_requests') List<String>? matchRequests,
+    @JsonKey(name: 'matches') List<String>? matches});
 }
 
 /// @nodoc
@@ -379,30 +379,29 @@ class __$$_AppUserCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_AppUser implements _AppUser {
-  const _$_AppUser(
-      {required this.id,
-      required this.name,
-      @JsonKey(includeIfNull: false) this.email,
-      @JsonKey(includeIfNull: false) this.phone,
-      @JsonKey(name: 'gh_access_token') this.ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry') this.ghTokenExpiry,
-      @JsonKey(includeIfNull: false) final List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests') this.hackathonModeInterests,
-      @JsonKey(name: 'current_location') this.currentLocation,
-      @JsonKey(name: 'teammate_preferred_location')
-      this.teamMemberPreferredLocation,
-      @JsonKey(name: 'hackathon_theme_interests')
-      final List<String>? hackathonThemeInterests,
-      this.bio,
-      @JsonKey(name: 'college_name') this.collegeName,
-      @JsonKey(name: 'graduation_year') this.graduationYear,
-      @JsonKey(name: 'course') this.course,
-      @JsonKey(name: 'team_id') this.teamId,
-      this.avatar,
-      final List<String>? likes,
-      final List<String>? dislikes,
-      @JsonKey(name: 'match_requests') final List<String>? matchRequests,
-      @JsonKey(name: 'matches') final List<String>? matches})
+  const _$_AppUser({required this.id,
+    required this.name,
+    @JsonKey(includeIfNull: false) this.email,
+    @JsonKey(includeIfNull: false) this.phone,
+    @JsonKey(name: 'gh_access_token') this.ghAccessToken,
+    @JsonKey(name: 'gh_token_expiry') this.ghTokenExpiry,
+    @JsonKey(includeIfNull: false) final List<String>? skills,
+    @JsonKey(name: 'hackathon_mode_interests') this.hackathonModeInterests,
+    @JsonKey(name: 'current_location') this.currentLocation,
+    @JsonKey(
+        name: 'teammate_preferred_location') this.teamMemberPreferredLocation,
+    @JsonKey(name: 'hackathon_theme_interests') final List<
+        String>? hackathonThemeInterests,
+    this.bio,
+    @JsonKey(name: 'college_name') this.collegeName,
+    @JsonKey(name: 'graduation_year') this.graduationYear,
+    @JsonKey(name: 'course') this.course,
+    @JsonKey(name: 'team_id') this.teamId,
+    this.avatar,
+    final List<String>? likes,
+    final List<String>? dislikes,
+    @JsonKey(name: 'match_requests') final List<String>? matchRequests,
+    @JsonKey(name: 'matches') final List<String>? matches})
       : _skills = skills,
         _hackathonThemeInterests = hackathonThemeInterests,
         _likes = likes,
@@ -611,31 +610,30 @@ class _$_AppUser implements _AppUser {
 }
 
 abstract class _AppUser implements AppUser {
-  const factory _AppUser(
-      {required final String id,
-      required final String name,
-      @JsonKey(includeIfNull: false) final String? email,
-      @JsonKey(includeIfNull: false) final String? phone,
-      @JsonKey(name: 'gh_access_token') final String? ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry') final String? ghTokenExpiry,
-      @JsonKey(includeIfNull: false) final List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests')
-      final String? hackathonModeInterests,
-      @JsonKey(name: 'current_location') final String? currentLocation,
-      @JsonKey(name: 'teammate_preferred_location')
-      final String? teamMemberPreferredLocation,
-      @JsonKey(name: 'hackathon_theme_interests')
-      final List<String>? hackathonThemeInterests,
-      final String? bio,
-      @JsonKey(name: 'college_name') final String? collegeName,
-      @JsonKey(name: 'graduation_year') final String? graduationYear,
-      @JsonKey(name: 'course') final String? course,
-      @JsonKey(name: 'team_id') final String? teamId,
-      final String? avatar,
-      final List<String>? likes,
-      final List<String>? dislikes,
-      @JsonKey(name: 'match_requests') final List<String>? matchRequests,
-      @JsonKey(name: 'matches') final List<String>? matches}) = _$_AppUser;
+  const factory _AppUser({required final String id,
+    required final String name,
+    @JsonKey(includeIfNull: false) final String? email,
+    @JsonKey(includeIfNull: false) final String? phone,
+    @JsonKey(name: 'gh_access_token') final String? ghAccessToken,
+    @JsonKey(name: 'gh_token_expiry') final String? ghTokenExpiry,
+    @JsonKey(includeIfNull: false) final List<String>? skills,
+    @JsonKey(
+        name: 'hackathon_mode_interests') final String? hackathonModeInterests,
+    @JsonKey(name: 'current_location') final String? currentLocation,
+    @JsonKey(
+        name: 'teammate_preferred_location') final String? teamMemberPreferredLocation,
+    @JsonKey(name: 'hackathon_theme_interests') final List<
+        String>? hackathonThemeInterests,
+    final String? bio,
+    @JsonKey(name: 'college_name') final String? collegeName,
+    @JsonKey(name: 'graduation_year') final String? graduationYear,
+    @JsonKey(name: 'course') final String? course,
+    @JsonKey(name: 'team_id') final String? teamId,
+    final String? avatar,
+    final List<String>? likes,
+    final List<String>? dislikes,
+    @JsonKey(name: 'match_requests') final List<String>? matchRequests,
+    @JsonKey(name: 'matches') final List<String>? matches}) = _$_AppUser;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
