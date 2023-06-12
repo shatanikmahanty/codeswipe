@@ -3,6 +3,7 @@ import 'package:codeswipe/features/app/presentation/no_items.dart';
 import 'package:codeswipe/features/app/presentation/user_action_list_tile.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/discover/data/blocs/discover_cubit.dart';
+import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -70,7 +71,14 @@ class _UsersList extends StatelessWidget {
               return _DiscoverListContent(
                 buttonText: isRequests ? 'Accept' : 'Chat',
                 users: users,
-                onButtonPressed: () {}, //TODO update logic
+                onButtonPressed: (index) {
+                  if (isRequests) {
+                    context.read<DiscoverCubit>().matchProfile(users[index].id);
+                  } else {
+                    //GOTO chat page
+                    DjangoflowAppSnackbar.showInfo('Coming soon!');
+                  }
+                },
               );
             },
           ),
@@ -88,7 +96,7 @@ class _DiscoverListContent extends StatelessWidget {
   });
 
   final String buttonText;
-  final VoidCallback onButtonPressed;
+  final void Function(int index) onButtonPressed;
   final List<AppUser> users;
 
   @override
@@ -124,7 +132,9 @@ class _DiscoverListContent extends StatelessWidget {
                       backgroundColor: const Color(0xffF0E5FF),
                       foregroundColor: Theme.of(context).primaryColor,
                     ),
-                    onPressed: onButtonPressed,
+                    onPressed: () {
+                      onButtonPressed.call(index);
+                    },
                     child: Text(buttonText),
                   ),
                 ),

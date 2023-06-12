@@ -10,6 +10,7 @@ import '../../../app/data/api_client.dart';
 part 'discover_cubit.freezed.dart';
 part 'discover_cubit.g.dart';
 
+//TODO add match error to state for rewind
 @freezed
 class DiscoverState with _$DiscoverState {
   const factory DiscoverState({
@@ -52,6 +53,8 @@ class DiscoverCubit extends Cubit<DiscoverState> {
           .where((element) => !(AuthCubit.instance.state.user!.likes ?? [])
               .contains(element.id))
           .where((element) => !(AuthCubit.instance.state.user!.dislikes ?? [])
+              .contains(element.id))
+          .where((element) => !(AuthCubit.instance.state.user!.matches ?? [])
               .contains(element.id))
           .toList();
 
@@ -103,9 +106,11 @@ class DiscoverCubit extends Cubit<DiscoverState> {
       isRequests
           ? state.copyWith(
               requests: userList,
+              isLoading: false,
             )
           : state.copyWith(
               matches: userList,
+              isLoading: false,
             ),
     );
   }
@@ -179,6 +184,70 @@ class DiscoverCubit extends Cubit<DiscoverState> {
           'dislikes': disLikesList,
         },
       );
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> matchProfile(String matchedUserId) async {
+    try {
+      final databaseId = EnvironmentHelper().getDatabaseId();
+      final currentUserId = AuthCubit.instance.state.user!.id;
+
+      final currentUserDoc = await _database!.getDocument(
+        databaseId: databaseId,
+        collectionId: kUsersCollection,
+        documentId: currentUserId,
+      );
+
+      List<String> matchesList =
+          List<String>.from(currentUserDoc.data['matches']);
+      List<String> matchRequestsList =
+          List<String>.from(currentUserDoc.data['match_requests']);
+      matchRequestsList.remove(matchedUserId);
+      matchesList.add(matchedUserId);
+
+      await _database!.updateDocument(
+        collectionId: kUsersCollection,
+        documentId: currentUserId,
+        databaseId: databaseId,
+        data: {
+          'matches': matchesList,
+          'match_requests': matchRequestsList,
+        },
+      );
+
+      final matchedUserDoc = await _database!.getDocument(
+        databaseId: databaseId,
+        collectionId: kUsersCollection,
+        documentId: matchedUserId,
+      );
+
+      AuthCubit.instance.updateMatches(
+        matchesList,
+        matchRequestsList,
+      );
+
+      List<String> matchesList2 =
+          List<String>.from(matchedUserDoc.data['matches']);
+      matchesList2.add(currentUserId);
+
+      List<String> likedList = List<String>.from(currentUserDoc.data['likes']);
+      likedList.remove(currentUserId);
+
+      await _database!.updateDocument(
+        collectionId: kUsersCollection,
+        documentId: matchedUserId,
+        databaseId: databaseId,
+        data: {
+          'matches': matchesList2,
+          'likes': likedList,
+        },
+      );
+
+      await loadMatchProfiles();
+      await loadMatchRequests();
+      await loadProfiles();
     } catch (e) {
       rethrow;
     }

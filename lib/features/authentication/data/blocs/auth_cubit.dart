@@ -378,4 +378,16 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
       ),
     );
   }
+
+  Future<void> updateMatches(
+      List<String> matchesList, List<String> matchRequests) async {
+    emit(
+      state.copyWith(
+        user: state.user?.copyWith(
+          matches: matchesList,
+          matchRequests: matchRequests,
+        ),
+      ),
+    );
+  }
 }

@@ -12,19 +12,19 @@ class CodeSwipeIconButton extends StatelessWidget {
   final VoidCallback? onPressed;
 
   @override
-  Widget build(BuildContext context) => Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Theme.of(context).primaryColor,
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onPressed,
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(
+              kButtonRadius,
+            ),
           ),
-          borderRadius: BorderRadius.circular(
-            kButtonRadius,
-          ),
-        ),
-        width: kPadding * 6,
-        height: kPadding * 6,
-        child: GestureDetector(
-          onTap: onPressed,
+          width: kPadding * 6,
+          height: kPadding * 6,
           child: Icon(
             icon,
             color: Theme.of(context).primaryColor,

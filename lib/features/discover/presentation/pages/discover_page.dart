@@ -122,17 +122,34 @@ class _DiscoverContentState extends State<_DiscoverContent> {
                   allowVerticalSwipe: true,
                   onSwipeCompleted: (index, direction) async {
                     if (direction == SwipeDirection.right) {
-                      await context.read<DiscoverCubit>().likeProfile(
-                            profiles[index].id,
-                          );
+                      if ((profiles[index].likes ?? [])
+                          .contains(context.read<AuthCubit>().state.user!.id)) {
+                        context.router.push(
+                          MatchedDialogRoute(
+                            avatar1: profiles[index].avatar!,
+                            avatar2:
+                                context.read<AuthCubit>().state.user!.avatar!,
+                            matchName: profiles[index].name,
+                          ),
+                        );
+                        await context.read<DiscoverCubit>().matchProfile(
+                              profiles[index].id,
+                            );
+                      } else {
+                        await context.read<DiscoverCubit>().likeProfile(
+                              profiles[index].id,
+                            );
+                      }
                     } else if (direction == SwipeDirection.left) {
                       await context.read<DiscoverCubit>().disLikeProfile(
                             profiles[index].id,
                           );
                     }
-                    setState(() {
-                      currentIndex += 1;
-                    });
+                    if (mounted) {
+                      setState(() {
+                        currentIndex += 1;
+                      });
+                    }
                   },
                   builder: (context, swipeProperties) {
                     final profile = profiles[swipeProperties.index];

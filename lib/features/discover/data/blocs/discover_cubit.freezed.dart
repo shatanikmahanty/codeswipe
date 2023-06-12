@@ -21,15 +21,11 @@ DiscoverState _$DiscoverStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DiscoverState {
   List<AppUser> get profiles => throw _privateConstructorUsedError;
-
   List<AppUser> get matches => throw _privateConstructorUsedError;
-
   List<AppUser> get requests => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $DiscoverStateCopyWith<DiscoverState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -40,7 +36,6 @@ abstract class $DiscoverStateCopyWith<$Res> {
   factory $DiscoverStateCopyWith(
           DiscoverState value, $Res Function(DiscoverState) then) =
       _$DiscoverStateCopyWithImpl<$Res, DiscoverState>;
-
   @useResult
   $Res call(
       {List<AppUser> profiles,
@@ -94,7 +89,6 @@ abstract class _$$_DiscoverStateCopyWith<$Res>
   factory _$$_DiscoverStateCopyWith(
           _$_DiscoverState value, $Res Function(_$_DiscoverState) then) =
       __$$_DiscoverStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -157,7 +151,6 @@ class _$_DiscoverState implements _DiscoverState {
       _$$_DiscoverStateFromJson(json);
 
   final List<AppUser> _profiles;
-
   @override
   @JsonKey()
   List<AppUser> get profiles {
@@ -167,7 +160,6 @@ class _$_DiscoverState implements _DiscoverState {
   }
 
   final List<AppUser> _matches;
-
   @override
   @JsonKey()
   List<AppUser> get matches {
@@ -177,7 +169,6 @@ class _$_DiscoverState implements _DiscoverState {
   }
 
   final List<AppUser> _requests;
-
   @override
   @JsonKey()
   List<AppUser> get requests {
@@ -242,16 +233,12 @@ abstract class _DiscoverState implements DiscoverState {
 
   @override
   List<AppUser> get profiles;
-
   @override
   List<AppUser> get matches;
-
   @override
   List<AppUser> get requests;
-
   @override
   bool get isLoading;
-
   @override
   @JsonKey(ignore: true)
   _$$_DiscoverStateCopyWith<_$_DiscoverState> get copyWith =>

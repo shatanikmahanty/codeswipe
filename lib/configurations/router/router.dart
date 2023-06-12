@@ -55,6 +55,11 @@ class AppRouter extends $AppRouter {
       ],
       children: appHomeRoutes,
     ),
+    CustomRoute(
+      path: '/matched',
+      page: MatchedDialogRoute.page,
+      customRouteBuilder: dialogRouteBuilder,
+    ),
   ];
 }
 

@@ -134,11 +134,7 @@ class TeamCubit extends HydratedCubit<TeamState> with CubitMaybeEmit {
 
     AuthCubit.instance.updateUserTeamID(document.$id);
 
-    emit(
-      state.copyWith(
-        team: UserTeam.fromJson(document.data),
-      ),
-    );
+    await loadUserTeam();
 
     return document.$id;
   }
