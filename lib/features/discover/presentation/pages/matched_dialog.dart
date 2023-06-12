@@ -23,8 +23,9 @@ class MatchedDialogPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(kPadding * 5),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const CodeSwipeAutoLeadingButton(),
+            const Spacer(),
             Text(
               'It\'s a match!',
               style: theme.textTheme.displaySmall?.copyWith(
@@ -71,7 +72,7 @@ class MatchedDialogPage extends StatelessWidget {
               child: const Text('Send a message'),
               onPressed: () {},
             ),
-            const SizedBox(height: kPadding * 4),
+            const Spacer(),
           ],
         ),
       ),
