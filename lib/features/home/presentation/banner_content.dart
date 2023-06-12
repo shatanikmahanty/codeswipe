@@ -38,7 +38,7 @@ class BannerContent extends StatelessWidget {
         color: Theme.of(context).primaryColor,
       ),
       child: SizedBox(
-        height: 300,
+        height: kBannerHeight,
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(

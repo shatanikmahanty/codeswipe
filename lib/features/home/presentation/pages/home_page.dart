@@ -23,7 +23,12 @@ class HomePage extends StatelessWidget {
         const BannerCarousel(),
         BlocBuilder<TeamCubit, TeamState>(
           builder: (context, state) => state.isLoading
-              ? const Center(child: CircularProgressIndicator())
+              ? const Padding(
+                  padding: EdgeInsets.all(
+                    kPadding,
+                  ),
+                  child: Center(child: CircularProgressIndicator()),
+                )
               : Column(
                   children: [
                     Padding(
