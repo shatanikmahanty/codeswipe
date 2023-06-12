@@ -4,6 +4,7 @@ import 'package:codeswipe/features/home/data/blocs/banner_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../../configurations/configurations.dart';
 
@@ -46,6 +47,7 @@ class _BannerCarouselState extends State<BannerCarousel> {
                             subHeading: item.subHeading,
                             buttonText: item.buttonText,
                             imgUrl: item.imgUrl,
+                            onButtonPressed: item.onClick,
                           ),
                         )
                         .toList(),
@@ -73,12 +75,14 @@ class _BannerContent extends StatelessWidget {
     required this.subHeading,
     required this.buttonText,
     required this.imgUrl,
+    required this.onButtonPressed,
   });
 
   final String heading;
   final String subHeading;
   final String buttonText;
   final String imgUrl;
+  final String? onButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +140,16 @@ class _BannerContent extends StatelessWidget {
                           backgroundColor: Colors.white,
                           foregroundColor: primaryColor,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          if (onButtonPressed == null) {
+                            return;
+                          } else if (onButtonPressed!.contains('launch')) {
+                            launchUrlString(
+                              onButtonPressed!.replaceFirst('launch:', ''),
+                              mode: LaunchMode.externalApplication,
+                            );
+                          }
+                        },
                         child: Text(
                           buttonText,
                         ),
