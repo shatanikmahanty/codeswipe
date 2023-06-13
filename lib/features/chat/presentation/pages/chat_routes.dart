@@ -6,8 +6,4 @@ final chatRoutes = [
     page: ChatListRoute.page,
     initial: true,
   ),
-  // AutoRoute(
-  //   path: ':roomID',
-  //   page: CreateTeamRoute.page,
-  // ),
 ];

@@ -52,27 +52,19 @@ mixin _$AppUser {
   String? get graduationYear => throw _privateConstructorUsedError;
   @JsonKey(name: 'course')
   String? get course => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'team_id')
   String? get teamId => throw _privateConstructorUsedError;
-
   String? get avatar => throw _privateConstructorUsedError;
-
   List<String>? get likes => throw _privateConstructorUsedError;
-
   List<String>? get dislikes => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'match_requests')
   List<String>? get matchRequests => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'matches')
   List<String>? get matches => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'chat_rooms')
   List<String>? get chatRooms => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -539,7 +531,6 @@ class _$_AppUser implements _AppUser {
   }
 
   final List<String>? _matches;
-
   @override
   @JsonKey(name: 'matches')
   List<String>? get matches {
@@ -551,7 +542,6 @@ class _$_AppUser implements _AppUser {
   }
 
   final List<String>? _chatRooms;
-
   @override
   @JsonKey(name: 'chat_rooms')
   List<String>? get chatRooms {
@@ -731,25 +721,19 @@ abstract class _AppUser implements AppUser {
   String? get teamId;
   @override
   String? get avatar;
-
   @override
   List<String>? get likes;
-
   @override
   List<String>? get dislikes;
-
   @override
   @JsonKey(name: 'match_requests')
   List<String>? get matchRequests;
-
   @override
   @JsonKey(name: 'matches')
   List<String>? get matches;
-
   @override
   @JsonKey(name: 'chat_rooms')
   List<String>? get chatRooms;
-
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

@@ -22,13 +22,10 @@ ChatRoom _$ChatRoomFromJson(Map<String, dynamic> json) {
 mixin _$ChatRoom {
   @JsonKey(name: '\$id')
   String get chatRoomId => throw _privateConstructorUsedError;
-
   String get senderImage => throw _privateConstructorUsedError;
-
   String get senderName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ChatRoomCopyWith<ChatRoom> get copyWith =>
       throw _privateConstructorUsedError;
@@ -38,7 +35,6 @@ mixin _$ChatRoom {
 abstract class $ChatRoomCopyWith<$Res> {
   factory $ChatRoomCopyWith(ChatRoom value, $Res Function(ChatRoom) then) =
       _$ChatRoomCopyWithImpl<$Res, ChatRoom>;
-
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String chatRoomId,
@@ -53,7 +49,6 @@ class _$ChatRoomCopyWithImpl<$Res, $Val extends ChatRoom>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -86,7 +81,6 @@ abstract class _$$_ChatRoomCopyWith<$Res> implements $ChatRoomCopyWith<$Res> {
   factory _$$_ChatRoomCopyWith(
           _$_ChatRoom value, $Res Function(_$_ChatRoom) then) =
       __$$_ChatRoomCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -194,13 +188,10 @@ abstract class _ChatRoom implements ChatRoom {
   @override
   @JsonKey(name: '\$id')
   String get chatRoomId;
-
   @override
   String get senderImage;
-
   @override
   String get senderName;
-
   @override
   @JsonKey(ignore: true)
   _$$_ChatRoomCopyWith<_$_ChatRoom> get copyWith =>

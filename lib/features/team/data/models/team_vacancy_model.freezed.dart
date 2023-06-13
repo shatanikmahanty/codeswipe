@@ -29,7 +29,6 @@ mixin _$TeamVacancy {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   String get createdBy => throw _privateConstructorUsedError;
-
   List<dynamic> get requests => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +42,6 @@ abstract class $TeamVacancyCopyWith<$Res> {
   factory $TeamVacancyCopyWith(
           TeamVacancy value, $Res Function(TeamVacancy) then) =
       _$TeamVacancyCopyWithImpl<$Res, TeamVacancy>;
-
   @useResult
   $Res call(
       {String position,
@@ -115,7 +113,6 @@ abstract class _$$_TeamVacancyCopyWith<$Res>
   factory _$$_TeamVacancyCopyWith(
           _$_TeamVacancy value, $Res Function(_$_TeamVacancy) then) =
       __$$_TeamVacancyCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -212,7 +209,6 @@ class _$_TeamVacancy implements _TeamVacancy {
   @JsonKey(name: 'created_by')
   final String createdBy;
   final List<dynamic> _requests;
-
   @override
   List<dynamic> get requests {
     if (_requests is EqualUnmodifiableListView) return _requests;
@@ -294,14 +290,11 @@ abstract class _TeamVacancy implements TeamVacancy {
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
-
   @override
   @JsonKey(name: 'created_by')
   String get createdBy;
-
   @override
   List<dynamic> get requests;
-
   @override
   @JsonKey(ignore: true)
   _$$_TeamVacancyCopyWith<_$_TeamVacancy> get copyWith =>

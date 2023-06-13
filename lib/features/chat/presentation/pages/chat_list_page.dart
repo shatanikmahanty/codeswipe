@@ -114,47 +114,68 @@ class ChatListPage extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final room = state.rooms[index];
                     final senderImage = state.rooms[index].senderImage;
-
-                    return Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: kPadding * 8,
-                            height: kPadding * 8,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: CachedNetworkImageProvider(
-                                  senderImage,
-                                  headers: senderImage.startsWith(kApiEndpoint)
-                                      ? const {
-                                          'X-Appwrite-Project': kProjectId,
-                                        }
-                                      : null,
+                    final lastMessageObject =
+                        state.messages[room.chatRoomId]?.last;
+                    final lastMessage = lastMessageObject?.message;
+                    return GestureDetector(
+                      onTap: () {
+                        context.router.push(
+                          ChatRoomRoute(roomId: room.chatRoomId),
+                        );
+                      },
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Hero(
+                              tag: room.senderImage,
+                              child: Container(
+                                width: kPadding * 8,
+                                height: kPadding * 8,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                      senderImage,
+                                      headers: senderImage
+                                              .startsWith(kApiEndpoint)
+                                          ? const {
+                                              'X-Appwrite-Project': kProjectId,
+                                            }
+                                          : null,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                        const SizedBox(
-                          width: kPadding * 2,
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Text(
-                            room.senderName,
-                            style: theme.textTheme.labelLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
+                          const SizedBox(
+                            width: kPadding * 2,
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  room.senderName,
+                                  style: theme.textTheme.labelLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: kPadding,
+                                ),
+                                Text(
+                                  lastMessage ?? 'Start Chatting now!',
+                                  style: theme.textTheme.titleSmall,
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                        const Expanded(
-                          flex: 1,
-                          child: Offstage(),
-                        ),
-                      ],
+                        ],
+                      ),
                     );
                   },
                 ),

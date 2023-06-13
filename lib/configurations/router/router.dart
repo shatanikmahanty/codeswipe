@@ -64,6 +64,10 @@ class AppRouter extends $AppRouter {
       path: '/upcoming-hackathons',
       page: UpcomingHackathonsRoute.page,
     ),
+    AutoRoute(
+      path: '/chat/:roomID',
+      page: ChatRoomRoute.page,
+    ),
   ];
 }
 

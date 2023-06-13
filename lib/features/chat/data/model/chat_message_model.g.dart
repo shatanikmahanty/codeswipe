@@ -12,7 +12,7 @@ _$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>
       messageId: json[r'$id'] as String,
       senderID: json['sender_id'] as String,
       message: json['message'] as String,
-      messageType: json['message_type'] as String,
+      messageType: json['message_type'] as String?,
       time: DateTime.parse(json['time'] as String),
     );
 

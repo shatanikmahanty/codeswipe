@@ -22,17 +22,14 @@ ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) {
 mixin _$ChatMessage {
   @JsonKey(name: 'sender_name')
   String get senderName => throw _privateConstructorUsedError;
-
   @JsonKey(name: '\$id')
   String get messageId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'sender_id')
   String get senderID => throw _privateConstructorUsedError;
-
   String get message => throw _privateConstructorUsedError;
 
   @JsonKey(name: 'message_type')
-  String get messageType => throw _privateConstructorUsedError;
+  String? get messageType => throw _privateConstructorUsedError;
 
   DateTime get time => throw _privateConstructorUsedError;
 
@@ -53,7 +50,7 @@ abstract class $ChatMessageCopyWith<$Res> {
       @JsonKey(name: '\$id') String messageId,
       @JsonKey(name: 'sender_id') String senderID,
       String message,
-      @JsonKey(name: 'message_type') String messageType,
+      @JsonKey(name: 'message_type') String? messageType,
       DateTime time});
 }
 
@@ -74,7 +71,7 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? messageId = null,
     Object? senderID = null,
     Object? message = null,
-    Object? messageType = null,
+    Object? messageType = freezed,
     Object? time = null,
   }) {
     return _then(_value.copyWith(
@@ -94,10 +91,10 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      messageType: null == messageType
+      messageType: freezed == messageType
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -119,7 +116,7 @@ abstract class _$$_ChatMessageCopyWith<$Res>
       @JsonKey(name: '\$id') String messageId,
       @JsonKey(name: 'sender_id') String senderID,
       String message,
-      @JsonKey(name: 'message_type') String messageType,
+      @JsonKey(name: 'message_type') String? messageType,
       DateTime time});
 }
 
@@ -138,7 +135,7 @@ class __$$_ChatMessageCopyWithImpl<$Res>
     Object? messageId = null,
     Object? senderID = null,
     Object? message = null,
-    Object? messageType = null,
+    Object? messageType = freezed,
     Object? time = null,
   }) {
     return _then(_$_ChatMessage(
@@ -158,10 +155,10 @@ class __$$_ChatMessageCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
-      messageType: null == messageType
+      messageType: freezed == messageType
           ? _value.messageType
           : messageType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       time: null == time
           ? _value.time
           : time // ignore: cast_nullable_to_non_nullable
@@ -178,7 +175,7 @@ class _$_ChatMessage implements _ChatMessage {
       @JsonKey(name: '\$id') required this.messageId,
       @JsonKey(name: 'sender_id') required this.senderID,
       required this.message,
-      @JsonKey(name: 'message_type') required this.messageType,
+      @JsonKey(name: 'message_type') this.messageType,
       required this.time});
 
   factory _$_ChatMessage.fromJson(Map<String, dynamic> json) =>
@@ -197,7 +194,7 @@ class _$_ChatMessage implements _ChatMessage {
   final String message;
   @override
   @JsonKey(name: 'message_type')
-  final String messageType;
+  final String? messageType;
   @override
   final DateTime time;
 
@@ -248,7 +245,7 @@ abstract class _ChatMessage implements ChatMessage {
       @JsonKey(name: '\$id') required final String messageId,
       @JsonKey(name: 'sender_id') required final String senderID,
       required final String message,
-      @JsonKey(name: 'message_type') required final String messageType,
+      @JsonKey(name: 'message_type') final String? messageType,
       required final DateTime time}) = _$_ChatMessage;
 
   factory _ChatMessage.fromJson(Map<String, dynamic> json) =
@@ -257,18 +254,20 @@ abstract class _ChatMessage implements ChatMessage {
   @override
   @JsonKey(name: 'sender_name')
   String get senderName;
-
   @override
   @JsonKey(name: '\$id')
   String get messageId;
   @override
   @JsonKey(name: 'sender_id')
   String get senderID;
+
   @override
   String get message;
+
   @override
   @JsonKey(name: 'message_type')
-  String get messageType;
+  String? get messageType;
+
   @override
   DateTime get time;
   @override

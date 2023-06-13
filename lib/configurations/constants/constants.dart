@@ -79,6 +79,7 @@ const kLocationField = 'location';
 const kPositionsField = 'positions';
 const kSkillsField = 'skills';
 const kExpectationsField = 'expectations';
+const kMessageField = 'message';
 
 ///User prefs
 const userSurveyAttemptedPref = 'user_survey_attempted';

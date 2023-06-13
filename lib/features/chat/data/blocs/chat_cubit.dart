@@ -121,35 +121,78 @@ class ChatCubit extends HydratedCubit<ChatState> with CubitMaybeEmit {
           isLoading: false,
         ),
       );
+      subscribeToChatRooms();
     }
   }
 
-  // Future<void> subscribeToChatRooms() async {
-  //   emit(
-  //     state.copyWith(
-  //       isLoading: true,
-  //     ),
-  //   );
-  //
-  //   final teamDocs = await _apiClient!.realtime.subscribe(
-  //     [
-  //       'database.${EnvironmentHelper().getDatabaseId()}.teams.',
-  //     ],
-  //   );
-  //
-  //   emit(
-  //     state.copyWith(
-  //       teams: teamDocs.documents
-  //           .map((team) => UserTeam.fromJson(team.data))
-  //           .toList(),
-  //       isLoading: false,
-  //     ),
-  //   );
-  // }
+  void clearChats() {
+    emit(
+      state.copyWith(
+        messages: {},
+        rooms: [],
+      ),
+    );
+  }
+
+  Future<void> subscribeToChatRooms() async {
+    final subscription = _apiClient!.realtime.subscribe(
+      [
+        'documents',
+      ],
+    );
+
+    subscription.stream.listen((event) {
+      if (event.payload.containsKey('message') &&
+          event.payload.containsKey('sender_name')) {
+        final message = ChatMessage.fromJson(event.payload);
+        addMessageToRoom(
+          roomId: event.payload['\$collectionId'],
+          chatMessage: message,
+        );
+      }
+    });
+  }
+
+  void addMessageToRoom({
+    required String roomId,
+    required ChatMessage chatMessage,
+  }) {
+    emit(state.copyWith(isLoading: true));
+    final messages = state.messages[roomId] ?? [];
+    messages.add(chatMessage);
+
+    Map<String, List<ChatMessage>> allRooms =
+        Map<String, List<ChatMessage>>.from(state.messages);
+    allRooms[roomId] = messages;
+
+    emit(
+      state.copyWith(
+        isLoading: false,
+        messages: allRooms,
+      ),
+    );
+  }
 
   @override
   ChatState? fromJson(Map<String, dynamic> json) => ChatState.fromJson(json);
 
   @override
   Map<String, dynamic>? toJson(ChatState state) => state.toJson();
+
+  Future<void> sendMessage({
+    required ChatMessage chatMessageModel,
+    required String roomId,
+  }) async {
+    await _apiClient!.databases.createDocument(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: roomId,
+      documentId: ID.unique(),
+      data: {
+        'message': chatMessageModel.message,
+        'sender_id': chatMessageModel.senderID,
+        'sender_name': chatMessageModel.senderName,
+        'time': chatMessageModel.time.toIso8601String(),
+      },
+    );
+  }
 }

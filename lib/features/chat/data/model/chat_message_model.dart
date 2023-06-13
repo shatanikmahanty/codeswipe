@@ -11,7 +11,7 @@ class ChatMessage with _$ChatMessage {
     @JsonKey(name: '\$id') required String messageId,
     @JsonKey(name: 'sender_id') required String senderID,
     required String message,
-    @JsonKey(name: 'message_type') required String messageType,
+    @JsonKey(name: 'message_type') String? messageType,
     required DateTime time,
   }) = _ChatMessage;
 
