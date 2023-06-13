@@ -52,17 +52,27 @@ mixin _$AppUser {
   String? get graduationYear => throw _privateConstructorUsedError;
   @JsonKey(name: 'course')
   String? get course => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'team_id')
   String? get teamId => throw _privateConstructorUsedError;
+
   String? get avatar => throw _privateConstructorUsedError;
+
   List<String>? get likes => throw _privateConstructorUsedError;
+
   List<String>? get dislikes => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'match_requests')
   List<String>? get matchRequests => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'matches')
   List<String>? get matches => throw _privateConstructorUsedError;
 
+  @JsonKey(name: 'chat_rooms')
+  List<String>? get chatRooms => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $AppUserCopyWith<AppUser> get copyWith => throw _privateConstructorUsedError;
 }
@@ -75,40 +85,28 @@ abstract class $AppUserCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      @JsonKey(includeIfNull: false)
-          String? email,
-      @JsonKey(includeIfNull: false)
-          String? phone,
-      @JsonKey(name: 'gh_access_token')
-          String? ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry')
-          String? ghTokenExpiry,
-      @JsonKey(includeIfNull: false)
-          List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests')
-          String? hackathonModeInterests,
-      @JsonKey(name: 'current_location')
-          String? currentLocation,
+      @JsonKey(includeIfNull: false) String? email,
+      @JsonKey(includeIfNull: false) String? phone,
+      @JsonKey(name: 'gh_access_token') String? ghAccessToken,
+      @JsonKey(name: 'gh_token_expiry') String? ghTokenExpiry,
+      @JsonKey(includeIfNull: false) List<String>? skills,
+      @JsonKey(name: 'hackathon_mode_interests') String? hackathonModeInterests,
+      @JsonKey(name: 'current_location') String? currentLocation,
       @JsonKey(name: 'teammate_preferred_location')
-          String? teamMemberPreferredLocation,
+      String? teamMemberPreferredLocation,
       @JsonKey(name: 'hackathon_theme_interests')
-          List<String>? hackathonThemeInterests,
+      List<String>? hackathonThemeInterests,
       String? bio,
-      @JsonKey(name: 'college_name')
-          String? collegeName,
-      @JsonKey(name: 'graduation_year')
-          String? graduationYear,
-      @JsonKey(name: 'course')
-          String? course,
-      @JsonKey(name: 'team_id')
-          String? teamId,
+      @JsonKey(name: 'college_name') String? collegeName,
+      @JsonKey(name: 'graduation_year') String? graduationYear,
+      @JsonKey(name: 'course') String? course,
+      @JsonKey(name: 'team_id') String? teamId,
       String? avatar,
       List<String>? likes,
       List<String>? dislikes,
-      @JsonKey(name: 'match_requests')
-          List<String>? matchRequests,
-      @JsonKey(name: 'matches')
-          List<String>? matches});
+      @JsonKey(name: 'match_requests') List<String>? matchRequests,
+      @JsonKey(name: 'matches') List<String>? matches,
+      @JsonKey(name: 'chat_rooms') List<String>? chatRooms});
 }
 
 /// @nodoc
@@ -145,6 +143,7 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
     Object? dislikes = freezed,
     Object? matchRequests = freezed,
     Object? matches = freezed,
+    Object? chatRooms = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -231,6 +230,10 @@ class _$AppUserCopyWithImpl<$Res, $Val extends AppUser>
           ? _value.matches
           : matches // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      chatRooms: freezed == chatRooms
+          ? _value.chatRooms
+          : chatRooms // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ) as $Val);
   }
 }
@@ -245,40 +248,28 @@ abstract class _$$_AppUserCopyWith<$Res> implements $AppUserCopyWith<$Res> {
   $Res call(
       {String id,
       String name,
-      @JsonKey(includeIfNull: false)
-          String? email,
-      @JsonKey(includeIfNull: false)
-          String? phone,
-      @JsonKey(name: 'gh_access_token')
-          String? ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry')
-          String? ghTokenExpiry,
-      @JsonKey(includeIfNull: false)
-          List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests')
-          String? hackathonModeInterests,
-      @JsonKey(name: 'current_location')
-          String? currentLocation,
+      @JsonKey(includeIfNull: false) String? email,
+      @JsonKey(includeIfNull: false) String? phone,
+      @JsonKey(name: 'gh_access_token') String? ghAccessToken,
+      @JsonKey(name: 'gh_token_expiry') String? ghTokenExpiry,
+      @JsonKey(includeIfNull: false) List<String>? skills,
+      @JsonKey(name: 'hackathon_mode_interests') String? hackathonModeInterests,
+      @JsonKey(name: 'current_location') String? currentLocation,
       @JsonKey(name: 'teammate_preferred_location')
-          String? teamMemberPreferredLocation,
+      String? teamMemberPreferredLocation,
       @JsonKey(name: 'hackathon_theme_interests')
-          List<String>? hackathonThemeInterests,
+      List<String>? hackathonThemeInterests,
       String? bio,
-      @JsonKey(name: 'college_name')
-          String? collegeName,
-      @JsonKey(name: 'graduation_year')
-          String? graduationYear,
-      @JsonKey(name: 'course')
-          String? course,
-      @JsonKey(name: 'team_id')
-          String? teamId,
+      @JsonKey(name: 'college_name') String? collegeName,
+      @JsonKey(name: 'graduation_year') String? graduationYear,
+      @JsonKey(name: 'course') String? course,
+      @JsonKey(name: 'team_id') String? teamId,
       String? avatar,
       List<String>? likes,
       List<String>? dislikes,
-      @JsonKey(name: 'match_requests')
-          List<String>? matchRequests,
-      @JsonKey(name: 'matches')
-          List<String>? matches});
+      @JsonKey(name: 'match_requests') List<String>? matchRequests,
+      @JsonKey(name: 'matches') List<String>? matches,
+      @JsonKey(name: 'chat_rooms') List<String>? chatRooms});
 }
 
 /// @nodoc
@@ -312,6 +303,7 @@ class __$$_AppUserCopyWithImpl<$Res>
     Object? dislikes = freezed,
     Object? matchRequests = freezed,
     Object? matches = freezed,
+    Object? chatRooms = freezed,
   }) {
     return _then(_$_AppUser(
       id: null == id
@@ -398,6 +390,10 @@ class __$$_AppUserCopyWithImpl<$Res>
           ? _value._matches
           : matches // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      chatRooms: freezed == chatRooms
+          ? _value._chatRooms
+          : chatRooms // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
     ));
   }
 }
@@ -408,46 +404,35 @@ class _$_AppUser implements _AppUser {
   const _$_AppUser(
       {required this.id,
       required this.name,
-      @JsonKey(includeIfNull: false)
-          this.email,
-      @JsonKey(includeIfNull: false)
-          this.phone,
-      @JsonKey(name: 'gh_access_token')
-          this.ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry')
-          this.ghTokenExpiry,
-      @JsonKey(includeIfNull: false)
-          final List<String>? skills,
-      @JsonKey(name: 'hackathon_mode_interests')
-          this.hackathonModeInterests,
-      @JsonKey(name: 'current_location')
-          this.currentLocation,
+      @JsonKey(includeIfNull: false) this.email,
+      @JsonKey(includeIfNull: false) this.phone,
+      @JsonKey(name: 'gh_access_token') this.ghAccessToken,
+      @JsonKey(name: 'gh_token_expiry') this.ghTokenExpiry,
+      @JsonKey(includeIfNull: false) final List<String>? skills,
+      @JsonKey(name: 'hackathon_mode_interests') this.hackathonModeInterests,
+      @JsonKey(name: 'current_location') this.currentLocation,
       @JsonKey(name: 'teammate_preferred_location')
-          this.teamMemberPreferredLocation,
+      this.teamMemberPreferredLocation,
       @JsonKey(name: 'hackathon_theme_interests')
-          final List<String>? hackathonThemeInterests,
+      final List<String>? hackathonThemeInterests,
       this.bio,
-      @JsonKey(name: 'college_name')
-          this.collegeName,
-      @JsonKey(name: 'graduation_year')
-          this.graduationYear,
-      @JsonKey(name: 'course')
-          this.course,
-      @JsonKey(name: 'team_id')
-          this.teamId,
+      @JsonKey(name: 'college_name') this.collegeName,
+      @JsonKey(name: 'graduation_year') this.graduationYear,
+      @JsonKey(name: 'course') this.course,
+      @JsonKey(name: 'team_id') this.teamId,
       this.avatar,
       final List<String>? likes,
       final List<String>? dislikes,
-      @JsonKey(name: 'match_requests')
-          final List<String>? matchRequests,
-      @JsonKey(name: 'matches')
-          final List<String>? matches})
+      @JsonKey(name: 'match_requests') final List<String>? matchRequests,
+      @JsonKey(name: 'matches') final List<String>? matches,
+      @JsonKey(name: 'chat_rooms') final List<String>? chatRooms})
       : _skills = skills,
         _hackathonThemeInterests = hackathonThemeInterests,
         _likes = likes,
         _dislikes = dislikes,
         _matchRequests = matchRequests,
-        _matches = matches;
+        _matches = matches,
+        _chatRooms = chatRooms;
 
   factory _$_AppUser.fromJson(Map<String, dynamic> json) =>
       _$$_AppUserFromJson(json);
@@ -554,6 +539,7 @@ class _$_AppUser implements _AppUser {
   }
 
   final List<String>? _matches;
+
   @override
   @JsonKey(name: 'matches')
   List<String>? get matches {
@@ -564,9 +550,21 @@ class _$_AppUser implements _AppUser {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<String>? _chatRooms;
+
+  @override
+  @JsonKey(name: 'chat_rooms')
+  List<String>? get chatRooms {
+    final value = _chatRooms;
+    if (value == null) return null;
+    if (_chatRooms is EqualUnmodifiableListView) return _chatRooms;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   String toString() {
-    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry, skills: $skills, hackathonModeInterests: $hackathonModeInterests, currentLocation: $currentLocation, teamMemberPreferredLocation: $teamMemberPreferredLocation, hackathonThemeInterests: $hackathonThemeInterests, bio: $bio, collegeName: $collegeName, graduationYear: $graduationYear, course: $course, teamId: $teamId, avatar: $avatar, likes: $likes, dislikes: $dislikes, matchRequests: $matchRequests, matches: $matches)';
+    return 'AppUser(id: $id, name: $name, email: $email, phone: $phone, ghAccessToken: $ghAccessToken, ghTokenExpiry: $ghTokenExpiry, skills: $skills, hackathonModeInterests: $hackathonModeInterests, currentLocation: $currentLocation, teamMemberPreferredLocation: $teamMemberPreferredLocation, hackathonThemeInterests: $hackathonThemeInterests, bio: $bio, collegeName: $collegeName, graduationYear: $graduationYear, course: $course, teamId: $teamId, avatar: $avatar, likes: $likes, dislikes: $dislikes, matchRequests: $matchRequests, matches: $matches, chatRooms: $chatRooms)';
   }
 
   @override
@@ -605,7 +603,9 @@ class _$_AppUser implements _AppUser {
             const DeepCollectionEquality().equals(other._dislikes, _dislikes) &&
             const DeepCollectionEquality()
                 .equals(other._matchRequests, _matchRequests) &&
-            const DeepCollectionEquality().equals(other._matches, _matches));
+            const DeepCollectionEquality().equals(other._matches, _matches) &&
+            const DeepCollectionEquality()
+                .equals(other._chatRooms, _chatRooms));
   }
 
   @JsonKey(ignore: true)
@@ -632,7 +632,8 @@ class _$_AppUser implements _AppUser {
         const DeepCollectionEquality().hash(_likes),
         const DeepCollectionEquality().hash(_dislikes),
         const DeepCollectionEquality().hash(_matchRequests),
-        const DeepCollectionEquality().hash(_matches)
+        const DeepCollectionEquality().hash(_matches),
+        const DeepCollectionEquality().hash(_chatRooms)
       ]);
 
   @JsonKey(ignore: true)
@@ -653,40 +654,29 @@ abstract class _AppUser implements AppUser {
   const factory _AppUser(
       {required final String id,
       required final String name,
-      @JsonKey(includeIfNull: false)
-          final String? email,
-      @JsonKey(includeIfNull: false)
-          final String? phone,
-      @JsonKey(name: 'gh_access_token')
-          final String? ghAccessToken,
-      @JsonKey(name: 'gh_token_expiry')
-          final String? ghTokenExpiry,
-      @JsonKey(includeIfNull: false)
-          final List<String>? skills,
+      @JsonKey(includeIfNull: false) final String? email,
+      @JsonKey(includeIfNull: false) final String? phone,
+      @JsonKey(name: 'gh_access_token') final String? ghAccessToken,
+      @JsonKey(name: 'gh_token_expiry') final String? ghTokenExpiry,
+      @JsonKey(includeIfNull: false) final List<String>? skills,
       @JsonKey(name: 'hackathon_mode_interests')
-          final String? hackathonModeInterests,
-      @JsonKey(name: 'current_location')
-          final String? currentLocation,
+      final String? hackathonModeInterests,
+      @JsonKey(name: 'current_location') final String? currentLocation,
       @JsonKey(name: 'teammate_preferred_location')
-          final String? teamMemberPreferredLocation,
+      final String? teamMemberPreferredLocation,
       @JsonKey(name: 'hackathon_theme_interests')
-          final List<String>? hackathonThemeInterests,
+      final List<String>? hackathonThemeInterests,
       final String? bio,
-      @JsonKey(name: 'college_name')
-          final String? collegeName,
-      @JsonKey(name: 'graduation_year')
-          final String? graduationYear,
-      @JsonKey(name: 'course')
-          final String? course,
-      @JsonKey(name: 'team_id')
-          final String? teamId,
+      @JsonKey(name: 'college_name') final String? collegeName,
+      @JsonKey(name: 'graduation_year') final String? graduationYear,
+      @JsonKey(name: 'course') final String? course,
+      @JsonKey(name: 'team_id') final String? teamId,
       final String? avatar,
       final List<String>? likes,
       final List<String>? dislikes,
-      @JsonKey(name: 'match_requests')
-          final List<String>? matchRequests,
-      @JsonKey(name: 'matches')
-          final List<String>? matches}) = _$_AppUser;
+      @JsonKey(name: 'match_requests') final List<String>? matchRequests,
+      @JsonKey(name: 'matches') final List<String>? matches,
+      @JsonKey(name: 'chat_rooms') final List<String>? chatRooms}) = _$_AppUser;
 
   factory _AppUser.fromJson(Map<String, dynamic> json) = _$_AppUser.fromJson;
 
@@ -741,16 +731,25 @@ abstract class _AppUser implements AppUser {
   String? get teamId;
   @override
   String? get avatar;
+
   @override
   List<String>? get likes;
+
   @override
   List<String>? get dislikes;
+
   @override
   @JsonKey(name: 'match_requests')
   List<String>? get matchRequests;
+
   @override
   @JsonKey(name: 'matches')
   List<String>? get matches;
+
+  @override
+  @JsonKey(name: 'chat_rooms')
+  List<String>? get chatRooms;
+
   @override
   @JsonKey(ignore: true)
   _$$_AppUserCopyWith<_$_AppUser> get copyWith =>

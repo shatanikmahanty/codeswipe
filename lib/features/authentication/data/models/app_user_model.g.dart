@@ -39,6 +39,9 @@ _$_AppUser _$$_AppUserFromJson(Map<String, dynamic> json) => _$_AppUser(
           .toList(),
       matches:
           (json['matches'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      chatRooms: (json['chat_rooms'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
@@ -72,5 +75,6 @@ Map<String, dynamic> _$$_AppUserToJson(_$_AppUser instance) {
   val['dislikes'] = instance.dislikes;
   val['match_requests'] = instance.matchRequests;
   val['matches'] = instance.matches;
+  val['chat_rooms'] = instance.chatRooms;
   return val;
 }

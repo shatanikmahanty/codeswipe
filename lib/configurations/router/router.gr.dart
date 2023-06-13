@@ -297,7 +297,7 @@ abstract class $AppRouter extends _i27.RootStackRouter {
         routeData: routeData,
         child: _i27.DeferredWidget(
           _i25.loadLibrary,
-          () => _i25.ChatRouterPage(),
+          () => _i27.WrappedRoute(child: _i25.ChatRouterPage()),
         ),
       );
     },
