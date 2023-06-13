@@ -7,8 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../app/data/api_client.dart';
 
-part 'hackathon_cubit.freezed.dart';d.dart';
-
+part 'hackathon_cubit.freezed.dart';
 part 'hackathon_cubit.g.dart';
 
 @freezed
