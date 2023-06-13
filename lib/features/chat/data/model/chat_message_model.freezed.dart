@@ -20,7 +20,8 @@ ChatMessage _$ChatMessageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ChatMessage {
-  String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'sender_name')
+  String get senderName => throw _privateConstructorUsedError;
 
   @JsonKey(name: '\$id')
   String get messageId => throw _privateConstructorUsedError;
@@ -36,7 +37,6 @@ mixin _$ChatMessage {
   DateTime get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ChatMessageCopyWith<ChatMessage> get copyWith =>
       throw _privateConstructorUsedError;
@@ -47,10 +47,9 @@ abstract class $ChatMessageCopyWith<$Res> {
   factory $ChatMessageCopyWith(
           ChatMessage value, $Res Function(ChatMessage) then) =
       _$ChatMessageCopyWithImpl<$Res, ChatMessage>;
-
   @useResult
   $Res call(
-      {String name,
+      {@JsonKey(name: 'sender_name') String senderName,
       @JsonKey(name: '\$id') String messageId,
       @JsonKey(name: 'sender_id') String senderID,
       String message,
@@ -65,14 +64,13 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? senderName = null,
     Object? messageId = null,
     Object? senderID = null,
     Object? message = null,
@@ -80,9 +78,9 @@ class _$ChatMessageCopyWithImpl<$Res, $Val extends ChatMessage>
     Object? time = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
               as String,
       messageId: null == messageId
           ? _value.messageId
@@ -114,11 +112,10 @@ abstract class _$$_ChatMessageCopyWith<$Res>
   factory _$$_ChatMessageCopyWith(
           _$_ChatMessage value, $Res Function(_$_ChatMessage) then) =
       __$$_ChatMessageCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
-      {String name,
+      {@JsonKey(name: 'sender_name') String senderName,
       @JsonKey(name: '\$id') String messageId,
       @JsonKey(name: 'sender_id') String senderID,
       String message,
@@ -137,7 +134,7 @@ class __$$_ChatMessageCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? senderName = null,
     Object? messageId = null,
     Object? senderID = null,
     Object? message = null,
@@ -145,9 +142,9 @@ class __$$_ChatMessageCopyWithImpl<$Res>
     Object? time = null,
   }) {
     return _then(_$_ChatMessage(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      senderName: null == senderName
+          ? _value.senderName
+          : senderName // ignore: cast_nullable_to_non_nullable
               as String,
       messageId: null == messageId
           ? _value.messageId
@@ -177,7 +174,7 @@ class __$$_ChatMessageCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ChatMessage implements _ChatMessage {
   const _$_ChatMessage(
-      {required this.name,
+      {@JsonKey(name: 'sender_name') required this.senderName,
       @JsonKey(name: '\$id') required this.messageId,
       @JsonKey(name: 'sender_id') required this.senderID,
       required this.message,
@@ -188,7 +185,8 @@ class _$_ChatMessage implements _ChatMessage {
       _$$_ChatMessageFromJson(json);
 
   @override
-  final String name;
+  @JsonKey(name: 'sender_name')
+  final String senderName;
   @override
   @JsonKey(name: '\$id')
   final String messageId;
@@ -205,7 +203,7 @@ class _$_ChatMessage implements _ChatMessage {
 
   @override
   String toString() {
-    return 'ChatMessage(name: $name, messageId: $messageId, senderID: $senderID, message: $message, messageType: $messageType, time: $time)';
+    return 'ChatMessage(senderName: $senderName, messageId: $messageId, senderID: $senderID, message: $message, messageType: $messageType, time: $time)';
   }
 
   @override
@@ -213,7 +211,8 @@ class _$_ChatMessage implements _ChatMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ChatMessage &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.senderName, senderName) ||
+                other.senderName == senderName) &&
             (identical(other.messageId, messageId) ||
                 other.messageId == messageId) &&
             (identical(other.senderID, senderID) ||
@@ -227,7 +226,7 @@ class _$_ChatMessage implements _ChatMessage {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, messageId, senderID, message, messageType, time);
+      runtimeType, senderName, messageId, senderID, message, messageType, time);
 
   @JsonKey(ignore: true)
   @override
@@ -245,7 +244,7 @@ class _$_ChatMessage implements _ChatMessage {
 
 abstract class _ChatMessage implements ChatMessage {
   const factory _ChatMessage(
-      {required final String name,
+      {@JsonKey(name: 'sender_name') required final String senderName,
       @JsonKey(name: '\$id') required final String messageId,
       @JsonKey(name: 'sender_id') required final String senderID,
       required final String message,
@@ -256,26 +255,22 @@ abstract class _ChatMessage implements ChatMessage {
       _$_ChatMessage.fromJson;
 
   @override
-  String get name;
+  @JsonKey(name: 'sender_name')
+  String get senderName;
 
   @override
   @JsonKey(name: '\$id')
   String get messageId;
-
   @override
   @JsonKey(name: 'sender_id')
   String get senderID;
-
   @override
   String get message;
-
   @override
   @JsonKey(name: 'message_type')
   String get messageType;
-
   @override
   DateTime get time;
-
   @override
   @JsonKey(ignore: true)
   _$$_ChatMessageCopyWith<_$_ChatMessage> get copyWith =>

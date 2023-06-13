@@ -21,9 +21,14 @@ ChatState _$ChatStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ChatState {
   List<ChatRoom> get rooms => throw _privateConstructorUsedError;
+
+  Map<String, List<ChatMessage>> get messages =>
+      throw _privateConstructorUsedError;
+
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $ChatStateCopyWith<ChatState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -33,8 +38,12 @@ mixin _$ChatState {
 abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res, ChatState>;
+
   @useResult
-  $Res call({List<ChatRoom> rooms, bool isLoading});
+  $Res call(
+      {List<ChatRoom> rooms,
+      Map<String, List<ChatMessage>> messages,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -51,6 +60,7 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
   @override
   $Res call({
     Object? rooms = null,
+    Object? messages = null,
     Object? isLoading = null,
   }) {
     return _then(_value.copyWith(
@@ -58,6 +68,10 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
           ? _value.rooms
           : rooms // ignore: cast_nullable_to_non_nullable
               as List<ChatRoom>,
+      messages: null == messages
+          ? _value.messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<ChatMessage>>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -71,9 +85,13 @@ abstract class _$$_ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
   factory _$$_ChatStateCopyWith(
           _$_ChatState value, $Res Function(_$_ChatState) then) =
       __$$_ChatStateCopyWithImpl<$Res>;
+
   @override
   @useResult
-  $Res call({List<ChatRoom> rooms, bool isLoading});
+  $Res call(
+      {List<ChatRoom> rooms,
+      Map<String, List<ChatMessage>> messages,
+      bool isLoading});
 }
 
 /// @nodoc
@@ -88,6 +106,7 @@ class __$$_ChatStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? rooms = null,
+    Object? messages = null,
     Object? isLoading = null,
   }) {
     return _then(_$_ChatState(
@@ -95,6 +114,10 @@ class __$$_ChatStateCopyWithImpl<$Res>
           ? _value._rooms
           : rooms // ignore: cast_nullable_to_non_nullable
               as List<ChatRoom>,
+      messages: null == messages
+          ? _value._messages
+          : messages // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<ChatMessage>>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -107,13 +130,17 @@ class __$$_ChatStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ChatState implements _ChatState {
   const _$_ChatState(
-      {final List<ChatRoom> rooms = const [], this.isLoading = false})
-      : _rooms = rooms;
+      {final List<ChatRoom> rooms = const [],
+      final Map<String, List<ChatMessage>> messages = const {},
+      this.isLoading = false})
+      : _rooms = rooms,
+        _messages = messages;
 
   factory _$_ChatState.fromJson(Map<String, dynamic> json) =>
       _$$_ChatStateFromJson(json);
 
   final List<ChatRoom> _rooms;
+
   @override
   @JsonKey()
   List<ChatRoom> get rooms {
@@ -122,13 +149,23 @@ class _$_ChatState implements _ChatState {
     return EqualUnmodifiableListView(_rooms);
   }
 
+  final Map<String, List<ChatMessage>> _messages;
+
+  @override
+  @JsonKey()
+  Map<String, List<ChatMessage>> get messages {
+    if (_messages is EqualUnmodifiableMapView) return _messages;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_messages);
+  }
+
   @override
   @JsonKey()
   final bool isLoading;
 
   @override
   String toString() {
-    return 'ChatState(rooms: $rooms, isLoading: $isLoading)';
+    return 'ChatState(rooms: $rooms, messages: $messages, isLoading: $isLoading)';
   }
 
   @override
@@ -137,6 +174,7 @@ class _$_ChatState implements _ChatState {
         (other.runtimeType == runtimeType &&
             other is _$_ChatState &&
             const DeepCollectionEquality().equals(other._rooms, _rooms) &&
+            const DeepCollectionEquality().equals(other._messages, _messages) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading));
   }
@@ -144,7 +182,10 @@ class _$_ChatState implements _ChatState {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_rooms), isLoading);
+      runtimeType,
+      const DeepCollectionEquality().hash(_rooms),
+      const DeepCollectionEquality().hash(_messages),
+      isLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -161,16 +202,23 @@ class _$_ChatState implements _ChatState {
 }
 
 abstract class _ChatState implements ChatState {
-  const factory _ChatState({final List<ChatRoom> rooms, final bool isLoading}) =
-      _$_ChatState;
+  const factory _ChatState(
+      {final List<ChatRoom> rooms,
+      final Map<String, List<ChatMessage>> messages,
+      final bool isLoading}) = _$_ChatState;
 
   factory _ChatState.fromJson(Map<String, dynamic> json) =
       _$_ChatState.fromJson;
 
   @override
   List<ChatRoom> get rooms;
+
+  @override
+  Map<String, List<ChatMessage>> get messages;
+
   @override
   bool get isLoading;
+
   @override
   @JsonKey(ignore: true)
   _$$_ChatStateCopyWith<_$_ChatState> get copyWith =>

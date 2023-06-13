@@ -3,6 +3,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/chat/data/blocs/chat_cubit.dart';
 import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:codeswipe/utils/appwrite_storage_image_url_helper.dart';
+import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -120,8 +121,8 @@ class ChatListPage extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Container(
-                            width: kPadding * 6,
-                            height: kPadding * 6,
+                            width: kPadding * 8,
+                            height: kPadding * 8,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               image: DecorationImage(
@@ -136,6 +137,9 @@ class ChatListPage extends StatelessWidget {
                               ),
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          width: kPadding * 2,
                         ),
                         Expanded(
                           flex: 3,
@@ -172,29 +176,36 @@ class _GroupChatBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(kPadding * 2),
-        child: Column(
-          children: [
-            CircleAvatar(
-              radius: kPadding * 5,
-              backgroundImage: CachedNetworkImageProvider(
-                avatar,
-                headers: avatar.startsWith(kApiEndpoint)
-                    ? const {
-                        'X-Appwrite-Project': kProjectId,
-                      }
-                    : null,
+        child: GestureDetector(
+          onTap: () {
+            DjangoflowAppSnackbar.showInfo(
+              'Group chats coming soon!',
+            );
+          },
+          child: Column(
+            children: [
+              CircleAvatar(
+                radius: kPadding * 5,
+                backgroundImage: CachedNetworkImageProvider(
+                  avatar,
+                  headers: avatar.startsWith(kApiEndpoint)
+                      ? const {
+                          'X-Appwrite-Project': kProjectId,
+                        }
+                      : null,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: kPadding * 2,
-            ),
-            Text(
-              name,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
+              const SizedBox(
+                height: kPadding * 2,
               ),
-            ),
-          ],
+              Text(
+                name,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       );
 }

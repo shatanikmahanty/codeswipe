@@ -8,7 +8,7 @@ part of 'chat_message_model.dart';
 
 _$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>
     _$_ChatMessage(
-      name: json['name'] as String,
+      senderName: json['sender_name'] as String,
       messageId: json[r'$id'] as String,
       senderID: json['sender_id'] as String,
       message: json['message'] as String,
@@ -18,7 +18,7 @@ _$_ChatMessage _$$_ChatMessageFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_ChatMessageToJson(_$_ChatMessage instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'sender_name': instance.senderName,
       r'$id': instance.messageId,
       'sender_id': instance.senderID,
       'message': instance.message,

@@ -11,11 +11,20 @@ _$_ChatState _$$_ChatStateFromJson(Map<String, dynamic> json) => _$_ChatState(
               ?.map((e) => ChatRoom.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      messages: (json['messages'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(
+                k,
+                (e as List<dynamic>)
+                    .map((e) => ChatMessage.fromJson(e as Map<String, dynamic>))
+                    .toList()),
+          ) ??
+          const {},
       isLoading: json['isLoading'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$_ChatStateToJson(_$_ChatState instance) =>
     <String, dynamic>{
       'rooms': instance.rooms,
+      'messages': instance.messages,
       'isLoading': instance.isLoading,
     };

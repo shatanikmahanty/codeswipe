@@ -7,7 +7,7 @@ part 'chat_message_model.g.dart';
 @freezed
 class ChatMessage with _$ChatMessage {
   const factory ChatMessage({
-    required String name,
+    @JsonKey(name: 'sender_name') required String senderName,
     @JsonKey(name: '\$id') required String messageId,
     @JsonKey(name: 'sender_id') required String senderID,
     required String message,

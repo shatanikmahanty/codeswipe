@@ -16,7 +16,8 @@ class ChatRouterPage extends StatelessWidget implements AutoRouteWrapper {
           ..initialize(
             apiClient: context.read(),
           )
-          ..loadChatRooms(),
+          ..loadChatRooms()
+          ..getMessagesForChatRooms(),
         child: this,
       );
 }
