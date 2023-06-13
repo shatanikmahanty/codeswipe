@@ -21,11 +21,9 @@ ChatState _$ChatStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ChatState {
   List<ChatRoom> get rooms => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ChatStateCopyWith<ChatState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -35,7 +33,6 @@ mixin _$ChatState {
 abstract class $ChatStateCopyWith<$Res> {
   factory $ChatStateCopyWith(ChatState value, $Res Function(ChatState) then) =
       _$ChatStateCopyWithImpl<$Res, ChatState>;
-
   @useResult
   $Res call({List<ChatRoom> rooms, bool isLoading});
 }
@@ -47,7 +44,6 @@ class _$ChatStateCopyWithImpl<$Res, $Val extends ChatState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -75,7 +71,6 @@ abstract class _$$_ChatStateCopyWith<$Res> implements $ChatStateCopyWith<$Res> {
   factory _$$_ChatStateCopyWith(
           _$_ChatState value, $Res Function(_$_ChatState) then) =
       __$$_ChatStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({List<ChatRoom> rooms, bool isLoading});
@@ -119,7 +114,6 @@ class _$_ChatState implements _ChatState {
       _$$_ChatStateFromJson(json);
 
   final List<ChatRoom> _rooms;
-
   @override
   @JsonKey()
   List<ChatRoom> get rooms {
@@ -175,10 +169,8 @@ abstract class _ChatState implements ChatState {
 
   @override
   List<ChatRoom> get rooms;
-
   @override
   bool get isLoading;
-
   @override
   @JsonKey(ignore: true)
   _$$_ChatStateCopyWith<_$_ChatState> get copyWith =>

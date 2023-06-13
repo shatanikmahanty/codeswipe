@@ -50,6 +50,6 @@ final appHomeRoutes = [
   ),
   AutoRoute(
     path: 'profile',
-    page: UnknownRoute.page,
+    page: ProfileRoute.page,
   ),
 ];

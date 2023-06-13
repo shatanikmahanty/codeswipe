@@ -21,7 +21,7 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
           HomeRoute(),
           DiscoverRouter(),
           ChatRouter(),
-          UnknownRoute(),
+          ProfileRoute(),
         ],
         transitionBuilder: (context, child, animation) {
           const begin = Offset(1.0, 0.0);
@@ -54,7 +54,7 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
         animationCurve: Curves.easeInOut,
         resizeToAvoidBottomInset: false,
         appBarBuilder: (context, tabsRouter) {
-          final action = tabsRouter.activeIndex == 1
+          Widget action = tabsRouter.activeIndex == 1
               ? tabsRouter.current.topMatch.name == 'list'
                   ? const Offstage()
                   : CodeSwipeIconButton(
@@ -67,6 +67,10 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
                   onPressed: () => AuthCubit.instance.logout(),
                   icon: Icons.logout,
                 );
+
+          if (tabsRouter.activeIndex == 2 || tabsRouter.activeIndex == 3) {
+            action = const Offstage();
+          }
 
           return CodeSwipeAppBar(
             centerTitle: true,
