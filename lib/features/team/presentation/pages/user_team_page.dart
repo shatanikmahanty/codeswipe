@@ -7,7 +7,7 @@ import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../app/presentation/user_action_list_tile.dart';
+import '../../../app/presentation/user_action_list_tile.dart';
 
 @RoutePage()
 class UserTeamPage extends StatelessWidget {
@@ -15,7 +15,7 @@ class UserTeamPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CodeSwipeScaffold(
-        body: SingleChildScrollView(
+        body: Padding(
           padding: const EdgeInsets.all(kPadding * 4),
           child: Column(
             children: [
@@ -29,16 +29,17 @@ class UserTeamPage extends StatelessWidget {
               const SizedBox(height: kPadding * 4),
               BlocBuilder<TeamCubit, TeamState>(
                 builder: (context, state) {
+                  final team = state.team;
+                  final members = team?.members;
                   if (state.isLoading) {
                     return const Center(child: CircularProgressIndicator());
+                  } else if (team == null || members == null) {
+                    return const Offstage();
                   } else {
-                    final team = state.team!;
-                    final members = team.members!;
                     final memberRoles = team.memberRoles;
 
                     return ListView.builder(
                       shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         final member = members[index];
                         return Padding(
@@ -130,9 +131,18 @@ class UserTeamPage extends StatelessWidget {
                   }
                 },
               ),
+              const Spacer(),
+              ElevatedButton(
+                onPressed: () {
+                  context.router.push(const PostVacancyTeammatesRoute());
+                },
+                child: const Text(
+                  'Search for members',
+                ),
+              ),
             ],
           ),
         ),
-        appBarTitleText: 'My Team',
+        appBarTitleText: context.read<TeamCubit>().state.team?.name ?? 'Team',
       );
 }

@@ -21,11 +21,9 @@ HackathonState _$HackathonStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$HackathonState {
   List<HackathonModel> get hackathons => throw _privateConstructorUsedError;
-
   bool get isLoading => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $HackathonStateCopyWith<HackathonState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -36,7 +34,6 @@ abstract class $HackathonStateCopyWith<$Res> {
   factory $HackathonStateCopyWith(
           HackathonState value, $Res Function(HackathonState) then) =
       _$HackathonStateCopyWithImpl<$Res, HackathonState>;
-
   @useResult
   $Res call({List<HackathonModel> hackathons, bool isLoading});
 }
@@ -48,7 +45,6 @@ class _$HackathonStateCopyWithImpl<$Res, $Val extends HackathonState>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -77,7 +73,6 @@ abstract class _$$_HackathonStateCopyWith<$Res>
   factory _$$_HackathonStateCopyWith(
           _$_HackathonState value, $Res Function(_$_HackathonState) then) =
       __$$_HackathonStateCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({List<HackathonModel> hackathons, bool isLoading});
@@ -122,7 +117,6 @@ class _$_HackathonState implements _HackathonState {
       _$$_HackathonStateFromJson(json);
 
   final List<HackathonModel> _hackathons;
-
   @override
   @JsonKey()
   List<HackathonModel> get hackathons {
@@ -180,10 +174,8 @@ abstract class _HackathonState implements HackathonState {
 
   @override
   List<HackathonModel> get hackathons;
-
   @override
   bool get isLoading;
-
   @override
   @JsonKey(ignore: true)
   _$$_HackathonStateCopyWith<_$_HackathonState> get copyWith =>

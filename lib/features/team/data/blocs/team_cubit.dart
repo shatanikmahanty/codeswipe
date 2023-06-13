@@ -10,6 +10,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../models/team_vacancy_model.dart';
+
 part 'team_cubit.freezed.dart';
 part 'team_cubit.g.dart';
 
@@ -20,6 +22,7 @@ class TeamState with _$TeamState {
     @Default([]) List<UserTeam> teams,
     @Default(false) bool isLoading,
     String? pickedImagePath,
+    @Default([]) List<TeamVacancy> vacancies,
   }) = _TeamState;
 
   factory TeamState.fromJson(Map<String, dynamic> json) =>
@@ -61,6 +64,28 @@ class TeamCubit extends HydratedCubit<TeamState> with CubitMaybeEmit {
             .map((team) => UserTeam.fromJson(team.data))
             .toList(),
         isLoading: false,
+      ),
+    );
+  }
+
+  Future<void> loadVacancies() async {
+    emit(state.copyWith(isLoading: true));
+
+    List<TeamVacancy> vacancies = [];
+
+    final vacancyDoc = await _apiClient!.databases.listDocuments(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: kTeamVacancyCollection,
+    );
+
+    vacancies = vacancyDoc.documents
+        .map((vacancy) => TeamVacancy.fromJson(vacancy.data))
+        .toList();
+
+    emit(
+      state.copyWith(
+        isLoading: false,
+        vacancies: vacancies,
       ),
     );
   }
@@ -207,6 +232,29 @@ class TeamCubit extends HydratedCubit<TeamState> with CubitMaybeEmit {
       state.copyWith(
         team: team,
       ),
+    );
+  }
+
+  Future postVacancy(
+    String position,
+    String skills,
+    String expectations,
+  ) async {
+    final teamVacancy = TeamVacancy(
+      position: position,
+      skills: skills,
+      expectations: expectations,
+      teamId: state.team!.id,
+      createdAt: DateTime.now(),
+      createdBy: AuthCubit.instance.state.user!.id,
+      requests: [],
+    );
+
+    await _apiClient!.databases.createDocument(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: kTeamVacancyCollection,
+      documentId: ID.unique(),
+      data: teamVacancy.toJson(),
     );
   }
 }

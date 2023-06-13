@@ -16,6 +16,10 @@ _$_TeamState _$$_TeamStateFromJson(Map<String, dynamic> json) => _$_TeamState(
           const [],
       isLoading: json['isLoading'] as bool? ?? false,
       pickedImagePath: json['pickedImagePath'] as String?,
+      vacancies: (json['vacancies'] as List<dynamic>?)
+              ?.map((e) => TeamVacancy.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_TeamStateToJson(_$_TeamState instance) =>
@@ -24,4 +28,5 @@ Map<String, dynamic> _$$_TeamStateToJson(_$_TeamState instance) =>
       'teams': instance.teams,
       'isLoading': instance.isLoading,
       'pickedImagePath': instance.pickedImagePath,
+      'vacancies': instance.vacancies,
     };

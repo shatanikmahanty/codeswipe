@@ -25,6 +25,7 @@ const kUsersCollection = 'users';
 const kHackathonsCollection = 'hackathons';
 const kTeamsCollection = 'teams';
 const kBannersCollection = 'banners';
+const kTeamVacancyCollection = 'team_vacancy';
 const kOtpLength = 6;
 
 const kSkillsList = [
@@ -74,6 +75,9 @@ const kCollegeNameField = 'collegeName';
 const kGradYearField = 'gradYear';
 const kBioField = 'bio';
 const kLocationField = 'location';
+const kPositionsField = 'positions';
+const kSkillsField = 'skills';
+const kExpectationsField = 'expectations';
 
 ///User prefs
 const userSurveyAttemptedPref = 'user_survey_attempted';

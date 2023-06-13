@@ -83,7 +83,8 @@ class CodeSwipeAppBuilder extends AppBuilder {
 
               teamCubit
                 ..loadUserTeam()
-                ..listTeams();
+                ..listTeams()
+                ..loadVacancies();
             },
             onLogout: (context) {},
             child: AppCubitConsumer(

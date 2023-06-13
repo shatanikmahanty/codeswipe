@@ -22,20 +22,14 @@ HackathonModel _$HackathonModelFromJson(Map<String, dynamic> json) {
 mixin _$HackathonModel {
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-
   String get name => throw _privateConstructorUsedError;
-
   String get mode => throw _privateConstructorUsedError;
-
   String get theme => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'start_date')
   DateTime get startDate => throw _privateConstructorUsedError;
-
   String get banner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $HackathonModelCopyWith<HackathonModel> get copyWith =>
       throw _privateConstructorUsedError;
@@ -46,7 +40,6 @@ abstract class $HackathonModelCopyWith<$Res> {
   factory $HackathonModelCopyWith(
           HackathonModel value, $Res Function(HackathonModel) then) =
       _$HackathonModelCopyWithImpl<$Res, HackathonModel>;
-
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String id,
@@ -64,7 +57,6 @@ class _$HackathonModelCopyWithImpl<$Res, $Val extends HackathonModel>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -113,7 +105,6 @@ abstract class _$$_HackathonModelCopyWith<$Res>
   factory _$$_HackathonModelCopyWith(
           _$_HackathonModel value, $Res Function(_$_HackathonModel) then) =
       __$$_HackathonModelCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -254,23 +245,17 @@ abstract class _HackathonModel implements HackathonModel {
   @override
   @JsonKey(name: '\$id')
   String get id;
-
   @override
   String get name;
-
   @override
   String get mode;
-
   @override
   String get theme;
-
   @override
   @JsonKey(name: 'start_date')
   DateTime get startDate;
-
   @override
   String get banner;
-
   @override
   @JsonKey(ignore: true)
   _$$_HackathonModelCopyWith<_$_HackathonModel> get copyWith =>

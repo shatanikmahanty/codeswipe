@@ -45,15 +45,14 @@ abstract class $UserTeamCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      @JsonKey(name: '\$id') String id,
-      @JsonKey(name: 'members') List<String>? memberIDs,
+      @JsonKey(name: '\$id')
+          String id,
+      @JsonKey(name: 'members')
+          List<String>? memberIDs,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<AppUser>? members,
-      @JsonKey(
-          name: 'member_roles',
-          readValue: _memberRolesFromJson,
-          toJson: jsonEncode)
-      Map<String, dynamic>? memberRoles,
+          List<AppUser>? members,
+      @JsonKey(name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
+          Map<String, dynamic>? memberRoles,
       String admin});
 }
 
@@ -115,15 +114,14 @@ abstract class _$$_UserTeamCopyWith<$Res> implements $UserTeamCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
-      @JsonKey(name: '\$id') String id,
-      @JsonKey(name: 'members') List<String>? memberIDs,
+      @JsonKey(name: '\$id')
+          String id,
+      @JsonKey(name: 'members')
+          List<String>? memberIDs,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<AppUser>? members,
-      @JsonKey(
-          name: 'member_roles',
-          readValue: _memberRolesFromJson,
-          toJson: jsonEncode)
-      Map<String, dynamic>? memberRoles,
+          List<AppUser>? members,
+      @JsonKey(name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
+          Map<String, dynamic>? memberRoles,
       String admin});
 }
 
@@ -179,15 +177,14 @@ class __$$_UserTeamCopyWithImpl<$Res>
 class _$_UserTeam implements _UserTeam {
   const _$_UserTeam(
       {required this.name,
-      @JsonKey(name: '\$id') required this.id,
-      @JsonKey(name: 'members') final List<String>? memberIDs,
+      @JsonKey(name: '\$id')
+          required this.id,
+      @JsonKey(name: 'members')
+          final List<String>? memberIDs,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<AppUser>? members,
-      @JsonKey(
-          name: 'member_roles',
-          readValue: _memberRolesFromJson,
-          toJson: jsonEncode)
-      final Map<String, dynamic>? memberRoles,
+          final List<AppUser>? members,
+      @JsonKey(name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
+          final Map<String, dynamic>? memberRoles,
       required this.admin})
       : _memberIDs = memberIDs,
         _members = members,
@@ -286,15 +283,14 @@ class _$_UserTeam implements _UserTeam {
 abstract class _UserTeam implements UserTeam {
   const factory _UserTeam(
       {required final String name,
-      @JsonKey(name: '\$id') required final String id,
-      @JsonKey(name: 'members') final List<String>? memberIDs,
+      @JsonKey(name: '\$id')
+          required final String id,
+      @JsonKey(name: 'members')
+          final List<String>? memberIDs,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<AppUser>? members,
-      @JsonKey(
-          name: 'member_roles',
-          readValue: _memberRolesFromJson,
-          toJson: jsonEncode)
-      final Map<String, dynamic>? memberRoles,
+          final List<AppUser>? members,
+      @JsonKey(name: 'member_roles', readValue: _memberRolesFromJson, toJson: jsonEncode)
+          final Map<String, dynamic>? memberRoles,
       required final String admin}) = _$_UserTeam;
 
   factory _UserTeam.fromJson(Map<String, dynamic> json) = _$_UserTeam.fromJson;

@@ -10,6 +10,7 @@ class CodeSwipeScaffold extends StatelessWidget {
     this.appBarTitleWidget,
     this.actions,
     this.centerAppBarTitle = true,
+    this.resizeToAvoidBottomInset,
   }) : assert(
           !showAppBar || (appBarTitleText != null || appBarTitleWidget != null),
           'appBarTitleText or appBarTitleWidget must be provided',
@@ -22,6 +23,7 @@ class CodeSwipeScaffold extends StatelessWidget {
   final Widget body;
   final List<Widget>? actions;
   final bool centerAppBarTitle;
+  final bool? resizeToAvoidBottomInset;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -34,5 +36,6 @@ class CodeSwipeScaffold extends StatelessWidget {
                 centerTitle: centerAppBarTitle,
               )
             : null,
+        resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       );
 }

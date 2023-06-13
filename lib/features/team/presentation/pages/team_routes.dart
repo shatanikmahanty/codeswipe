@@ -9,5 +9,9 @@ final teamRoutes = [
   AutoRoute(
     page: UserTeamRoute.page,
     path: 'user-team',
+  ),
+  AutoRoute(
+    page: PostVacancyTeammatesRoute.page,
+    path: 'post-vacancy-teammate',
   )
 ];
