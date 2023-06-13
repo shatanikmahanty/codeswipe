@@ -24,7 +24,10 @@ class MatchedDialogPage extends StatelessWidget {
         padding: const EdgeInsets.all(kPadding * 5),
         child: Column(
           children: [
-            const CodeSwipeAutoLeadingButton(),
+            const Align(
+              alignment: Alignment.topLeft,
+              child: CodeSwipeAutoLeadingButton(),
+            ),
             const Spacer(),
             Text(
               'It\'s a match!',

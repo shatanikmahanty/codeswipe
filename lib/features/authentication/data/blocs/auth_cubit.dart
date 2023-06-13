@@ -259,7 +259,7 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
       logout();
       return;
     } else {
-      final updatedUser = user.copyWith(
+      AppUser updatedUser = user.copyWith(
         name: name ?? user.name,
         email: email ?? user.email,
         course: course ?? user.course,
@@ -268,6 +268,14 @@ class AuthCubit extends HydratedCubit<AuthState> with CubitMaybeEmit {
         bio: bio ?? user.bio,
         avatar: getStorageFileUrl(user.id),
       );
+
+      ///Checking if there was dp update
+      if (state.pickedImagePath != null) {
+        final image = getStorageFileUrl(user.id);
+        updatedUser = updatedUser.copyWith(
+          avatar: image,
+        );
+      }
 
       ///Checking if there was no change
       if (state.user == updatedUser) {

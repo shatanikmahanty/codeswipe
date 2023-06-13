@@ -14,8 +14,7 @@ _$_TeamVacancy _$$_TeamVacancyFromJson(Map<String, dynamic> json) =>
       teamId: json['team_id'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
       createdBy: json['created_by'] as String,
-      requests:
-          (json['requests'] as List<dynamic>).map((e) => e as String).toList(),
+      requests: json['requests'] as List<dynamic>,
     );
 
 Map<String, dynamic> _$$_TeamVacancyToJson(_$_TeamVacancy instance) =>

@@ -13,6 +13,7 @@ _$_HackathonModel _$$_HackathonModelFromJson(Map<String, dynamic> json) =>
       mode: json['mode'] as String,
       theme: json['theme'] as String,
       startDate: DateTime.parse(json['start_date'] as String),
+      onClick: json['onClick'] as String?,
       banner: json['banner'] as String,
     );
 
@@ -23,5 +24,6 @@ Map<String, dynamic> _$$_HackathonModelToJson(_$_HackathonModel instance) =>
       'mode': instance.mode,
       'theme': instance.theme,
       'start_date': instance.startDate.toIso8601String(),
+      'onClick': instance.onClick,
       'banner': instance.banner,
     };

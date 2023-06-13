@@ -3,6 +3,7 @@ import 'package:codeswipe/code_swipe_icons.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/app/presentation/codeswipe_dropdown_selected_item.dart';
+import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -131,7 +132,9 @@ class UserTeamPage extends StatelessWidget {
                   }
                 },
               ),
-              const Spacer(),
+              if (context.read<TeamCubit>().state.team?.admin ==
+                  AuthCubit.instance.state.user!.id)
+                const Spacer(),
               ElevatedButton(
                 onPressed: () {
                   context.router.push(const PostVacancyTeammatesRoute());

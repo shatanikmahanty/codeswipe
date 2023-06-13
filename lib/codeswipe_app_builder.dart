@@ -73,7 +73,9 @@ class CodeSwipeAppBuilder extends AppBuilder {
               final authCubit = context.read<AuthCubit>();
               final prefs = await context.read<ApiClient>().account.getPrefs();
               final userSurveyAttempted = prefs.data[userSurveyAttemptedPref];
-              if (userSurveyAttempted == null || !userSurveyAttempted) {
+
+              if (userSurveyAttempted == null ||
+                  userSurveyAttempted.toString() == 'false') {
                 appRouter.push(
                   const UserSurveyRouter(),
                 );

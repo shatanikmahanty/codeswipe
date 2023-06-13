@@ -29,7 +29,8 @@ mixin _$TeamVacancy {
   DateTime get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   String get createdBy => throw _privateConstructorUsedError;
-  List<String> get requests => throw _privateConstructorUsedError;
+
+  List<dynamic> get requests => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,6 +43,7 @@ abstract class $TeamVacancyCopyWith<$Res> {
   factory $TeamVacancyCopyWith(
           TeamVacancy value, $Res Function(TeamVacancy) then) =
       _$TeamVacancyCopyWithImpl<$Res, TeamVacancy>;
+
   @useResult
   $Res call(
       {String position,
@@ -50,7 +52,7 @@ abstract class $TeamVacancyCopyWith<$Res> {
       @JsonKey(name: 'team_id') String teamId,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') String createdBy,
-      List<String> requests});
+      List<dynamic> requests});
 }
 
 /// @nodoc
@@ -102,7 +104,7 @@ class _$TeamVacancyCopyWithImpl<$Res, $Val extends TeamVacancy>
       requests: null == requests
           ? _value.requests
           : requests // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<dynamic>,
     ) as $Val);
   }
 }
@@ -113,6 +115,7 @@ abstract class _$$_TeamVacancyCopyWith<$Res>
   factory _$$_TeamVacancyCopyWith(
           _$_TeamVacancy value, $Res Function(_$_TeamVacancy) then) =
       __$$_TeamVacancyCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -122,7 +125,7 @@ abstract class _$$_TeamVacancyCopyWith<$Res>
       @JsonKey(name: 'team_id') String teamId,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') String createdBy,
-      List<String> requests});
+      List<dynamic> requests});
 }
 
 /// @nodoc
@@ -172,7 +175,7 @@ class __$$_TeamVacancyCopyWithImpl<$Res>
       requests: null == requests
           ? _value._requests
           : requests // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<dynamic>,
     ));
   }
 }
@@ -187,7 +190,7 @@ class _$_TeamVacancy implements _TeamVacancy {
       @JsonKey(name: 'team_id') required this.teamId,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_by') required this.createdBy,
-      required final List<String> requests})
+      required final List<dynamic> requests})
       : _requests = requests;
 
   factory _$_TeamVacancy.fromJson(Map<String, dynamic> json) =>
@@ -208,9 +211,10 @@ class _$_TeamVacancy implements _TeamVacancy {
   @override
   @JsonKey(name: 'created_by')
   final String createdBy;
-  final List<String> _requests;
+  final List<dynamic> _requests;
+
   @override
-  List<String> get requests {
+  List<dynamic> get requests {
     if (_requests is EqualUnmodifiableListView) return _requests;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_requests);
@@ -273,7 +277,7 @@ abstract class _TeamVacancy implements TeamVacancy {
       @JsonKey(name: 'team_id') required final String teamId,
       @JsonKey(name: 'created_at') required final DateTime createdAt,
       @JsonKey(name: 'created_by') required final String createdBy,
-      required final List<String> requests}) = _$_TeamVacancy;
+      required final List<dynamic> requests}) = _$_TeamVacancy;
 
   factory _TeamVacancy.fromJson(Map<String, dynamic> json) =
       _$_TeamVacancy.fromJson;
@@ -290,11 +294,14 @@ abstract class _TeamVacancy implements TeamVacancy {
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
+
   @override
   @JsonKey(name: 'created_by')
   String get createdBy;
+
   @override
-  List<String> get requests;
+  List<dynamic> get requests;
+
   @override
   @JsonKey(ignore: true)
   _$$_TeamVacancyCopyWith<_$_TeamVacancy> get copyWith =>
