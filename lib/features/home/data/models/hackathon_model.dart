@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'hackathon_model.freezed.dart';
-
 part 'hackathon_model.g.dart';
 
 //ignore_for_file: invalid_annotation_target
@@ -13,6 +12,7 @@ class HackathonModel with _$HackathonModel {
     required String mode,
     required String theme,
     @JsonKey(name: 'start_date') required DateTime startDate,
+    String? onClick,
     required String banner,
   }) = _HackathonModel;
 

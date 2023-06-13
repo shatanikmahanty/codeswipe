@@ -12,6 +12,7 @@ class HackathonsList extends StatelessWidget {
     this.itemCount,
     required this.shrinkWrap,
     this.heroTag,
+    this.onJoinButtonPressed,
   });
 
   final Object? heroTag;
@@ -24,6 +25,8 @@ class HackathonsList extends StatelessWidget {
   final bool shrinkWrap;
 
   final DateFormat _dateFormat = DateFormat('dd MMM yyyy');
+
+  final VoidCallback? onJoinButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +137,7 @@ class HackathonsList extends StatelessWidget {
                           height: kPadding * 5,
                           width: kPadding * 12,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: onJoinButtonPressed,
                             child: const Text('Join'),
                           ),
                         ),

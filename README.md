@@ -1,6 +1,6 @@
 # Codeswipe
 
-Open Source Hackathon Matcher app built with Appwrite Cloud and flutter.
+Open Source Hackathon Matcher app built with Appwrite Cloud and Flutter.
 
 ### Enable pre-commit manually
 

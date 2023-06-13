@@ -257,4 +257,7 @@ class TeamCubit extends HydratedCubit<TeamState> with CubitMaybeEmit {
       data: teamVacancy.toJson(),
     );
   }
+
+  UserTeam getTeam(String teamId) =>
+      state.teams.firstWhere((team) => team.id == teamId);
 }

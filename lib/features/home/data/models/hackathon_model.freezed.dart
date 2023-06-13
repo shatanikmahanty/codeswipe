@@ -27,6 +27,7 @@ mixin _$HackathonModel {
   String get theme => throw _privateConstructorUsedError;
   @JsonKey(name: 'start_date')
   DateTime get startDate => throw _privateConstructorUsedError;
+  String? get onClick => throw _privateConstructorUsedError;
   String get banner => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,6 +48,7 @@ abstract class $HackathonModelCopyWith<$Res> {
       String mode,
       String theme,
       @JsonKey(name: 'start_date') DateTime startDate,
+      String? onClick,
       String banner});
 }
 
@@ -68,6 +70,7 @@ class _$HackathonModelCopyWithImpl<$Res, $Val extends HackathonModel>
     Object? mode = null,
     Object? theme = null,
     Object? startDate = null,
+    Object? onClick = freezed,
     Object? banner = null,
   }) {
     return _then(_value.copyWith(
@@ -91,6 +94,10 @@ class _$HackathonModelCopyWithImpl<$Res, $Val extends HackathonModel>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      onClick: freezed == onClick
+          ? _value.onClick
+          : onClick // ignore: cast_nullable_to_non_nullable
+              as String?,
       banner: null == banner
           ? _value.banner
           : banner // ignore: cast_nullable_to_non_nullable
@@ -113,6 +120,7 @@ abstract class _$$_HackathonModelCopyWith<$Res>
       String mode,
       String theme,
       @JsonKey(name: 'start_date') DateTime startDate,
+      String? onClick,
       String banner});
 }
 
@@ -132,6 +140,7 @@ class __$$_HackathonModelCopyWithImpl<$Res>
     Object? mode = null,
     Object? theme = null,
     Object? startDate = null,
+    Object? onClick = freezed,
     Object? banner = null,
   }) {
     return _then(_$_HackathonModel(
@@ -155,6 +164,10 @@ class __$$_HackathonModelCopyWithImpl<$Res>
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      onClick: freezed == onClick
+          ? _value.onClick
+          : onClick // ignore: cast_nullable_to_non_nullable
+              as String?,
       banner: null == banner
           ? _value.banner
           : banner // ignore: cast_nullable_to_non_nullable
@@ -172,6 +185,7 @@ class _$_HackathonModel implements _HackathonModel {
       required this.mode,
       required this.theme,
       @JsonKey(name: 'start_date') required this.startDate,
+      this.onClick,
       required this.banner});
 
   factory _$_HackathonModel.fromJson(Map<String, dynamic> json) =>
@@ -190,11 +204,13 @@ class _$_HackathonModel implements _HackathonModel {
   @JsonKey(name: 'start_date')
   final DateTime startDate;
   @override
+  final String? onClick;
+  @override
   final String banner;
 
   @override
   String toString() {
-    return 'HackathonModel(id: $id, name: $name, mode: $mode, theme: $theme, startDate: $startDate, banner: $banner)';
+    return 'HackathonModel(id: $id, name: $name, mode: $mode, theme: $theme, startDate: $startDate, onClick: $onClick, banner: $banner)';
   }
 
   @override
@@ -208,13 +224,14 @@ class _$_HackathonModel implements _HackathonModel {
             (identical(other.theme, theme) || other.theme == theme) &&
             (identical(other.startDate, startDate) ||
                 other.startDate == startDate) &&
+            (identical(other.onClick, onClick) || other.onClick == onClick) &&
             (identical(other.banner, banner) || other.banner == banner));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, mode, theme, startDate, banner);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, mode, theme, startDate, onClick, banner);
 
   @JsonKey(ignore: true)
   @override
@@ -237,6 +254,7 @@ abstract class _HackathonModel implements HackathonModel {
       required final String mode,
       required final String theme,
       @JsonKey(name: 'start_date') required final DateTime startDate,
+      final String? onClick,
       required final String banner}) = _$_HackathonModel;
 
   factory _HackathonModel.fromJson(Map<String, dynamic> json) =
@@ -254,6 +272,8 @@ abstract class _HackathonModel implements HackathonModel {
   @override
   @JsonKey(name: 'start_date')
   DateTime get startDate;
+  @override
+  String? get onClick;
   @override
   String get banner;
   @override

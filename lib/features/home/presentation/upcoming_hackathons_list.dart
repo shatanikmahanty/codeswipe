@@ -2,8 +2,10 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/presentation/no_items.dart';
 import 'package:codeswipe/features/home/data/blocs/hackathon_cubit.dart';
 import 'package:codeswipe/features/home/presentation/hackathons_list.dart';
+import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class UpcomingHackathonsList extends StatelessWidget {
   const UpcomingHackathonsList({
@@ -50,6 +52,19 @@ class UpcomingHackathonsList extends StatelessWidget {
                   : upcomingHackathonsCount > 3
                       ? 3
                       : upcomingHackathonsCount,
+              onJoinButtonPressed: () {
+                final onButtonPressed = upcomingHackathons[0].onClick;
+
+                if ((onButtonPressed ?? '').isEmpty) {
+                  DjangoflowAppSnackbar.showInfo('Coming Soon');
+                  return;
+                } else if (onButtonPressed!.contains('launch')) {
+                  launchUrlString(
+                    onButtonPressed.replaceFirst('launch:', ''),
+                    mode: LaunchMode.externalApplication,
+                  );
+                }
+              },
             );
           }
         },
