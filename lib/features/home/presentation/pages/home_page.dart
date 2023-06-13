@@ -26,37 +26,37 @@ class HomePage extends StatelessWidget {
         BlocBuilder<TeamCubit, TeamState>(
           builder: (context, state) => state.isLoading
               ? const Padding(
-            padding: EdgeInsets.all(
-              kPadding,
-            ),
-            child: Center(child: CircularProgressIndicator()),
-          )
+                  padding: EdgeInsets.all(
+                    kPadding,
+                  ),
+                  child: Center(child: CircularProgressIndicator()),
+                )
               : Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kPadding * 4,
-                  vertical: kPadding * 2,
-                ),
-                child: _TeamActionButton(
-                  hasTeam: state.team != null,
-                ),
-              ),
-              if (state.team == null) ...[
-                sectionSeparator,
-                CodeSwipeSectionHeader(
-                  title: 'Join Existing Team',
-                  onActionClick: () {},
-                  buttonText: 'See All',
-                  showActionButton: state.teams.length > 3,
-                ),
-                sectionSeparator,
-                const JoinTeamList(),
-              ],
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kPadding * 4,
+                        vertical: kPadding * 2,
+                      ),
+                      child: _TeamActionButton(
+                        hasTeam: state.team != null,
+                      ),
+                    ),
+                    if (state.team == null) ...[
+                      sectionSeparator,
+                      CodeSwipeSectionHeader(
+                        title: 'Join Existing Team',
+                        onActionClick: () {},
+                        buttonText: 'See All',
+                        showActionButton: state.teams.length > 3,
+                      ),
+                      sectionSeparator,
+                      const JoinTeamList(),
+                      sectionSeparator,
+                    ],
                   ],
                 ),
         ),
-        sectionSeparator,
         CodeSwipeSectionHeader(
           title: 'Upcoming Hackathons',
           onActionClick: () {
@@ -90,14 +90,14 @@ class _TeamActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ElevatedButton.icon(
-    icon: hasTeam ? const Icon(Icons.people) : const Icon(Icons.add),
-    onPressed: () {
-      if (hasTeam) {
-        context.router.push(const UserTeamRoute());
-      } else {
-        context.router.push(const CreateTeamRoute());
-      }
-    },
-    label: Text(hasTeam ? 'Your Team' : 'Create Team'),
-  );
+        icon: hasTeam ? const Icon(Icons.people) : const Icon(Icons.add),
+        onPressed: () {
+          if (hasTeam) {
+            context.router.push(const UserTeamRoute());
+          } else {
+            context.router.push(const CreateTeamRoute());
+          }
+        },
+        label: Text(hasTeam ? 'Your Team' : 'Create Team'),
+      );
 }

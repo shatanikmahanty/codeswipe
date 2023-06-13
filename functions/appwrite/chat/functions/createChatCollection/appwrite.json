@@ -14,7 +14,7 @@
       ],
       "execute": [],
       "events": [
-        "databases.*.collections.chat.documents.*.create"
+        "databases.*.collections.chats.documents.*.create"
       ],
       "schedule": "",
       "timeout": 15

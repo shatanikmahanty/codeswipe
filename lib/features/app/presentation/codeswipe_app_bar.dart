@@ -10,6 +10,7 @@ class CodeSwipeAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.appBarTitleWidget,
     this.actions,
     required this.centerTitle,
+    this.elevation,
   });
 
   final String? appBarTitleText;
@@ -17,12 +18,15 @@ class CodeSwipeAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final List<Widget>? actions;
   final bool centerTitle;
+  final double? elevation;
 
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(kPadding),
         child: AppBar(
+          backgroundColor: Colors.white,
           leadingWidth: kPadding * 6,
+          elevation: elevation,
           leading: const CodeSwipeAutoLeadingButton(),
           centerTitle: centerTitle,
           title: appBarTitleText != null
@@ -36,5 +40,5 @@ class CodeSwipeAppBar extends StatelessWidget implements PreferredSizeWidget {
       );
 
   @override
-  Size get preferredSize => const Size(0, kPadding * 8);
+  Size get preferredSize => const Size.fromHeight(kPadding * 8);
 }

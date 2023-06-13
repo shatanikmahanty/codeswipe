@@ -1,4 +1,5 @@
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/chat/presentation/pages/chat_routes.dart';
 import 'package:flutter/material.dart';
 
 final appHomeRoutes = [
@@ -41,10 +42,14 @@ final appHomeRoutes = [
   ),
   AutoRoute(
     path: 'chat',
-    page: UnknownRoute.page,
+    page: ChatRouter.page,
+    children: chatRoutes,
+    guards: [
+      AuthGuard(),
+    ],
   ),
   AutoRoute(
     path: 'profile',
-    page: UnknownRoute.page,
+    page: ProfileRoute.page,
   ),
 ];

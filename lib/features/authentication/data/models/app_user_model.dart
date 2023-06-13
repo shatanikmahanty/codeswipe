@@ -37,6 +37,7 @@ class AppUser with _$AppUser {
       name: 'matches',
     )
     List<String>? matches,
+    @JsonKey(name: 'chat_rooms') List<String>? chatRooms,
   }) = _AppUser;
 
   factory AppUser.fromJson(Map<String, dynamic> json) =>

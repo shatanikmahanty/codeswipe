@@ -3,6 +3,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/app/data/api_client.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
+import 'package:codeswipe/features/chat/data/blocs/chat_cubit.dart';
 import 'package:codeswipe/features/home/data/blocs/hackathon_cubit.dart';
 import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -64,12 +65,19 @@ class CodeSwipeAppBuilder extends AppBuilder {
                 )
                 ..loadHackathons(),
             ),
+            BlocProvider<ChatCubit>(
+              create: (context) => ChatCubit()
+                ..initialize(
+                  apiClient: context.read(),
+                ),
+            )
           ],
           builder: (context) => LoginListenerWrapper(
             initialUser: context.read<AuthCubit>().state.user,
             onLogin: (context, user) async {
               ///Trigger user survey if not attempted
               final teamCubit = context.read<TeamCubit>();
+              final chatCuibt = context.read<ChatCubit>();
               final authCubit = context.read<AuthCubit>();
               final prefs = await context.read<ApiClient>().account.getPrefs();
               final userSurveyAttempted = prefs.data[userSurveyAttemptedPref];
@@ -87,8 +95,14 @@ class CodeSwipeAppBuilder extends AppBuilder {
                 ..loadUserTeam()
                 ..listTeams()
                 ..loadVacancies();
+
+              chatCuibt
+                ..loadChatRooms()
+                ..getMessagesForChatRooms();
             },
-            onLogout: (context) {},
+            onLogout: (context) {
+              context.read<ChatCubit>().clearChats();
+            },
             child: AppCubitConsumer(
               listenWhen: (previous, current) =>
                   previous.environment != current.environment,
