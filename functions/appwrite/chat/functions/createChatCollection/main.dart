@@ -63,6 +63,37 @@ Future<void> createChatCollection(final req, final res) async {
   );
 
   ///TODO need to modify user documents to include chat ids
+
+  final user1 = await database.getDocument(
+    databaseId: databaseId,
+    collectionId: 'users',
+    documentId: userId1,
+  );
+
+  await database.updateDocument(
+    databaseId: databaseId,
+    collectionId: 'users',
+    documentId: userId1,
+    data: {
+      'chat_rooms': user1.data['chat_rooms'].add(collection.$id),
+    },
+  );
+
+  final user2 = await database.getDocument(
+    databaseId: databaseId,
+    collectionId: 'users',
+    documentId: userId2,
+  );
+
+  await database.updateDocument(
+    databaseId: databaseId,
+    collectionId: 'users',
+    documentId: userId2,
+    data: {
+      'chat_rooms': user2.data['chat_rooms'].add(collection.$id),
+    },
+  );
+
   await _defineChatDocument(res, collection.$id, databaseId, database);
   markSuccess(res, 'Chat Collection created successfully');
 }
