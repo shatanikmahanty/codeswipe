@@ -26,6 +26,7 @@ const kHackathonsCollection = 'hackathons';
 const kTeamsCollection = 'teams';
 const kBannersCollection = 'banners';
 const kTeamVacancyCollection = 'team_vacancy';
+const kChatsCollection = 'chats';
 const kOtpLength = 6;
 
 const kSkillsList = [

@@ -245,6 +245,16 @@ class DiscoverCubit extends Cubit<DiscoverState> {
         },
       );
 
+      await _database!.createDocument(
+        databaseId: databaseId,
+        collectionId: kChatsCollection,
+        documentId: ID.unique(),
+        data: {
+          'user_id1': currentUserId,
+          'user_id2': matchedUserId,
+        },
+      );
+
       await loadMatchProfiles();
       await loadMatchRequests();
       await loadProfiles();

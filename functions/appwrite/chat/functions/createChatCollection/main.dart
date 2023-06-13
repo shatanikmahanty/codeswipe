@@ -44,14 +44,14 @@ Future<void> createChatCollection(final req, final res) async {
   final String userId1 = eventDocumentData['user_id1'];
   final String userId2 = eventDocumentData['user_id2'];
   final String databaseId = eventDocumentData['\$databaseId'];
+  final String eventDocumentId = eventDocumentData['\$id'];
 
   final userRole1 = Role.user(userId1);
   final userRole2 = Role.user(userId2);
 
-  final collectionID = ID.unique();
   final collection = await database.createCollection(
-    collectionId: collectionID,
-    name: 'chat',
+    collectionId: eventDocumentId,
+    name: 'chat-$eventDocumentId',
     documentSecurity: false,
     permissions: [
       Permission.read(userRole1),
@@ -62,35 +62,42 @@ Future<void> createChatCollection(final req, final res) async {
     databaseId: databaseId,
   );
 
-  ///TODO need to modify user documents to include chat ids
-
   final user1 = await database.getDocument(
     databaseId: databaseId,
     collectionId: 'users',
     documentId: userId1,
   );
-
-  await database.updateDocument(
-    databaseId: databaseId,
-    collectionId: 'users',
-    documentId: userId1,
-    data: {
-      'chat_rooms': user1.data['chat_rooms'].add(collection.$id),
-    },
-  );
-
   final user2 = await database.getDocument(
     databaseId: databaseId,
     collectionId: 'users',
     documentId: userId2,
   );
 
+  List<String> user1ChatRooms =
+      List<String>.from(user1.data['chat_rooms'] ?? []);
+
+  user1ChatRooms.add(collection.$id);
+
+  List<String> user2ChatRooms =
+      List<String>.from(user2.data['chat_rooms'] ?? []);
+
+  user2ChatRooms.add(collection.$id);
+
+  await database.updateDocument(
+    databaseId: databaseId,
+    collectionId: 'users',
+    documentId: userId1,
+    data: {
+      'chat_rooms': user1ChatRooms,
+    },
+  );
+
   await database.updateDocument(
     databaseId: databaseId,
     collectionId: 'users',
     documentId: userId2,
     data: {
-      'chat_rooms': user2.data['chat_rooms'].add(collection.$id),
+      'chat_rooms': user2ChatRooms,
     },
   );
 

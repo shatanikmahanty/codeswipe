@@ -24,9 +24,8 @@ class MatchedDialogPage extends StatelessWidget {
         padding: const EdgeInsets.all(kPadding * 5),
         child: Column(
           children: [
-            const Align(
-              alignment: Alignment.topLeft,
-              child: CodeSwipeAutoLeadingButton(),
+            const CodeSwipeAutoLeadingButton(
+              icon: Icons.close,
             ),
             const Spacer(),
             Text(
@@ -73,7 +72,9 @@ class MatchedDialogPage extends StatelessWidget {
             const SizedBox(height: kPadding * 4),
             ElevatedButton(
               child: const Text('Send a message'),
-              onPressed: () {},
+              onPressed: () {
+                context.router.push(const ChatRouter());
+              },
             ),
             const Spacer(),
           ],
