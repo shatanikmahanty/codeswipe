@@ -41,7 +41,7 @@ final appHomeRoutes = [
   ),
   AutoRoute(
     path: 'chat',
-    page: UnknownRoute.page,
+    page: ChatRouter.page,
   ),
   AutoRoute(
     path: 'profile',

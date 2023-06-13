@@ -20,7 +20,7 @@ class AppHomePage extends StatelessWidget with AutoRouteWrapper {
         routes: const [
           HomeRoute(),
           DiscoverRouter(),
-          UnknownRoute(),
+          ChatRouter(),
           UnknownRoute(),
         ],
         transitionBuilder: (context, child, animation) {
