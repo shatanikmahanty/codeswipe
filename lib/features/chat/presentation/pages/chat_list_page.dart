@@ -20,12 +20,22 @@ class ChatListPage extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         } else if (state.rooms.isEmpty) {
-          return const Padding(
-            padding: EdgeInsets.all(
-              kPadding * 4,
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: kPadding * 4,
+              vertical: kPadding * 8,
             ),
             child: NoItems(
-              message: 'No chats found',
+              message: 'Match with someone or join a team to start chatting!',
+              action: Padding(
+                padding: const EdgeInsets.all(kPadding * 5),
+                child: OutlinedButton(
+                  onPressed: () {
+                    context.router.push(const DiscoverRoute());
+                  },
+                  child: const Text('Go to Discover Page'),
+                ),
+              ),
             ),
           );
         } else {
