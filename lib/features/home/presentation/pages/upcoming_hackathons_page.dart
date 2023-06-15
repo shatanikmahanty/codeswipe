@@ -1,4 +1,4 @@
-import 'package:auto_route/auto_route.dart';
+import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/app/app.dart';
 import 'package:codeswipe/features/home/presentation/upcoming_hackathons_list.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +9,12 @@ class UpcomingHackathonsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const CodeSwipeScaffold(
-        body: UpcomingHackathonsList(),
+        body: Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: kPadding * 3,
+          ),
+          child: UpcomingHackathonsList(),
+        ),
         appBarTitleText: 'Upcoming Hackathons',
         centerAppBarTitle: false,
       );

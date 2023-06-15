@@ -32,7 +32,7 @@ class UpcomingHackathonsList extends StatelessWidget {
               ),
               child: Center(child: CircularProgressIndicator()),
             );
-          } else if (state.hackathons.isEmpty) {
+          } else if (upcomingHackathons.isEmpty) {
             return const Padding(
               padding: EdgeInsets.symmetric(
                 vertical: kPadding * 2,

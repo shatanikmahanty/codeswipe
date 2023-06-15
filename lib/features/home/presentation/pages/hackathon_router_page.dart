@@ -1,4 +1,4 @@
-import '../../../configurations/configurations.dart';
+import '../../../../configurations/configurations.dart';
 
 @RoutePage(
   name: 'HackathonRouter',

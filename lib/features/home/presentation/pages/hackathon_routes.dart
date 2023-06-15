@@ -2,7 +2,7 @@ import 'package:codeswipe/configurations/configurations.dart';
 
 final hackathonRoutes = [
   AutoRoute(
-    path: ':categoryName',
+    path: 'category/:categoryName',
     page: CategoryHackathonRoute.page,
   ),
   AutoRoute(

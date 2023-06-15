@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                         title: 'Join Existing Team',
                         onActionClick: () {},
                         buttonText: 'See All',
-                        showActionButton: state.teams.length > 3,
+                        showActionButton: state.vacancies.length > 3,
                       ),
                       sectionSeparator,
                       const JoinTeamList(),

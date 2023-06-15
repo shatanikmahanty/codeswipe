@@ -41,34 +41,34 @@ import 'package:codeswipe/features/discover/presentation/pages/discover_router_p
     deferred as _i15;
 import 'package:codeswipe/features/discover/presentation/pages/matched_dialog.dart'
     deferred as _i16;
-import 'package:codeswipe/features/home/presentation/hackathon_router_page.dart'
-    deferred as _i17;
 import 'package:codeswipe/features/home/presentation/pages/category_hackathon_page.dart'
-    deferred as _i18;
-import 'package:codeswipe/features/home/presentation/pages/home_page.dart'
-    deferred as _i19;
-import 'package:codeswipe/features/home/presentation/pages/upcoming_hackathons_page.dart'
-    deferred as _i20;
-import 'package:codeswipe/features/profile/presentation/pages/profile_page.dart'
-    deferred as _i21;
-import 'package:codeswipe/features/team/presentation/pages/create_team_page.dart'
-    deferred as _i22;
-import 'package:codeswipe/features/team/presentation/pages/post_vacancy_teammates_page.dart'
-    deferred as _i23;
-import 'package:codeswipe/features/team/presentation/pages/team_router.dart'
-    deferred as _i24;
-import 'package:codeswipe/features/team/presentation/pages/user_team_page.dart'
-    deferred as _i25;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_prefs_page.dart'
-    deferred as _i26;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_profile_page.dart'
-    deferred as _i27;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_router_page.dart'
-    deferred as _i28;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_skills_page.dart'
     deferred as _i29;
-import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_team_page.dart'
+import 'package:codeswipe/features/home/presentation/pages/hackathon_router_page.dart'
     deferred as _i30;
+import 'package:codeswipe/features/home/presentation/pages/home_page.dart'
+    deferred as _i17;
+import 'package:codeswipe/features/home/presentation/pages/upcoming_hackathons_page.dart'
+    deferred as _i18;
+import 'package:codeswipe/features/profile/presentation/pages/profile_page.dart'
+    deferred as _i19;
+import 'package:codeswipe/features/team/presentation/pages/create_team_page.dart'
+    deferred as _i20;
+import 'package:codeswipe/features/team/presentation/pages/post_vacancy_teammates_page.dart'
+    deferred as _i21;
+import 'package:codeswipe/features/team/presentation/pages/team_router.dart'
+    deferred as _i22;
+import 'package:codeswipe/features/team/presentation/pages/user_team_page.dart'
+    deferred as _i23;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_prefs_page.dart'
+    deferred as _i24;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_profile_page.dart'
+    deferred as _i25;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_router_page.dart'
+    deferred as _i26;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_skills_page.dart'
+    deferred as _i27;
+import 'package:codeswipe/features/user_survey/presentation/pages/user_survey_team_page.dart'
+    deferred as _i28;
 import 'package:flutter/cupertino.dart' as _i33;
 import 'package:flutter/material.dart' as _i32;
 
@@ -236,12 +236,111 @@ abstract class $AppRouter extends _i31.RootStackRouter {
         ),
       );
     },
-    HackathonRouter.name: (routeData) {
+    HomeRoute.name: (routeData) {
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i31.DeferredWidget(
           _i17.loadLibrary,
-          () => _i17.HackathonRouterPage(),
+          () => _i17.HomePage(),
+        ),
+      );
+    },
+    UpcomingHackathonsRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i18.loadLibrary,
+          () => _i18.UpcomingHackathonsPage(),
+        ),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i19.loadLibrary,
+          () => _i19.ProfilePage(),
+        ),
+      );
+    },
+    CreateTeamRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i20.loadLibrary,
+          () => _i20.CreateTeamPage(),
+        ),
+      );
+    },
+    PostVacancyTeammatesRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i21.loadLibrary,
+          () => _i21.PostVacancyTeammatesPage(),
+        ),
+      );
+    },
+    TeamRouter.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i22.loadLibrary,
+          () => _i31.WrappedRoute(child: _i22.TeamRouterPage()),
+        ),
+      );
+    },
+    UserTeamRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i23.loadLibrary,
+          () => _i23.UserTeamPage(),
+        ),
+      );
+    },
+    UserSurveyPrefsRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i24.loadLibrary,
+          () => _i24.UserSurveyPrefsPage(),
+        ),
+      );
+    },
+    UserSurveyProfileRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i25.loadLibrary,
+          () => _i25.UserSurveyProfilePage(),
+        ),
+      );
+    },
+    UserSurveyRouter.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i26.loadLibrary,
+          () => _i31.WrappedRoute(child: _i26.UserSurveyRouterPage()),
+        ),
+      );
+    },
+    UserSurveySkillsRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i27.loadLibrary,
+          () => _i27.UserSurveySkillsPage(),
+        ),
+      );
+    },
+    UserSurveyTeamRoute.name: (routeData) {
+      return _i31.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i31.DeferredWidget(
+          _i28.loadLibrary,
+          () => _i28.UserSurveyTeamPage(),
         ),
       );
     },
@@ -253,119 +352,20 @@ abstract class $AppRouter extends _i31.RootStackRouter {
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i31.DeferredWidget(
-          _i18.loadLibrary,
-          () => _i18.CategoryHackathonPage(
+          _i29.loadLibrary,
+          () => _i29.CategoryHackathonPage(
             key: args.key,
             categoryName: args.categoryName,
           ),
         ),
       );
     },
-    HomeRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i19.loadLibrary,
-          () => _i19.HomePage(),
-        ),
-      );
-    },
-    UpcomingHackathonsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i20.loadLibrary,
-          () => _i20.UpcomingHackathonsPage(),
-        ),
-      );
-    },
-    ProfileRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i21.loadLibrary,
-          () => _i21.ProfilePage(),
-        ),
-      );
-    },
-    CreateTeamRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i22.loadLibrary,
-          () => _i22.CreateTeamPage(),
-        ),
-      );
-    },
-    PostVacancyTeammatesRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i23.loadLibrary,
-          () => _i23.PostVacancyTeammatesPage(),
-        ),
-      );
-    },
-    TeamRouter.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i24.loadLibrary,
-          () => _i31.WrappedRoute(child: _i24.TeamRouterPage()),
-        ),
-      );
-    },
-    UserTeamRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i25.loadLibrary,
-          () => _i25.UserTeamPage(),
-        ),
-      );
-    },
-    UserSurveyPrefsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i26.loadLibrary,
-          () => _i26.UserSurveyPrefsPage(),
-        ),
-      );
-    },
-    UserSurveyProfileRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i27.loadLibrary,
-          () => _i27.UserSurveyProfilePage(),
-        ),
-      );
-    },
-    UserSurveyRouter.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i28.loadLibrary,
-          () => _i31.WrappedRoute(child: _i28.UserSurveyRouterPage()),
-        ),
-      );
-    },
-    UserSurveySkillsRoute.name: (routeData) {
-      return _i31.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i31.DeferredWidget(
-          _i29.loadLibrary,
-          () => _i29.UserSurveySkillsPage(),
-        ),
-      );
-    },
-    UserSurveyTeamRoute.name: (routeData) {
+    HackathonRouter.name: (routeData) {
       return _i31.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i31.DeferredWidget(
           _i30.loadLibrary,
-          () => _i30.UserSurveyTeamPage(),
+          () => _i30.HackathonRouterPage(),
         ),
       );
     },
@@ -671,21 +671,175 @@ class MatchedDialogRouteArgs {
 }
 
 /// generated route for
-/// [_i17.HackathonRouterPage]
-class HackathonRouter extends _i31.PageRouteInfo<void> {
-  const HackathonRouter({List<_i31.PageRouteInfo>? children})
+/// [_i17.HomePage]
+class HomeRoute extends _i31.PageRouteInfo<void> {
+  const HomeRoute({List<_i31.PageRouteInfo>? children})
       : super(
-          HackathonRouter.name,
+          HomeRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'HackathonRouter';
+  static const String name = 'HomeRoute';
 
   static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i18.CategoryHackathonPage]
+/// [_i18.UpcomingHackathonsPage]
+class UpcomingHackathonsRoute extends _i31.PageRouteInfo<void> {
+  const UpcomingHackathonsRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          UpcomingHackathonsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UpcomingHackathonsRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i19.ProfilePage]
+class ProfileRoute extends _i31.PageRouteInfo<void> {
+  const ProfileRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          ProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ProfileRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i20.CreateTeamPage]
+class CreateTeamRoute extends _i31.PageRouteInfo<void> {
+  const CreateTeamRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          CreateTeamRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CreateTeamRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i21.PostVacancyTeammatesPage]
+class PostVacancyTeammatesRoute extends _i31.PageRouteInfo<void> {
+  const PostVacancyTeammatesRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          PostVacancyTeammatesRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PostVacancyTeammatesRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i22.TeamRouterPage]
+class TeamRouter extends _i31.PageRouteInfo<void> {
+  const TeamRouter({List<_i31.PageRouteInfo>? children})
+      : super(
+          TeamRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TeamRouter';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i23.UserTeamPage]
+class UserTeamRoute extends _i31.PageRouteInfo<void> {
+  const UserTeamRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          UserTeamRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserTeamRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i24.UserSurveyPrefsPage]
+class UserSurveyPrefsRoute extends _i31.PageRouteInfo<void> {
+  const UserSurveyPrefsRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          UserSurveyPrefsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSurveyPrefsRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i25.UserSurveyProfilePage]
+class UserSurveyProfileRoute extends _i31.PageRouteInfo<void> {
+  const UserSurveyProfileRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          UserSurveyProfileRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSurveyProfileRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i26.UserSurveyRouterPage]
+class UserSurveyRouter extends _i31.PageRouteInfo<void> {
+  const UserSurveyRouter({List<_i31.PageRouteInfo>? children})
+      : super(
+          UserSurveyRouter.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSurveyRouter';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i27.UserSurveySkillsPage]
+class UserSurveySkillsRoute extends _i31.PageRouteInfo<void> {
+  const UserSurveySkillsRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          UserSurveySkillsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSurveySkillsRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i28.UserSurveyTeamPage]
+class UserSurveyTeamRoute extends _i31.PageRouteInfo<void> {
+  const UserSurveyTeamRoute({List<_i31.PageRouteInfo>? children})
+      : super(
+          UserSurveyTeamRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'UserSurveyTeamRoute';
+
+  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i29.CategoryHackathonPage]
 class CategoryHackathonRoute
     extends _i31.PageRouteInfo<CategoryHackathonRouteArgs> {
   CategoryHackathonRoute({
@@ -725,169 +879,15 @@ class CategoryHackathonRouteArgs {
 }
 
 /// generated route for
-/// [_i19.HomePage]
-class HomeRoute extends _i31.PageRouteInfo<void> {
-  const HomeRoute({List<_i31.PageRouteInfo>? children})
+/// [_i30.HackathonRouterPage]
+class HackathonRouter extends _i31.PageRouteInfo<void> {
+  const HackathonRouter({List<_i31.PageRouteInfo>? children})
       : super(
-          HomeRoute.name,
+          HackathonRouter.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i20.UpcomingHackathonsPage]
-class UpcomingHackathonsRoute extends _i31.PageRouteInfo<void> {
-  const UpcomingHackathonsRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          UpcomingHackathonsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UpcomingHackathonsRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i21.ProfilePage]
-class ProfileRoute extends _i31.PageRouteInfo<void> {
-  const ProfileRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          ProfileRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'ProfileRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i22.CreateTeamPage]
-class CreateTeamRoute extends _i31.PageRouteInfo<void> {
-  const CreateTeamRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          CreateTeamRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CreateTeamRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i23.PostVacancyTeammatesPage]
-class PostVacancyTeammatesRoute extends _i31.PageRouteInfo<void> {
-  const PostVacancyTeammatesRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          PostVacancyTeammatesRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'PostVacancyTeammatesRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i24.TeamRouterPage]
-class TeamRouter extends _i31.PageRouteInfo<void> {
-  const TeamRouter({List<_i31.PageRouteInfo>? children})
-      : super(
-          TeamRouter.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'TeamRouter';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i25.UserTeamPage]
-class UserTeamRoute extends _i31.PageRouteInfo<void> {
-  const UserTeamRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          UserTeamRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserTeamRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i26.UserSurveyPrefsPage]
-class UserSurveyPrefsRoute extends _i31.PageRouteInfo<void> {
-  const UserSurveyPrefsRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          UserSurveyPrefsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserSurveyPrefsRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i27.UserSurveyProfilePage]
-class UserSurveyProfileRoute extends _i31.PageRouteInfo<void> {
-  const UserSurveyProfileRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          UserSurveyProfileRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserSurveyProfileRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i28.UserSurveyRouterPage]
-class UserSurveyRouter extends _i31.PageRouteInfo<void> {
-  const UserSurveyRouter({List<_i31.PageRouteInfo>? children})
-      : super(
-          UserSurveyRouter.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserSurveyRouter';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i29.UserSurveySkillsPage]
-class UserSurveySkillsRoute extends _i31.PageRouteInfo<void> {
-  const UserSurveySkillsRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          UserSurveySkillsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserSurveySkillsRoute';
-
-  static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
-}
-
-/// generated route for
-/// [_i30.UserSurveyTeamPage]
-class UserSurveyTeamRoute extends _i31.PageRouteInfo<void> {
-  const UserSurveyTeamRoute({List<_i31.PageRouteInfo>? children})
-      : super(
-          UserSurveyTeamRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'UserSurveyTeamRoute';
+  static const String name = 'HackathonRouter';
 
   static const _i31.PageInfo<void> page = _i31.PageInfo<void>(name);
 }
