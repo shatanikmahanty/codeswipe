@@ -60,7 +60,9 @@ class HomePage extends StatelessWidget {
         CodeSwipeSectionHeader(
           title: 'Upcoming Hackathons',
           onActionClick: () {
-            context.router.push(const UpcomingHackathonsRoute());
+            context.router.push(
+              const HackathonRouter(),
+            );
           },
           buttonText: 'See All',
           showActionButton:
@@ -77,7 +79,9 @@ class HomePage extends StatelessWidget {
           buttonText: '',
           showActionButton: false,
         ),
+        sectionSeparator,
         const HackathonThemesGrid(),
+        sectionSeparator,
       ],
     );
   }

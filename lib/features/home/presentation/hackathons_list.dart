@@ -26,7 +26,7 @@ class HackathonsList extends StatelessWidget {
 
   final DateFormat _dateFormat = DateFormat('dd MMM yyyy');
 
-  final VoidCallback? onJoinButtonPressed;
+  final void Function(int)? onJoinButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -137,7 +137,7 @@ class HackathonsList extends StatelessWidget {
                           height: kPadding * 5,
                           width: kPadding * 12,
                           child: ElevatedButton(
-                            onPressed: onJoinButtonPressed,
+                            onPressed: () => onJoinButtonPressed?.call(index),
                             child: const Text('Join'),
                           ),
                         ),

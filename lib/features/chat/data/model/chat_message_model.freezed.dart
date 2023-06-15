@@ -27,10 +27,8 @@ mixin _$ChatMessage {
   @JsonKey(name: 'sender_id')
   String get senderID => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'message_type')
   String? get messageType => throw _privateConstructorUsedError;
-
   DateTime get time => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -260,14 +258,11 @@ abstract class _ChatMessage implements ChatMessage {
   @override
   @JsonKey(name: 'sender_id')
   String get senderID;
-
   @override
   String get message;
-
   @override
   @JsonKey(name: 'message_type')
   String? get messageType;
-
   @override
   DateTime get time;
   @override

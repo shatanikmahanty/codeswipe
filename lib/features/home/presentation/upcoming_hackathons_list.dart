@@ -52,8 +52,8 @@ class UpcomingHackathonsList extends StatelessWidget {
                   : upcomingHackathonsCount > 3
                       ? 3
                       : upcomingHackathonsCount,
-              onJoinButtonPressed: () {
-                final onButtonPressed = upcomingHackathons[0].onClick;
+              onJoinButtonPressed: (index) {
+                final onButtonPressed = upcomingHackathons[index].onClick;
 
                 if ((onButtonPressed ?? '').isEmpty) {
                   DjangoflowAppSnackbar.showInfo('Coming Soon');

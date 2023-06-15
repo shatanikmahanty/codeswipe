@@ -21,7 +21,17 @@ class HackathonThemesGrid extends StatelessWidget {
           childAspectRatio: 3,
         ),
         itemBuilder: (BuildContext context, int index) => ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            context.router.push(
+              HackathonRouter(
+                children: [
+                  CategoryHackathonRoute(
+                    categoryName: kHackathonThemesList[index],
+                  ),
+                ],
+              ),
+            );
+          },
           child: Padding(
             padding: const EdgeInsets.all(
               kPadding,
