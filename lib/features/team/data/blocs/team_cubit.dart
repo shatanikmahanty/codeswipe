@@ -241,23 +241,50 @@ class TeamCubit extends HydratedCubit<TeamState> with CubitMaybeEmit {
     String expectations,
   ) async {
     final teamVacancy = TeamVacancy(
+      id: ID.unique(),
       position: position,
       skills: skills,
       expectations: expectations,
       teamId: state.team!.id,
       createdAt: DateTime.now(),
       createdBy: AuthCubit.instance.state.user!.id,
-      requests: [],
+      joinRequests: [],
     );
+
+    final vacancyJson = teamVacancy.toJson();
+    vacancyJson.remove('\$id');
 
     await _apiClient!.databases.createDocument(
       databaseId: EnvironmentHelper().getDatabaseId(),
       collectionId: kTeamVacancyCollection,
       documentId: ID.unique(),
-      data: teamVacancy.toJson(),
+      data: vacancyJson,
     );
   }
 
   UserTeam getTeam(String teamId) =>
       state.teams.firstWhere((team) => team.id == teamId);
+
+  Future<void> sendJoinRequest(String vacancyID) async {
+    final vacancy = await _apiClient!.databases.getDocument(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: kTeamVacancyCollection,
+      documentId: vacancyID,
+    );
+
+    List<String> requests = List.from(vacancy.data['join_requests'] ?? []);
+
+    if (requests.contains(AuthCubit.instance.state.user!.id)) {
+      throw Exception('You have already sent a request');
+    }
+
+    await _apiClient!.databases.updateDocument(
+      databaseId: EnvironmentHelper().getDatabaseId(),
+      collectionId: kTeamVacancyCollection,
+      documentId: vacancyID,
+      data: {
+        'join_requests': [...requests, AuthCubit.instance.state.user!.id],
+      },
+    );
+  }
 }

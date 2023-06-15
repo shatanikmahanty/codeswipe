@@ -2,6 +2,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/home/data/models/banner_model.dart';
 import 'package:codeswipe/utils/environment_helper.dart';
+import 'package:codeswipe/utils/mixins/cubit_maybe_emit_mixin.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -21,7 +22,7 @@ class BannerState with _$BannerState {
       _$BannerStateFromJson(json);
 }
 
-class BannerCubit extends HydratedCubit<BannerState> {
+class BannerCubit extends HydratedCubit<BannerState> with CubitMaybeEmit {
   BannerCubit() : super(const BannerState());
 
   Databases? _database;

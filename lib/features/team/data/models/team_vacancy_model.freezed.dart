@@ -20,18 +20,29 @@ TeamVacancy _$TeamVacancyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TeamVacancy {
+  @JsonKey(name: '\$id')
+  String get id => throw _privateConstructorUsedError;
+
   String get position => throw _privateConstructorUsedError;
+
   String get skills => throw _privateConstructorUsedError;
+
   String get expectations => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'team_id')
   String get teamId => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
+
   @JsonKey(name: 'created_by')
   String get createdBy => throw _privateConstructorUsedError;
-  List<dynamic> get requests => throw _privateConstructorUsedError;
+
+  @JsonKey(name: 'join_requests')
+  List<String> get joinRequests => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $TeamVacancyCopyWith<TeamVacancy> get copyWith =>
       throw _privateConstructorUsedError;
@@ -42,15 +53,17 @@ abstract class $TeamVacancyCopyWith<$Res> {
   factory $TeamVacancyCopyWith(
           TeamVacancy value, $Res Function(TeamVacancy) then) =
       _$TeamVacancyCopyWithImpl<$Res, TeamVacancy>;
+
   @useResult
   $Res call(
-      {String position,
+      {@JsonKey(name: '\$id') String id,
+      String position,
       String skills,
       String expectations,
       @JsonKey(name: 'team_id') String teamId,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') String createdBy,
-      List<dynamic> requests});
+      @JsonKey(name: 'join_requests') List<String> joinRequests});
 }
 
 /// @nodoc
@@ -66,15 +79,20 @@ class _$TeamVacancyCopyWithImpl<$Res, $Val extends TeamVacancy>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? position = null,
     Object? skills = null,
     Object? expectations = null,
     Object? teamId = null,
     Object? createdAt = null,
     Object? createdBy = null,
-    Object? requests = null,
+    Object? joinRequests = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -99,10 +117,10 @@ class _$TeamVacancyCopyWithImpl<$Res, $Val extends TeamVacancy>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
-      requests: null == requests
-          ? _value.requests
-          : requests // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      joinRequests: null == joinRequests
+          ? _value.joinRequests
+          : joinRequests // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -113,16 +131,18 @@ abstract class _$$_TeamVacancyCopyWith<$Res>
   factory _$$_TeamVacancyCopyWith(
           _$_TeamVacancy value, $Res Function(_$_TeamVacancy) then) =
       __$$_TeamVacancyCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
-      {String position,
+      {@JsonKey(name: '\$id') String id,
+      String position,
       String skills,
       String expectations,
       @JsonKey(name: 'team_id') String teamId,
       @JsonKey(name: 'created_at') DateTime createdAt,
       @JsonKey(name: 'created_by') String createdBy,
-      List<dynamic> requests});
+      @JsonKey(name: 'join_requests') List<String> joinRequests});
 }
 
 /// @nodoc
@@ -136,15 +156,20 @@ class __$$_TeamVacancyCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? position = null,
     Object? skills = null,
     Object? expectations = null,
     Object? teamId = null,
     Object? createdAt = null,
     Object? createdBy = null,
-    Object? requests = null,
+    Object? joinRequests = null,
   }) {
     return _then(_$_TeamVacancy(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       position: null == position
           ? _value.position
           : position // ignore: cast_nullable_to_non_nullable
@@ -169,10 +194,10 @@ class __$$_TeamVacancyCopyWithImpl<$Res>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
-      requests: null == requests
-          ? _value._requests
-          : requests // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+      joinRequests: null == joinRequests
+          ? _value._joinRequests
+          : joinRequests // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -181,18 +206,22 @@ class __$$_TeamVacancyCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TeamVacancy implements _TeamVacancy {
   const _$_TeamVacancy(
-      {required this.position,
+      {@JsonKey(name: '\$id') required this.id,
+      required this.position,
       required this.skills,
       required this.expectations,
       @JsonKey(name: 'team_id') required this.teamId,
       @JsonKey(name: 'created_at') required this.createdAt,
       @JsonKey(name: 'created_by') required this.createdBy,
-      required final List<dynamic> requests})
-      : _requests = requests;
+      @JsonKey(name: 'join_requests') required final List<String> joinRequests})
+      : _joinRequests = joinRequests;
 
   factory _$_TeamVacancy.fromJson(Map<String, dynamic> json) =>
       _$$_TeamVacancyFromJson(json);
 
+  @override
+  @JsonKey(name: '\$id')
+  final String id;
   @override
   final String position;
   @override
@@ -208,17 +237,19 @@ class _$_TeamVacancy implements _TeamVacancy {
   @override
   @JsonKey(name: 'created_by')
   final String createdBy;
-  final List<dynamic> _requests;
+  final List<String> _joinRequests;
+
   @override
-  List<dynamic> get requests {
-    if (_requests is EqualUnmodifiableListView) return _requests;
+  @JsonKey(name: 'join_requests')
+  List<String> get joinRequests {
+    if (_joinRequests is EqualUnmodifiableListView) return _joinRequests;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_requests);
+    return EqualUnmodifiableListView(_joinRequests);
   }
 
   @override
   String toString() {
-    return 'TeamVacancy(position: $position, skills: $skills, expectations: $expectations, teamId: $teamId, createdAt: $createdAt, createdBy: $createdBy, requests: $requests)';
+    return 'TeamVacancy(id: $id, position: $position, skills: $skills, expectations: $expectations, teamId: $teamId, createdAt: $createdAt, createdBy: $createdBy, joinRequests: $joinRequests)';
   }
 
   @override
@@ -226,6 +257,7 @@ class _$_TeamVacancy implements _TeamVacancy {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TeamVacancy &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.position, position) ||
                 other.position == position) &&
             (identical(other.skills, skills) || other.skills == skills) &&
@@ -236,20 +268,22 @@ class _$_TeamVacancy implements _TeamVacancy {
                 other.createdAt == createdAt) &&
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
-            const DeepCollectionEquality().equals(other._requests, _requests));
+            const DeepCollectionEquality()
+                .equals(other._joinRequests, _joinRequests));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       position,
       skills,
       expectations,
       teamId,
       createdAt,
       createdBy,
-      const DeepCollectionEquality().hash(_requests));
+      const DeepCollectionEquality().hash(_joinRequests));
 
   @JsonKey(ignore: true)
   @override
@@ -267,34 +301,48 @@ class _$_TeamVacancy implements _TeamVacancy {
 
 abstract class _TeamVacancy implements TeamVacancy {
   const factory _TeamVacancy(
-      {required final String position,
+      {@JsonKey(name: '\$id') required final String id,
+      required final String position,
       required final String skills,
       required final String expectations,
       @JsonKey(name: 'team_id') required final String teamId,
       @JsonKey(name: 'created_at') required final DateTime createdAt,
       @JsonKey(name: 'created_by') required final String createdBy,
-      required final List<dynamic> requests}) = _$_TeamVacancy;
+      @JsonKey(name: 'join_requests')
+      required final List<String> joinRequests}) = _$_TeamVacancy;
 
   factory _TeamVacancy.fromJson(Map<String, dynamic> json) =
       _$_TeamVacancy.fromJson;
 
   @override
+  @JsonKey(name: '\$id')
+  String get id;
+
+  @override
   String get position;
+
   @override
   String get skills;
+
   @override
   String get expectations;
+
   @override
   @JsonKey(name: 'team_id')
   String get teamId;
+
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
+
   @override
   @JsonKey(name: 'created_by')
   String get createdBy;
+
   @override
-  List<dynamic> get requests;
+  @JsonKey(name: 'join_requests')
+  List<String> get joinRequests;
+
   @override
   @JsonKey(ignore: true)
   _$$_TeamVacancyCopyWith<_$_TeamVacancy> get copyWith =>

@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:codeswipe/configurations/configurations.dart';
+import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/features/team/data/blocs/team_cubit.dart';
 import 'package:djangoflow_app/djangoflow_app.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:progress_builder/progress_builder.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../utils/appwrite_storage_image_url_helper.dart';
@@ -148,21 +150,37 @@ class JoinTeamList extends StatelessWidget {
                         SizedBox(
                           width: kPadding * 16,
                           height: kPadding * 6,
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(kButtonRadius),
+                          child: Center(
+                            child: CircularProgressBuilder(
+                              builder: (context, action, error) =>
+                                  OutlinedButton(
+                                style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(kButtonRadius),
+                                  ),
+                                  side: BorderSide(
+                                    width: kPadding / 4,
+                                    color: theme.primaryColor,
+                                  ),
+                                ),
+                                onPressed: action,
+                                child: const Text('Request'),
                               ),
-                              side: BorderSide(
-                                width: kPadding / 4,
-                                color: theme.primaryColor,
-                              ),
+                              action: (progress) async {
+                                if (state.vacancies[index].joinRequests
+                                    .contains(
+                                        AuthCubit.instance.state.user?.id)) {
+                                  throw Exception(
+                                      'You have already requested to join this team.');
+                                }
+                                await context.read<TeamCubit>().sendJoinRequest(
+                                      vacancies[index].id,
+                                    );
+                              },
+                              onSuccess: () => DjangoflowAppSnackbar.showInfo(
+                                  'Request sent'),
                             ),
-                            onPressed: () {
-                              DjangoflowAppSnackbar.showInfo('Request sent');
-                            },
-                            child: const Text('Request'),
                           ),
                         ),
                       ],

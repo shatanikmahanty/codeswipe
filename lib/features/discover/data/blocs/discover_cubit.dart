@@ -2,6 +2,7 @@ import 'package:appwrite/appwrite.dart';
 import 'package:codeswipe/configurations/configurations.dart';
 import 'package:codeswipe/features/authentication/authentication.dart';
 import 'package:codeswipe/utils/environment_helper.dart';
+import 'package:codeswipe/utils/mixins/cubit_maybe_emit_mixin.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -24,7 +25,7 @@ class DiscoverState with _$DiscoverState {
       _$DiscoverStateFromJson(json);
 }
 
-class DiscoverCubit extends Cubit<DiscoverState> {
+class DiscoverCubit extends Cubit<DiscoverState> with CubitMaybeEmit {
   DiscoverCubit() : super(const DiscoverState());
 
   Databases? _database;
