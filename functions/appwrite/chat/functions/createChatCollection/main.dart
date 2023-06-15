@@ -58,6 +58,10 @@ Future<void> createChatCollection(final req, final res) async {
       Permission.read(userRole2),
       Permission.write(userRole1),
       Permission.write(userRole2),
+      Permission.update(userRole1),
+      Permission.update(userRole2),
+      Permission.delete(userRole1),
+      Permission.delete(userRole2),
     ],
     databaseId: databaseId,
   );
@@ -91,7 +95,6 @@ Future<void> createChatCollection(final req, final res) async {
       'chat_rooms': user1ChatRooms,
     },
   );
-
   await database.updateDocument(
     databaseId: databaseId,
     collectionId: 'users',
@@ -102,6 +105,18 @@ Future<void> createChatCollection(final req, final res) async {
   );
 
   await _defineChatDocument(res, collection.$id, databaseId, database);
+  await Future.delayed(
+    Duration(seconds: 3),
+  );
+  await database.createIndex(
+    databaseId: databaseId,
+    collectionId: eventDocumentId,
+    key: 'time_based_sort',
+    type: 'key',
+    attributes: ['time'],
+    orders: ['asc'],
+  );
+
   markSuccess(res, 'Chat Collection created successfully');
 }
 
