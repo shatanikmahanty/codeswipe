@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'chat_cubit.freezed.dart';
+
 part 'chat_cubit.g.dart';
 
 @freezed
@@ -85,43 +86,48 @@ class ChatCubit extends HydratedCubit<ChatState> with CubitMaybeEmit {
   }
 
   Future<void> getMessagesForChatRooms() async {
-    for (final room in state.rooms) {
-      emit(
-        state.copyWith(
-          isLoading: true,
-        ),
-      );
-      final messages = await _apiClient!.databases.listDocuments(
-        databaseId: EnvironmentHelper().getDatabaseId(),
-        collectionId: room.chatRoomId,
-        queries: [
-          Query.orderAsc('time'),
-          if (state.messages.containsKey(room.chatRoomId) &&
-              state.messages[room.chatRoomId]!.isNotEmpty)
-            Query.cursorAfter(state.messages[room.chatRoomId]!.last.messageId),
-        ],
-      );
+    try {
+      for (final room in state.rooms) {
+        emit(
+          state.copyWith(
+            isLoading: true,
+          ),
+        );
+        final messages = await _apiClient!.databases.listDocuments(
+          databaseId: EnvironmentHelper().getDatabaseId(),
+          collectionId: room.chatRoomId,
+          queries: [
+            if (state.messages.containsKey(room.chatRoomId) &&
+                state.messages[room.chatRoomId]!.isNotEmpty)
+              Query.cursorAfter(
+                  state.messages[room.chatRoomId]!.last.messageId),
+          ],
+        );
 
-      final chatMessages = messages.documents
-          .map((message) => ChatMessage.fromJson(message.data))
-          .toList();
+        final chatMessages = messages.documents
+            .map((message) => ChatMessage.fromJson(message.data))
+            .toList();
 
-      List<ChatMessage> chatRoomMessages =
-          state.messages[room.chatRoomId] ?? [];
+        List<ChatMessage> chatRoomMessages =
+            state.messages[room.chatRoomId] ?? [];
 
-      chatRoomMessages.addAll(chatMessages);
+        chatRoomMessages.addAll(chatMessages);
 
-      Map<String, List<ChatMessage>> allRooms =
-          Map<String, List<ChatMessage>>.from(state.messages);
-      allRooms[room.chatRoomId] = chatRoomMessages;
+        Map<String, List<ChatMessage>> allRooms =
+            Map<String, List<ChatMessage>>.from(state.messages);
+        allRooms[room.chatRoomId] = chatRoomMessages;
 
-      emit(
-        state.copyWith(
-          messages: allRooms,
-          isLoading: false,
-        ),
-      );
-      subscribeToChatRooms();
+        emit(
+          state.copyWith(
+            messages: allRooms,
+            isLoading: false,
+          ),
+        );
+        subscribeToChatRooms();
+      }
+    } catch (e) {
+      emit(state.copyWith(isLoading: false));
+      rethrow;
     }
   }
 
