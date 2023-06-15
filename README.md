@@ -1,5 +1,8 @@
 # Codeswipe
 
+![logo](https://github.com/shatanikmahanty/codeswipe/assets/67138059/8a571ddd-5d23-4509-bf26-5eaca4882210)
+
+
 Open Source Hackathon Matcher app built with Appwrite Cloud and Flutter.
 
 ### Enable pre-commit manually
