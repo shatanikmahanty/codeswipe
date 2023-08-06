@@ -22,27 +22,19 @@ TeamVacancy _$TeamVacancyFromJson(Map<String, dynamic> json) {
 mixin _$TeamVacancy {
   @JsonKey(name: '\$id')
   String get id => throw _privateConstructorUsedError;
-
   String get position => throw _privateConstructorUsedError;
-
   String get skills => throw _privateConstructorUsedError;
-
   String get expectations => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'team_id')
   String get teamId => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'created_by')
   String get createdBy => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'join_requests')
   List<String> get joinRequests => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TeamVacancyCopyWith<TeamVacancy> get copyWith =>
       throw _privateConstructorUsedError;
@@ -53,7 +45,6 @@ abstract class $TeamVacancyCopyWith<$Res> {
   factory $TeamVacancyCopyWith(
           TeamVacancy value, $Res Function(TeamVacancy) then) =
       _$TeamVacancyCopyWithImpl<$Res, TeamVacancy>;
-
   @useResult
   $Res call(
       {@JsonKey(name: '\$id') String id,
@@ -131,7 +122,6 @@ abstract class _$$_TeamVacancyCopyWith<$Res>
   factory _$$_TeamVacancyCopyWith(
           _$_TeamVacancy value, $Res Function(_$_TeamVacancy) then) =
       __$$_TeamVacancyCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call(
@@ -238,7 +228,6 @@ class _$_TeamVacancy implements _TeamVacancy {
   @JsonKey(name: 'created_by')
   final String createdBy;
   final List<String> _joinRequests;
-
   @override
   @JsonKey(name: 'join_requests')
   List<String> get joinRequests {
@@ -317,32 +306,24 @@ abstract class _TeamVacancy implements TeamVacancy {
   @override
   @JsonKey(name: '\$id')
   String get id;
-
   @override
   String get position;
-
   @override
   String get skills;
-
   @override
   String get expectations;
-
   @override
   @JsonKey(name: 'team_id')
   String get teamId;
-
   @override
   @JsonKey(name: 'created_at')
   DateTime get createdAt;
-
   @override
   @JsonKey(name: 'created_by')
   String get createdBy;
-
   @override
   @JsonKey(name: 'join_requests')
   List<String> get joinRequests;
-
   @override
   @JsonKey(ignore: true)
   _$$_TeamVacancyCopyWith<_$_TeamVacancy> get copyWith =>

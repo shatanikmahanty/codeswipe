@@ -1,4 +1,4 @@
-package com.codeswipe.client
+package com.codeswipe.app
 
 import io.flutter.embedding.android.FlutterActivity
 
